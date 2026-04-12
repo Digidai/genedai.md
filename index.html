@@ -71,7 +71,7 @@
       "@type": "Person",
       "name": "Gene Dai",
       "url": "https://genedai.md/",
-      "description": "Gene Dai is a product builder and Co-Founder & CPO of OpenJobs AI, an autonomous AI recruiting platform. He previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech across recruiting, education, and e-commerce.",
+      "description": "Gene Dai is a product builder and Co-Founder & CPO of OpenJobs AI, an autonomous AI recruiting platform that reached #1 on Product Hunt. He previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech across recruiting, education, and e-commerce.",
       "jobTitle": "Co-Founder & CPO",
       "email": "gene@openjobs-ai.com",
       "worksFor": {
@@ -377,8 +377,8 @@
 </head>
 <body>
 
-  <header>
-  <nav>
+  <header role="banner">
+  <nav aria-label="Main navigation">
     <div class="nav-path">~/<span class="file">genedai.md</span></div>
     <ul class="nav-links">
       <li><a href="#about">about</a></li>
@@ -393,11 +393,11 @@
   </nav>
   </header>
 
-  <main>
-  <article class="doc" itemscope itemtype="https://schema.org/ProfilePage">
+  <main role="main">
+  <article class="doc">
 
     <!-- ── Hero ───────────────────────────────────── -->
-    <div class="hero">
+    <section class="hero" aria-label="Introduction">
       <h1 class="md-h1">Gene Dai</h1>
       <p class="lead">Product builder. Led products at BOSS Zhipin, Liepin, and Zuoyebang. Now co-founding <a href="https://www.openjobs-ai.com" target="_blank" rel="noopener">OpenJobs AI</a> — turning complex recruiting workflows into <em>autonomous systems</em>.</p>
       <div class="hero-badges">
@@ -406,7 +406,7 @@
         <span class="badge">Platform Products</span>
         <span class="badge">AI Recruiting</span>
       </div>
-    </div>
+    </section>
 
     <!-- ── About ──────────────────────────────────── -->
     <section class="section" id="about">
@@ -543,7 +543,7 @@
   </article>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="doc">
       <hr class="md-hr" style="margin-bottom: 24px;">
       <p><span class="cursor-blink">genedai.md</span> &middot; California &middot; Building with intent</p>
