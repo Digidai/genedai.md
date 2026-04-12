@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gene Dai — Product Builder | Co-Founder & CPO @ OpenJobs AI</title>
-  <meta name="description" content="Gene Dai is a product builder and Co-Founder & CPO of OpenJobs AI. Previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech. Building autonomous AI recruiting systems." />
+  <meta name="description" content="Gene Dai is Co-Founder & CPO of OpenJobs AI. Previously led products at BOSS Zhipin, Liepin, and Zuoyebang. Building autonomous AI recruiters." />
   <meta name="author" content="Gene Dai" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href="https://genedai.md/" />
@@ -36,25 +36,36 @@
         "@id": "https://genedai.md/#website",
         "url": "https://genedai.md/",
         "name": "genedai.md",
-        "description": "Gene Dai — Product Builder",
+        "description": "Gene Dai — Product Builder, Co-Founder & CPO of OpenJobs AI",
         "publisher": { "@id": "https://genedai.md/#person" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://genedai.md/#org",
+        "name": "OpenJobs AI",
+        "url": "https://www.openjobs-ai.com",
+        "description": "OpenJobs AI is an autonomous AI recruiting platform. Its flagship product Mira automates sourcing, screening, outreach, and interview scheduling for hiring teams.",
+        "foundingDate": "2024",
+        "sameAs": [
+          "https://www.producthunt.com/products/openjobs-ai",
+          "https://www.linkedin.com/company/openjobs-ai",
+          "https://x.com/openjobs_ai"
+        ]
       },
       {
         "@type": "Person",
         "@id": "https://genedai.md/#person",
         "name": "Gene Dai",
         "url": "https://genedai.md/",
+        "description": "Gene Dai is a product builder and Co-Founder & CPO of OpenJobs AI, an autonomous AI recruiting platform. He previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech across recruiting, education, and e-commerce. He holds an M.Eng. from Beihang University.",
         "jobTitle": "Co-Founder & CPO",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "OpenJobs AI",
-          "url": "https://www.openjobs-ai.com"
-        },
+        "email": "gene@openjobs-ai.com",
+        "worksFor": { "@id": "https://genedai.md/#org" },
         "alumniOf": {
           "@type": "CollegeOrUniversity",
           "name": "Beihang University"
         },
-        "knowsAbout": ["AI Recruiting", "Product Management", "User Growth", "HRTech", "Platform Products"],
+        "knowsAbout": ["AI Recruiting", "Product Management", "User Growth", "HRTech", "Platform Products", "Autonomous AI Agents"],
         "sameAs": [
           "https://x.com/genedai",
           "https://github.com/Digidai",
@@ -69,9 +80,15 @@
         "@id": "https://genedai.md/#profilepage",
         "url": "https://genedai.md/",
         "name": "Gene Dai — Product Builder",
+        "description": "Personal homepage of Gene Dai, Co-Founder & CPO of OpenJobs AI. Career journey, projects, and writing.",
         "mainEntity": { "@id": "https://genedai.md/#person" },
+        "datePublished": "2026-04-12",
         "dateModified": "2026-04-12",
-        "inLanguage": "en-US"
+        "inLanguage": "en-US",
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero .lead", "#about > p"]
+        }
       }
     ]
   }
@@ -342,6 +359,7 @@
 </head>
 <body>
 
+  <header>
   <nav>
     <div class="nav-path">~/<span class="file">genedai.md</span></div>
     <ul class="nav-links">
@@ -355,8 +373,10 @@
       <a href="mailto:gene@openjobs-ai.com">gene@openjobs-ai.com</a>
     </div>
   </nav>
+  </header>
 
-  <div class="doc">
+  <main>
+  <article class="doc" itemscope itemtype="https://schema.org/ProfilePage">
 
     <!-- ── Hero ───────────────────────────────────── -->
     <div class="hero">
@@ -371,19 +391,19 @@
     </div>
 
     <!-- ── About ──────────────────────────────────── -->
-    <div class="section" id="about">
+    <section class="section" id="about">
       <h2 class="md-h2">About</h2>
-      <p>Building products across recruiting, education, e-commerce, and health — now focused on making AI agents that actually work in enterprise hiring.</p>
+      <p>Gene Dai is a product builder and Co-Founder & CPO of OpenJobs AI, an autonomous AI recruiting platform that reached #1 on Product Hunt. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He has published 272+ articles on AI and HRTech across Medium, Substack, and his personal blog, and maintains 133 open-source repositories on GitHub. He holds an M.Eng. in Computer Software Engineering from Beihang University.</p>
       <ul class="md-list">
         <li><span class="title">AI-Native Recruiting</span> <span class="desc">— Building Mira, an end-to-end autonomous AI recruiter that handles sourcing, screening, outreach, and interview scheduling.</span></li>
         <li><span class="title">Product Velocity</span> <span class="desc">— Led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech. Deep experience in user growth, community, and platform products.</span></li>
         <li><span class="title">Domain Expertise</span> <span class="desc">— Head of Product at Kanzhun and BOSS Zhipin, Head of User Product at Liepin. Understanding hiring from every angle.</span></li>
         <li><span class="title">Builder & Writer</span> <span class="desc">— 272+ articles on AI, HRTech, and the people shaping the industry.</span></li>
       </ul>
-    </div>
+    </section>
 
     <!-- ── Journey ────────────────────────────────── -->
-    <div class="section" id="journey">
+    <section class="section" id="journey">
       <h2 class="md-h2">Journey</h2>
       <p>From Beijing to California.</p>
       <ul class="md-list">
@@ -425,7 +445,7 @@
     </div>
 
     <!-- ── Projects ───────────────────────────────── -->
-    <div class="section" id="projects">
+    <section class="section" id="projects">
       <h2 class="md-h2">Projects</h2>
       <p>Products, tools, and resources — mostly at the intersection of AI and recruiting.</p>
       <div class="md-links">
@@ -460,10 +480,10 @@
           <span class="link-tag">Directory</span>
         </a>
       </div>
-    </div>
+    </section>
 
     <!-- ── Writing ────────────────────────────────── -->
-    <div class="section" id="writing">
+    <section class="section" id="writing">
       <h2 class="md-h2">Writing</h2>
       <p>Deep dives into AI leaders, HRTech platforms, and the forces reshaping how companies find talent.</p>
       <div class="stats-row">
@@ -481,10 +501,10 @@
         <span class="topic">AI Agents</span>
         <span class="topic">Skills-Based Hiring</span>
       </div>
-    </div>
+    </section>
 
     <!-- ── Connect ────────────────────────────────── -->
-    <div class="section" id="connect">
+    <section class="section" id="connect">
       <h2 class="md-h2">Connect</h2>
       <p>Whether it's about AI recruiting, product building, or just a good conversation.</p>
       <div class="connect-links">
@@ -500,9 +520,10 @@
         &nbsp;&nbsp;
         <span class="bracket">[</span><a href="https://genedai.me" target="_blank" rel="noopener">Blog</a><span class="bracket">]</span><span class="bracket">(genedai.me)</span>
       </div>
-    </div>
+    </section>
 
-  </div>
+  </article>
+  </main>
 
   <footer>
     <div class="doc">
