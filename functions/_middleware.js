@@ -1,3 +1,5 @@
+// AI training/inference crawlers only — NOT search engine crawlers
+// Googlebot, Bingbot, etc. must get HTML for proper indexing
 const AI_BOT_PATTERNS = [
   'GPTBot',
   'ChatGPT-User',
@@ -5,23 +7,14 @@ const AI_BOT_PATTERNS = [
   'Claude-Web',
   'anthropic-ai',
   'PerplexityBot',
-  'Applebot-Extended',
-  'Google-Extended',
-  'GoogleOther',
-  'Bytespider',
   'CCBot',
   'cohere-ai',
   'Meta-ExternalAgent',
   'Meta-ExternalFetcher',
-  'FacebookBot',
   'Amazonbot',
   'YouBot',
-  'PhindBot',
   'AI2Bot',
   'Diffbot',
-  'Scrapy',
-  'PetalBot',
-  'Semrushbot',
 ];
 
 function isAIBot(userAgent) {
