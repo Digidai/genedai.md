@@ -31,7 +31,7 @@ function prefersPlainText(accept) {
 }
 
 export async function onRequest(context) {
-  const { request, next } = context;
+  const { request, next, env } = context;
   const url = new URL(request.url);
 
   // Only intercept root path
@@ -45,7 +45,7 @@ export async function onRequest(context) {
   if (isAIBot(userAgent) || prefersPlainText(accept)) {
     try {
       const llmsUrl = new URL('/llms.txt', request.url);
-      const llmsResponse = await fetch(llmsUrl);
+      const llmsResponse = await env.ASSETS.fetch(llmsUrl);
 
       if (llmsResponse.ok) {
         const content = await llmsResponse.text();
@@ -55,13 +55,13 @@ export async function onRequest(context) {
             'Content-Type': 'text/plain; charset=utf-8',
             'X-Content-Source': 'llms.txt',
             'X-Robots-Tag': 'all',
-            'Cache-Control': 'public, max-age=3600',
+            'Cache-Control': 'public, max-age=86400',
             'Vary': 'User-Agent, Accept',
           },
         });
       }
     } catch {
-      // Fallback to HTML if llms.txt fetch fails
+      // Fallback to HTML if llms.txt lookup fails
     }
   }
 
