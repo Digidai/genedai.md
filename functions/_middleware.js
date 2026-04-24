@@ -25,9 +25,10 @@ function isAIBot(userAgent) {
 
 function prefersPlainText(accept) {
   if (!accept) return false;
-  if (accept.includes('text/markdown')) return true;
-  if (accept === 'text/plain') return true;
-  return false;
+  return accept
+    .split(',')
+    .map(part => part.trim().split(';')[0].toLowerCase())
+    .some(type => type === 'text/plain' || type === 'text/markdown');
 }
 
 export async function onRequest(context) {
