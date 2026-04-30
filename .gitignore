@@ -1,3 +1,13 @@
 .wrangler/
 node_modules/
 .DS_Store
+
+# Local tooling and secrets — never commit
+.mcp.json
+.sc/
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+*.log
+.cache/
