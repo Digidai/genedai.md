@@ -17,6 +17,18 @@ const AI_BOT_PATTERNS = [
   'Diffbot',
 ];
 
+// Mirrors /_headers. Cloudflare does NOT apply _headers to Responses
+// constructed inside a Pages Function, so the bot/plain-text branch
+// must attach them manually. Keep these two lists in sync.
+const SECURITY_HEADERS = {
+  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload',
+  'X-Frame-Options': 'DENY',
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+  'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'",
+};
+
 function isAIBot(userAgent) {
   if (!userAgent) return false;
   const ua = userAgent.toLowerCase();
@@ -35,7 +47,6 @@ export async function onRequest(context) {
   const { request, next, env } = context;
   const url = new URL(request.url);
 
-  // Only intercept root path
   if (url.pathname !== '/' && url.pathname !== '/index.html') {
     return next();
   }
@@ -53,6 +64,7 @@ export async function onRequest(context) {
         return new Response(content, {
           status: 200,
           headers: {
+            ...SECURITY_HEADERS,
             'Content-Type': 'text/plain; charset=utf-8',
             'X-Content-Source': 'llms.txt',
             'X-Robots-Tag': 'all',
@@ -61,12 +73,11 @@ export async function onRequest(context) {
           },
         });
       }
-    } catch {
-      // Fallback to HTML if llms.txt lookup fails
+    } catch (err) {
+      console.warn('llms.txt content negotiation fell back to HTML:', err);
     }
   }
 
-  // Human visitors get the normal HTML page
   const response = await next();
   const newResponse = new Response(response.body, response);
   newResponse.headers.set('Vary', 'User-Agent, Accept');

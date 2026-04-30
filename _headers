@@ -5,4 +5,12 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
-  X-Robots-Tag: all
+
+/
+  Link: </llms.txt>; rel="alternate"; type="text/plain"
+
+/index.html
+  Link: </llms.txt>; rel="alternate"; type="text/plain"
+
+/404.html
+  X-Robots-Tag: noindex
