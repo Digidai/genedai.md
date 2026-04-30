@@ -1,0 +1,38 @@
+# genedai.md
+
+> Gene Dai — Product builder, Co-Founder & CPO of OpenJobs AI. Building autonomous AI recruiters; previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech.
+
+Based in California. Studied Computer Software Engineering at Beihang University. Areas of expertise: AI recruiting, product management, user growth, platform products, HRTech.
+
+## Profile
+
+- [Personal homepage](https://genedai.md/): Hub for projects, writing, and contact.
+- [Blog](https://genedai.me): Long-form writing on AI, HRTech, and product strategy.
+- [Medium](https://genedai.medium.com): English articles on AI leaders, HRTech, and recruiting.
+- [Substack](https://genedai.substack.com): Newsletter on autonomous AI agents and the future of hiring.
+
+## Projects
+
+- [Mira — AI Recruiter](https://www.openjobs-ai.com): End-to-end autonomous AI recruiter from OpenJobs AI. Sourcing, screening, outreach, scheduling. Reached #1 on Product Hunt.
+- [OpenJobs Board](https://openjobs.genedai.me): Free, open-source job aggregator. 574+ positions across 422+ companies, refreshed every six hours.
+- [HireAI Directory](https://hireai.genedai.me): 149+ HR AI products organized by five technology eras, with 50+ browseable tags.
+- [Website2Markdown](https://md.genedai.me): URL-to-Markdown converter on Cloudflare Workers with 21 platform adapters and a 5-layer fallback chain.
+- [GeneDai CV](https://genedai.cv): AI-powered resume builder with 28+ professional templates.
+- [Recruit Navigator](https://recruit.genedai.me): Recruitment tools directory inspired by OSINT-framework. 300+ categories, 1,900+ resources.
+
+## Career
+
+- Co-Founder & CPO, OpenJobs AI (2024–present): Autonomous AI recruiting platform.
+- Head of Platform Product, Zuoyebang: China's largest K12 online education platform.
+- Head of User Product, Liepin (6100.HK): Executive recruitment platform.
+- Product Director, Zhidemai Tech (300785.SZ): Consumer content & commerce platform.
+- Head of Community & Social Product / Head of Product of Kanzhun, BOSS Zhipin (BZ/2076.HK): China's leading mobile recruiting platform.
+- Head of Product, Dora Tech: Sequoia Capital China backed.
+- Product Partner & CPO, Feel: Health & fitness app, ZhenFund backed.
+
+## Optional
+
+- [X / Twitter](https://x.com/genedai): @genedai
+- [GitHub](https://github.com/Digidai): 133 public repositories.
+- [LinkedIn](https://linkedin.com/in/genedai): Professional profile.
+- [Email](mailto:hi@genedai.me): hi@genedai.me
