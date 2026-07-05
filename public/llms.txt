@@ -8,7 +8,7 @@ Based in California. Studied Computer Software Engineering at Beihang University
 
 - [Personal homepage](https://genedai.md/): Hub for projects, writing, and contact.
 - [Blog](https://genedai.me): Long-form writing on AI, HRTech, and product strategy.
-- [Medium](https://genedai.medium.com): English articles on AI leaders, HRTech, and recruiting.
+- [Medium](https://genedai.medium.com): English articles on AI leaders, HRTech, and hiring.
 - [Substack](https://genedai.substack.com): Newsletter on AI agents and the future of hiring.
 
 ## Projects
