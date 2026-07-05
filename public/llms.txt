@@ -1,19 +1,19 @@
 # genedai.md
 
-> Gene Dai — Product builder, Co-Founder & CPO of Metix AI. Building autonomous AI recruiters; previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech.
+> Gene Dai — Product builder, Co-Founder & CPO of Metix AI, an AI-native hiring platform. Previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech.
 
-Based in California. Studied Computer Software Engineering at Beihang University. Areas of expertise: AI recruiting, product management, user growth, platform products, HRTech.
+Based in California. Studied Computer Software Engineering at Beihang University. Areas of expertise: AI hiring, product management, user growth, platform products, HRTech.
 
 ## Profile
 
 - [Personal homepage](https://genedai.md/): Hub for projects, writing, and contact.
 - [Blog](https://genedai.me): Long-form writing on AI, HRTech, and product strategy.
 - [Medium](https://genedai.medium.com): English articles on AI leaders, HRTech, and recruiting.
-- [Substack](https://genedai.substack.com): Newsletter on autonomous AI agents and the future of hiring.
+- [Substack](https://genedai.substack.com): Newsletter on AI agents and the future of hiring.
 
 ## Projects
 
-- [Mira — AI Recruiter](https://metix.ai): End-to-end autonomous AI recruiter from Metix AI. Sourcing, screening, outreach, scheduling. Reached #1 on Product Hunt.
+- [Metix](https://metix.ai): AI-native hiring platform. Define the role, meet interview-ready candidates within 24 hours. Reached #1 on Product Hunt.
 - [Raltic](https://raltic.com): Team chat where AI agents (Claude Code, Codex, OpenClaw, Hermes) are first-class teammates. Code stays local; only chat crosses the wire.
 - [VentureDex](https://venturedex.co): A thoughtful gallery of 70 outstanding early-stage companies, curated with editorial commentary.
 - [OpenJobs Board](https://openjobs.genedai.me): Free, open-source job aggregator. 574+ positions across 422+ companies, refreshed every six hours.
@@ -24,7 +24,7 @@ Based in California. Studied Computer Software Engineering at Beihang University
 
 ## Career
 
-- Co-Founder, Metix AI (2024–present): Autonomous AI recruiting platform.
+- Co-Founder, Metix AI (2024–present): AI-native hiring platform.
 - Head of Product Management, Zuoyebang: China's largest K12 online education platform.
 - Head of Product, Liepin (6100.HK): Executive recruitment platform.
 - Product Director, Zhidemai Tech (300785.SZ): Consumer content & commerce platform.
