@@ -1,11 +1,12 @@
-// VentureDex: a card index. A long drawer of company cards; the drawer slides open and one lit card rises.
+// VentureDex: a card index of startups. The drawer stands open on rows of company cards; one lit card rises,
+// and its funding rounds grow on it as bars, round by round, beside a row of investor dots.
 import * as k from "../kit/iso-kit.mjs";
 import { studio, figure } from "../studio.mjs";
 
 export default function venturedex() {
   const PLATE = { x: -70, y: -46, w: 140, d: 92, r: 6 };
   const s = studio([...k.boxCorners(PLATE, -11, 0), [-40, -30, 40], [40, 46, 30]], { azimuth: 50 });
-  const { P, at, L, D, slab, bench, moving, move } = s;
+  const { P, at, L, D, slab, bench, moving, move, fade } = s;
   const out = [bench(PLATE, { label: { x: 40, y: 26, w: 22, d: 11, r: 1 } })];
   // Cabinet: two drawers stacked; the lower one opens toward +y.
   const CAB = { x: -34, y: -34, w: 44, d: 50, r: 2 };
@@ -30,7 +31,13 @@ export default function venturedex() {
   for (let i = 0; i < 9; i++) {
     const y = DR.y + 6 + i * 4.4;
     const lit = i === 5;
-    cards.push(lit ? moving("card", slab({ x: DR.x + 3, y, w: DR.w - 6, d: 0.8, r: 0.2 }, 5, 14, { tone: "hi", lit: true }, 2, 0) + slab({ x: DR.x + 6, y, w: 8, d: 0.8, r: 0.2 }, 19, 3, { tone: "hi", lit: true }, 2, 0))
+    // The lit company card carries its funding rounds as rising bars and a row of investor dots.
+    const fy = y + 0.8, bx = DR.x + 7;
+    const rounds = [3, 5, 7.5, 10].map((h, r) => moving(`round${r}`, L(k.segment([bx + r * 4.4, fy, 7], [bx + r * 4.4, fy, 7 + h], P), { tone: "lit", free: true, width: 1.6 })));
+    cards.push(lit ? moving("card", slab({ x: DR.x + 3, y, w: DR.w - 6, d: 0.8, r: 0.2 }, 5, 14, { tone: "hi", lit: true }, 2, 0) +
+      L(k.segment([bx - 2, fy, 7], [bx + 15.2, fy, 7], P), { tone: "mid", free: true }) + rounds.join("") +
+      D([0, 1, 2].map((i) => at([bx + 20 + i * 2.4, fy, 16])), { size: 0.55, tone: "hi" }) +
+      slab({ x: DR.x + 6, y, w: 8, d: 0.8, r: 0.2 }, 19, 3, { tone: "hi", lit: true }, 2, 0))
       : slab({ x: DR.x + 3, y, w: DR.w - 6, d: 0.8, r: 0.2 }, 5, 10, { tone: "hi" }, 2, 0) + (i % 3 === 0 ? slab({ x: DR.x + 4 + (i * 7) % 20, y, w: 7, d: 0.8, r: 0.2 }, 15, 2.4, { tone: "hi" }, 2, 0) : ""));
   }
   drawer.push(...cards);
@@ -41,7 +48,8 @@ export default function venturedex() {
   out.push(drawer.join(""));
   const parts = [
     move("card", [0, 0, 1], [[0, 0], [0.2, 0], [0.4, 9], [0.75, 9], [0.95, 0]]),
+    ...[0, 1, 2, 3].map((r) => fade(`round${r}`, [[0, 0], [0.4 + r * 0.06, 0], [0.44 + r * 0.06, 1], [0.8, 1], [0.86, 0]])),
   ];
-  const svg = figure({ label: "A card-index cabinet on a bench. The lower drawer stands open on rows of company cards, and one lit card rises out of the row and sinks back.", body: out });
-  return { svg, P, loop: 5.4, still: 0.6, parts };
+  const svg = figure({ label: "A card-index cabinet on a bench. The lower drawer stands open on rows of company cards, and one lit card rises out of the row; its funding rounds grow on it as bars, round by round, beside a row of investor dots, and it sinks back.", body: out });
+  return { svg, P, loop: 5.4, still: 0.7, parts };
 }

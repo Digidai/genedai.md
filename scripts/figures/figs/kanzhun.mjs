@@ -1,5 +1,5 @@
 // Kanzhun.com: a review ballot. Employees' review cards drop through the slot of a ballot box;
-// the tally dial beside it advances with every card that lands.
+// when one lands, the company panel beside it updates its star rating and adds a salary bar.
 import * as k from "../kit/iso-kit.mjs";
 import { studio, figure } from "../studio.mjs";
 
@@ -8,7 +8,7 @@ export default function kanzhun() {
   const BOX = { x: -36, y: -24, w: 44, d: 40, r: 3 };
   const BH = 30;
   const s = studio([...k.boxCorners(PLATE, -11, 0), [BOX.x, BOX.y, BH + 34]], { azimuth: 40 });
-  const { P, at, L, D, slab, bench, post, dial, moving, move, fade, needle, needleSvg, cyl } = s;
+  const { P, at, L, D, slab, bench, post, moving, move, fade } = s;
 
   const out = [bench(PLATE)];
   // A stack of sealed reviews waiting at the back.
@@ -33,19 +33,37 @@ export default function kanzhun() {
   const f = (p) => p.map((n) => n.toFixed(1)).join(" ");
   out.push(`<clipPath id="kz-slot"><path d="M${f([A[0] - v[0] * 9, A[1] - v[1] * 9])}L${f([B[0] + v[0] * 9, B[1] + v[1] * 9])}L${f([B[0] + v[0] * 9, -600])}L${f([A[0] - v[0] * 9, -600])}Z"/></clipPath>`);
   out.push(card);
-  // Tally dial on a pedestal at the front right.
-  out.push(post(44, 14, 3, 0, 12));
-  out.push(dial(44, 14, 11, 12, 4, { ticks: 50, every: 10 }));
-  out.push(needleSvg("tally"));
-  out.push(cyl(44, 14, 1.3, 16, 0.6, { tone: "mid" }, 14));
+  // Company profile panel beside the box: a star rating and salary bars on its front face.
+  out.push(slab({ x: 28, y: 4, w: 30, d: 14, r: 2 }, 0, 3, { tone: "mid" }, 4, 0.5));
+  out.push(post(43, 9, 2, 3, 12, { cap: false }));
+  const PANEL = { x: 24, y: 7, w: 38, d: 4, r: 1 };
+  out.push(slab(PANEL, 12, 26, { tone: "mid" }, 3, 0.4));
+  const fy = PANEL.y + PANEL.d;
+  const star = (cx, cz, r) => {
+    const pts = [];
+    for (let i = 0; i <= 10; i++) {
+      const a = (i * Math.PI) / 5, rr = i % 2 ? r * 0.45 : r;
+      pts.push([cx + Math.sin(a) * rr, fy, cz + Math.cos(a) * rr]);
+    }
+    return pts.slice(1).map((p, i) => k.segment(pts[i], p, P)).join("");
+  };
+  const SX = (i) => PANEL.x + 6 + i * 6.4, SZ = 32.5;
+  out.push(L([0, 1, 2, 3].map((i) => star(SX(i), SZ, 2.4)).join(""), { tone: "lit" }));
+  out.push(L(star(SX(4), SZ, 2.4), { tone: "faint" }));
+  out.push(moving("star", L(star(SX(4), SZ, 2.4), { tone: "lit" })));
+  // Salary bars, one per report; a new one appears when a review lands.
+  const bar = (i, share) => k.segment([PANEL.x + 4, fy, 25 - i * 3.6], [PANEL.x + 4 + (PANEL.w - 8) * share, fy, 25 - i * 3.6], P);
+  out.push(L(bar(0, 0.7) + bar(1, 0.9) + bar(2, 0.55), { tone: "hi", free: true }));
+  out.push(moving("salary", L(bar(3, 0.8), { tone: "lit", free: true })));
 
   const parts = [
     move("card", [0, 0, -1], [[0, 0], [0.15, 0], [0.5, DROP], [0.98, DROP]]),
     fade("card", [[0, 0], [0.12, 1], [0.5, 1], [0.52, 0], [0.97, 0]]),
-    needle("tally", { c: [44, 14, 16.2], plane: "z", r0: 2, r1: 8.6, track: [[0, 0.1], [0.5, 0.1], [0.62, 0.3], [0.9, 0.3], [0.99, 0.1]] }),
+    fade("star", [[0, 0], [0.52, 0], [0.58, 1], [0.92, 1], [0.97, 0]]),
+    fade("salary", [[0, 0], [0.56, 0], [0.62, 1], [0.92, 1], [0.97, 0]]),
   ];
   const svg = figure({
-    label: "A ballot box on a bench with a stack of review cards behind it. A lit review card slides down through the slot in the lid, and the tally dial beside the box advances when it lands.",
+    label: "A ballot box on a bench with a stack of review cards behind it. A lit review card slides down through the slot in the lid. When it lands, the company panel beside the box updates: its star rating fills to five and a new salary bar appears.",
     body: out,
   });
   // The card genuinely passes through the slot; the clip hides the part inside the box.

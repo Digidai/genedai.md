@@ -1,11 +1,11 @@
-// Metix AI: a shortlist sorter. Candidate pucks leave the hopper on a belt and pass
-// under a gauge gate; the probe rises onto each puck and the dial reads its fit.
-// The one lit puck reads past the mark and joins the shortlist tray.
+// Metix AI: from role brief to booked interview. A role brief stands on the hopper; candidate pucks
+// leave it on a belt and pass under a gauge gate, where the probe rises onto each one and the dial reads
+// its fit against the brief. The lit candidate reads past the mark, and its interview is booked on the calendar.
 import { studio, figure } from "../studio.mjs";
 
 export default function metix() {
   const PLATE = { x: -104, y: -40, w: 208, d: 80, r: 6 };
-  const s = studio([[-104, -40, -11], [104, 40, -11], [-104, 40, 0], [104, -40, 0], [0, 0, 48], [-82, -16, 34]], { azimuth: 38 });
+  const s = studio([[-104, -40, -11], [104, 40, -11], [-104, 40, 0], [104, -40, 0], [0, 0, 48], [-82, -16, 48]], { azimuth: 38 });
   const { k, G, P, at, L, D, slab, cyl, bench, post, dial, moving, move, fade, needle, needleSvg, disc } = s;
 
   const BELT = { x: -66, y: -9.5, w: 124, d: 19, r: 2 };
@@ -19,16 +19,19 @@ export default function metix() {
   const back = [], front = [];
   back.push(bench(PLATE, { label: { x: 66, y: 14, w: 26, d: 14, r: 1 } }));
 
-  // Shortlist tray at the right end: floor, low walls, two candidates already in it.
-  const TRAY = { x: 64, y: -32, w: 30, d: 36, r: 2 };
-  back.push(s.owned("tray", () => [
-    slab(TRAY, 0, 2, { tone: "mid", name: "tray.floor" }, 4, 0.4),
-    slab({ x: TRAY.x, y: TRAY.y, w: TRAY.w, d: 2.2, r: 0.6 }, 2, 4, { tone: "mid", name: "tray.wall" }, 3, 0.3),
-    slab({ x: TRAY.x, y: TRAY.y + 2.2, w: 2.2, d: TRAY.d - 4.4, r: 0.6 }, 2, 4, { tone: "mid", name: "tray.wall" }, 3, 0.3),
-    ...[[72, -22, false], [84, -12, true]].map(([x, y, lit]) => cyl(x, y, 4.6, 2, 4, lit ? { tone: "hi", lit: true, name: "tray.puck" } : { tone: "hi", name: "tray.puck" }, 28, 0.4)),
-    slab({ x: TRAY.x + TRAY.w - 2.2, y: TRAY.y + 2.2, w: 2.2, d: TRAY.d - 4.4, r: 0.6 }, 2, 4, { tone: "mid", name: "tray.wall" }, 3, 0.3),
-    slab({ x: TRAY.x, y: TRAY.y + TRAY.d - 2.2, w: TRAY.w, d: 2.2, r: 0.6 }, 2, 4, { tone: "mid", name: "tray.wall" }, 3, 0.3),
-  ].join("")));
+  // Interview calendar at the right end: a board ruled into day columns and time slots,
+  // a few slots already booked; the lit candidate's interview is booked when it arrives.
+  const CAL = { x: 64, y: -32, w: 30, d: 36, r: 2 };
+  back.push(slab(CAL, 0, 3, { tone: "mid", name: "cal" }, 4, 0.5));
+  const IN = { x: CAL.x + 2, y: CAL.y + 2, w: CAL.w - 4, d: CAL.d - 4, r: 0.8 };
+  const COLS = 4, ROWS = 4, HEAD = 5, CW = IN.w / COLS, RH = (IN.d - HEAD) / ROWS;
+  const grid = [k.planOutline(IN, 3, P), k.lineOnTop([IN.x, IN.y + HEAD], [IN.x + IN.w, IN.y + HEAD], 3, P)];
+  for (let c = 1; c < COLS; c++) grid.push(k.lineOnTop([IN.x + c * CW, IN.y], [IN.x + c * CW, IN.y + IN.d], 3, P));
+  for (let r = 1; r < ROWS; r++) grid.push(k.lineOnTop([IN.x, IN.y + HEAD + r * RH], [IN.x + IN.w, IN.y + HEAD + r * RH], 3, P));
+  back.push(L(grid.join(""), { tone: "lo" }));
+  const cell = (c, r) => ({ x: IN.x + c * CW + 1, y: IN.y + HEAD + r * RH + 1, w: CW - 2, d: RH - 2, r: 0.6 });
+  for (const [c, r] of [[0, 1], [1, 3], [2, 0]]) back.push(slab(cell(c, r), 3, 1, { tone: "hi", name: "cal.booked" }, 3, 0.2));
+  back.push(moving("booking", slab(cell(3, 2), 3, 1.4, { tone: "hi", lit: true, name: "cal.new" }, 3, 0.2)));
 
   // Belt: legs, two side rails, the belt surface with cleat seams, end drums.
   for (const x of [-60, 52]) for (const y of [-12, 9]) back.push(slab({ x: x - 1.5, y, w: 3, d: 3, r: 0.5 }, 0, 7, { tone: "lo" }, 3, 0.3));
@@ -61,6 +64,10 @@ export default function metix() {
     D(k.corners(HOP, 3).map(([x, y]) => at([x, y, 22])), { size: 0.45 }),
     disc(G.frameAlong([HOP.x + 13, HOP.y + HOP.d, 9], [0, 1, 0]), 0, 2.4, 2.4, { tone: "mid", name: "hopper.knob" }),
   ];
+  // The role brief that sets the search, standing in a slot on the hopper's lip.
+  const BR = { x: HOP.x + 12, y: HOP.y + 6, w: 1.4, d: 22, r: 0.3 };
+  hopper.push(slab(BR, 34, 13, { tone: "hi", lit: true, name: "brief" }, 2, 0));
+  hopper.push(L([0.25, 0.45, 0.65, 0.85].map((t, i) => k.segment([BR.x + BR.w, BR.y + 3, 34 + 13 * t], [BR.x + BR.w, BR.y + 3 + 16 * [0.9, 0.6, 0.8, 0.5][i], 34 + 13 * t], P)).join(""), { tone: "lo", free: true }));
 
   // Front rail, front post, crossbar with the probe and the dial.
   const rail = slab({ x: BELT.x, y: 9.5, w: BELT.w, d: 3, r: 1 }, 7, 4, { tone: "mid" }, 3, 0.4) + D([BELT.x + 6, 0, BELT.x + BELT.w - 6].map((x) => at([x, 11, 11])), { size: 0.4 });
@@ -89,10 +96,11 @@ export default function metix() {
   };
   const fit = (c) => (Math.abs(c - centre(0)) < 1e-6 ? 0.34 : 0.12 + ((c * 7) % 1) * 0.08);
   parts.push(move("probe", [0, 0, 1], keys(PROBE_UP - PROBE_REST, 0)));
+  parts.push(fade("booking", [[0, 1], [0.66, 1], [0.7, 0], [0.93, 0], [0.97, 1]]));
   parts.push(needle("needle", { c: [GATE, 0, BAR_Z + 10.2], plane: "z", r0: 1.6, r1: 6.6, track: keys(0, -0.04, fit) }));
 
   const svg = figure({
-    label: "A shortlist sorter on a bench: candidate pucks leave a hopper on a belt and pass under a gauge gate; the probe rises onto each one and the dial reads its fit. The lit candidate reads past the mark and joins the shortlist tray.",
+    label: "A hiring line on a bench: a lit role brief stands on a hopper, and candidate pucks leave it on a belt and pass under a gauge gate, where the probe rises onto each one and the dial reads its fit. The lit candidate reads past the mark, and a new interview slot lights up on the calendar board at the end of the line.",
     body: [...back, ...pucks, probe, ...hopper, rail, ...gate],
   });
   return { svg, P, loop: 7.2, still: centre(0), parts, through: [["probe.rod", "gate.bar"]] };

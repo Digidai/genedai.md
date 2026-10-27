@@ -1,5 +1,6 @@
 // Zhidemai (SMZDM, "what's worth buying"): a worth-it balance. A lit deal on the left pan
-// against list-price weights on the right; the beam tips and the pointer reads "worth it".
+// against list-price weights on the right. As the community's "worth it" votes stack up in front,
+// the beam tips toward the deal and the pointer reads "worth it".
 import * as k from "../kit/iso-kit.mjs";
 import { studio, figure } from "../studio.mjs";
 
@@ -7,7 +8,7 @@ export default function zhidemai() {
   const PLATE = { x: -76, y: -36, w: 152, d: 72, r: 6 };
   const Z = 40, LEN = 36, PAN_Z = 16, PAN_R = 11, HOOK = 3, BY = 4.2; // the beam hangs in front of the pivot, at y = BY
   const s = studio([...k.boxCorners(PLATE, -11, 0), [-LEN, 0, Z + 18], [LEN, 0, Z + 6]], { azimuth: 30 });
-  const { G, P, at, L, D, slab, cyl, disc, rod, bench, owned, moving, move, needle, needleSvg } = s;
+  const { G, P, at, L, D, slab, cyl, disc, rod, bench, owned, moving, move, fade, needle, needleSvg } = s;
   const out = [bench(PLATE, { label: { x: 44, y: 18, w: 22, d: 11, r: 1 } })];
 
   // A pan hangs from a hook under the beam end by three strings (recorded as thin rods).
@@ -30,7 +31,7 @@ export default function zhidemai() {
     cyl(LEN, BY, 1.4, z, 1.8, { tone: "mid", name: "weight.knob" }, 14);
 
   // The beam tips in turns; the pans follow the beam ends.
-  const keys = [0, 0.25, 0.5, 0.75];
+  const keys = [0, 0.25, 0.6, 0.8];
   const tilt = [0, 0.032, 0.032, 0];
   const beamTrack = keys.map((t, i) => [t, tilt[i]]);
   const endTrack = (sign) => keys.map((t, i) => [t, sign * LEN * Math.sin(tilt[i] * Math.PI * 2)]);
@@ -58,15 +59,26 @@ export default function zhidemai() {
   out.push(disc(G.frameAlong([0, BY + 1.1, Z], [0, 1, 0]), 0, 1.4, 1.8, { tone: "mid", name: "stand.pin" }));
   out.push(moving("panR", pan(LEN, weights)));
 
+  // The community's votes in front: "worth it" chips (marked with a check) stack up one by one
+  // against a single "not worth it" chip (marked with a cross), and the beam tips as they land.
+  const VB = { x: -26, y: 18, w: 30, d: 12, r: 2 };
+  out.push(slab(VB, 0, 3, { tone: "mid" }, 4, 0.5));
+  out.push(L(k.onTop([[-19, 27.6], [-17.4, 28.8], [-14.6, 26.2]], 3, P), { tone: "lit", free: true }));
+  out.push(L(k.onTop([[-5.4, 26.2], [-2.6, 28.8]], 3, P) + k.onTop([[-5.4, 28.8], [-2.6, 26.2]], 3, P), { tone: "mid", free: true }));
+  const CH = 1.6, VOTES = 4;
+  for (let i = 0; i < VOTES; i++) out.push(moving(`vote${i}`, cyl(-16, 22.6, 3.6, 3 + i * CH, CH, { tone: "hi", lit: true, name: "vote" }, 28, 0.3)));
+  out.push(cyl(-4, 22.6, 3.6, 3, CH, { tone: "hi", name: "vote.no" }, 28, 0.3));
+
   const parts = [
     needle("beam", { c: [0, BY, Z], plane: "y", r0: LEN, r1: LEN, track: beamTrack }),
     needle("pointer", { c: [0, -1.2, Z], plane: "y", r0: 3.4, r1: 12, track: beamTrack.map(([t, v]) => [t, 0.25 - v]) }),
     move("panL", [0, 0, 1], endTrack(-1)),
     move("panR", [0, 0, 1], endTrack(1)),
+    ...Array.from({ length: VOTES }, (_, i) => fade(`vote${i}`, [[0, 0], [0.02 + i * 0.05, 0], [0.05 + i * 0.05, 1], [0.7, 1], [0.76, 0]])),
   ];
   const svg = figure({
-    label: "A beam balance on a bench. A lit deal sits on the left pan and list-price weights on the right; the beam tips toward the deal and the pointer swings across the scale to read worth it.",
+    label: "A beam balance on a bench. A lit deal sits on the left pan and list-price weights on the right. In front, the community's worth-it votes stack up one by one against a single not-worth-it vote, and as they land the beam tips toward the deal and the pointer swings to read worth it.",
     body: out,
   });
-  return { svg, P, loop: 5.2, still: 0.4, parts, through: [] };
+  return { svg, P, loop: 5.2, still: 0.45, parts, through: [] };
 }

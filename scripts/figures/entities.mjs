@@ -5,7 +5,7 @@ export default {
     name: "Metix AI", meta: "2024 – now", kind: "Company",
     desc: "AI-native hiring platform. Define the role and meet interview-ready candidates within 24 hours; pay only for the ones worth meeting.",
     links: [["metix.ai", "https://metix.ai"]],
-    hint: "Shortlist sorter",
+    hint: "Brief to interview",
   },
   bosszhipin: {
     name: "BOSS Zhipin", meta: "BZ · 2076.HK", kind: "Company",
@@ -17,7 +17,7 @@ export default {
     name: "Kanzhun.com", meta: "Kanzhun Ltd", kind: "Product",
     desc: "Company reviews, salaries and interview reports from employees: the original product of Kanzhun, the company behind BOSS Zhipin.",
     links: [["kanzhun.com", "https://www.kanzhun.com"]],
-    hint: "Review ballot",
+    hint: "Reviews & salaries",
   },
   liepin: {
     name: "Liepin", meta: "6100.HK", kind: "Company",
@@ -35,7 +35,7 @@ export default {
     name: "Zhidemai Tech", meta: "300785.SZ", kind: "Company",
     desc: "Runs SMZDM (什么值得买, “what's worth buying”), a consumer content and shopping-deals community.",
     links: [["smzdm.com", "https://www.smzdm.com"]],
-    hint: "Worth-it balance",
+    hint: "Worth-it votes",
   },
   dora: {
     name: "Dora Tech", meta: "Sequoia Capital China backed", kind: "Company",
@@ -65,7 +65,7 @@ export default {
     name: "VentureDex", meta: "400+ profiles", kind: "Project",
     desc: "Startup research on products, funding and investors, across AI agents, developer tools, healthcare and more.",
     links: [["venturedex.co", "https://venturedex.co"]],
-    hint: "Card index",
+    hint: "Funding index",
   },
   hireai: {
     name: "HireAI Directory", meta: "249 products", kind: "Project",
@@ -83,7 +83,7 @@ export default {
     name: "ModernCV", meta: "28 templates", kind: "Project",
     desc: "Free AI resume builder with instant PDF export.",
     links: [["genedai.cv", "https://genedai.cv"], ["GitHub", "https://github.com/Digidai/modern-ai-resume-builder"]],
-    hint: "Letterpress",
+    hint: "Template press",
   },
   recruit: {
     name: "Recruit Navigator", meta: "2,100+ resources", kind: "Project",
