@@ -38,6 +38,34 @@ const block = (file, render) => {
   if (out !== src) { writeFileSync(path, out); console.log(`${file}: updated`); }
 };
 
+// Same five posts as schema.org BlogPosting entries, so search and AI engines can cite them.
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Latest writing by Gene Dai',
+  url: 'https://genedai.me',
+  itemListElement: posts.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'BlogPosting',
+      headline: p.title,
+      url: p.url,
+      datePublished: p.date,
+      author: { '@type': 'Person', name: 'Gene Dai', url: 'https://genedai.md/' },
+    },
+  })),
+};
+{
+  const path = resolve(PUB, 'index.html');
+  const src = readFileSync(path, 'utf8');
+  const re = /(<script type="application\/ld\+json" id="ld-writing">)[\s\S]*?(<\/script>)/;
+  if (!re.test(src)) throw new Error('index.html: ld-writing block missing');
+  const json = JSON.stringify(ld, null, 2).replace(/</g, '\\u003c').replace(/\n/g, '\n  ');
+  const out = src.replace(re, (_, a, b) => `${a}\n  ${json}\n  ${b}`);
+  if (out !== src) { writeFileSync(path, out); console.log('index.html: JSON-LD updated'); }
+}
+
 block('index.html', () => posts.map((p) =>
   `        <li><time class="meta" datetime="${p.date}">${p.date}</time> <a href="${html(p.url)}" target="_blank" rel="noopener">${html(p.title)}</a></li>`
 ).join('\n'));

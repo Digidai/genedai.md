@@ -114,6 +114,93 @@
   }
   </script>
 
+  <!-- Schema.org JSON-LD: latest writing (refreshed by scripts/update-writing.mjs) -->
+  <script type="application/ld+json" id="ld-writing">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Latest writing by Gene Dai",
+    "url": "https://genedai.me",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "BlogPosting",
+          "headline": "A 60,000-Worker Buyout Window Opens at Microsoft",
+          "url": "https://genedai.me/2026/10/27/microsoft-60000-voluntary-exit-offer-workforce-plan/",
+          "datePublished": "2026-10-27",
+          "author": {
+            "@type": "Person",
+            "name": "Gene Dai",
+            "url": "https://genedai.md/"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "BlogPosting",
+          "headline": "Inside Ivan Burazin's Rebuild of Daytona",
+          "url": "https://genedai.me/2026/10/26/ivan-burazin-daytona-agent-sandbox-pivot/",
+          "datePublished": "2026-10-26",
+          "author": {
+            "@type": "Person",
+            "name": "Gene Dai",
+            "url": "https://genedai.md/"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "BlogPosting",
+          "headline": "ManpowerGroup Grows While US Temp Payrolls Shrink",
+          "url": "https://genedai.me/2026/10/26/manpowergroup-growth-us-temp-payrolls-ai-costs/",
+          "datePublished": "2026-10-26",
+          "author": {
+            "@type": "Person",
+            "name": "Gene Dai",
+            "url": "https://genedai.md/"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "BlogPosting",
+          "headline": "A Million AI Interviews Put Dayforce's Hiring Promise to the Test",
+          "url": "https://genedai.me/2026/10/25/dayforce-ribbon-million-ai-interviews-hiring-test/",
+          "datePublished": "2026-10-25",
+          "author": {
+            "@type": "Person",
+            "name": "Gene Dai",
+            "url": "https://genedai.md/"
+          }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "BlogPosting",
+          "headline": "Eugenia Kuyda's Shared Agent Has to Earn the Group Chat",
+          "url": "https://genedai.me/2026/10/25/eugenia-kuyda-shared-agent-group-chat/",
+          "datePublished": "2026-10-25",
+          "author": {
+            "@type": "Person",
+            "name": "Gene Dai",
+            "url": "https://genedai.md/"
+          }
+        }
+      }
+    ]
+  }
+  </script>
+
   <!-- GEO: LLM discoverability -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly content" />
   <link rel="alternate" type="text/markdown" href="/genedai.md" title="This page as Markdown" />
@@ -461,6 +548,21 @@
       font: 11px var(--font-mono); color: var(--text-secondary);
     }
 
+    /* ── Keyboard + motion accessibility ────────────── */
+    .skip-link {
+      position: absolute; left: 16px; top: -48px; z-index: 200;
+      padding: 8px 14px; border-radius: 6px; background: var(--dark); color: var(--cream);
+      font: 500 13px var(--font-mono); transition: top 0.15s;
+    }
+    .skip-link:focus { top: 12px; color: var(--cream); }
+    main:focus { outline: none; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 3px; }
+    .palette input:focus-visible { outline: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+
     /* ── Responsive ─────────────────────────────────── */
     @media (max-width: 768px) {
       nav { padding: 10px 16px; }
@@ -528,6 +630,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#main">Skip to content</a>
+
   <header role="banner">
   <nav aria-label="Main navigation">
     <div class="nav-path">~/<span class="file">genedai.md</span></div>
@@ -547,7 +651,7 @@
   </nav>
   </header>
 
-  <main role="main">
+  <main role="main" id="main" tabindex="-1">
   <article class="doc">
 
     <!-- ── Hero ───────────────────────────────────── -->
@@ -556,7 +660,7 @@
         <pre class="frontmatter" aria-label="Profile metadata"><span class="fm-fence">---</span>
 <span class="fm-key">role</span>: Co-Founder &amp; CPO @ Metix AI
 <span class="fm-key">location</span>: California
-<span class="fm-key">now</span>: Building Metix AI, an AI-native hiring platform
+<span class="fm-key">now</span>: Building HR tools and AI agents for hiring, at Metix AI and in the open
 <span class="fm-key">updated</span>: <time datetime="2026-10-27">2026-10-27</time>
 <span class="fm-fence">---</span></pre>
         <img class="avatar" src="/avatar.jpg" width="72" height="72" alt="Gene Dai" />
@@ -675,11 +779,11 @@
       <p>Deep dives into AI leaders, HRTech platforms, and the forces reshaping how companies find talent.</p>
       <ul class="md-list posts" aria-label="Latest articles">
         <!-- writing:start -->
+        <li><time class="meta" datetime="2026-10-27">2026-10-27</time> <a href="https://genedai.me/2026/10/27/microsoft-60000-voluntary-exit-offer-workforce-plan/" target="_blank" rel="noopener">A 60,000-Worker Buyout Window Opens at Microsoft</a></li>
         <li><time class="meta" datetime="2026-10-26">2026-10-26</time> <a href="https://genedai.me/2026/10/26/ivan-burazin-daytona-agent-sandbox-pivot/" target="_blank" rel="noopener">Inside Ivan Burazin's Rebuild of Daytona</a></li>
         <li><time class="meta" datetime="2026-10-26">2026-10-26</time> <a href="https://genedai.me/2026/10/26/manpowergroup-growth-us-temp-payrolls-ai-costs/" target="_blank" rel="noopener">ManpowerGroup Grows While US Temp Payrolls Shrink</a></li>
         <li><time class="meta" datetime="2026-10-25">2026-10-25</time> <a href="https://genedai.me/2026/10/25/dayforce-ribbon-million-ai-interviews-hiring-test/" target="_blank" rel="noopener">A Million AI Interviews Put Dayforce's Hiring Promise to the Test</a></li>
         <li><time class="meta" datetime="2026-10-25">2026-10-25</time> <a href="https://genedai.me/2026/10/25/eugenia-kuyda-shared-agent-group-chat/" target="_blank" rel="noopener">Eugenia Kuyda's Shared Agent Has to Earn the Group Chat</a></li>
-        <li><time class="meta" datetime="2026-10-24">2026-10-24</time> <a href="https://genedai.me/2026/10/24/barclays-5000-jobs-ai-savings-cost-accounting/" target="_blank" rel="noopener">Barclays' 5,000-Job Plan Leaves AI Savings Unpriced</a></li>
         <!-- writing:end -->
       </ul>
       <p class="more"><a href="https://genedai.me" target="_blank" rel="noopener">All writing on genedai.me →</a></p>

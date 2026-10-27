@@ -42,7 +42,7 @@ for (const f of forbidden) {
 
 // 3. JSON-LD blocks in index.html parse cleanly
 const html = readPub('index.html');
-const ldBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+const ldBlocks = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
 if (ldBlocks.length === 0) fail('index.html has no JSON-LD');
 for (const [i, m] of ldBlocks.entries()) {
   try { JSON.parse(m[1]); } catch (e) { fail(`JSON-LD block ${i + 1} invalid: ${e.message}`); }
@@ -76,6 +76,7 @@ const requiredHeaders = [
   'Referrer-Policy',
   'Permissions-Policy',
   'Content-Security-Policy',
+  'Cross-Origin-Opener-Policy',
 ];
 for (const h of requiredHeaders) {
   if (!headers.includes(h)) fail(`_headers missing ${h}`);
@@ -143,6 +144,9 @@ const pagePosts = writingUrls(html, /<a href="([^"]+)"/g);
 const mdPosts = writingUrls(md, /\]\((https?:\/\/[^)]+)\)/g);
 if (pagePosts.length === 0) fail('index.html: latest-writing list is empty');
 if (pagePosts.join() !== mdPosts.join()) fail('latest-writing lists differ between index.html and genedai.md');
+const ldWriting = html.match(/<script type="application\/ld\+json" id="ld-writing">([\s\S]*?)<\/script>/)?.[1];
+const ldPosts = (() => { try { return JSON.parse(ldWriting).itemListElement.map((e) => e.item.url); } catch { return []; } })();
+if (ldPosts.join() !== pagePosts.join()) fail('ld-writing JSON-LD does not match the latest-writing list');
 
 // Report
 if (warns.length) {

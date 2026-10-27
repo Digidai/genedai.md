@@ -2,7 +2,7 @@
 name: Gene Dai
 role: Co-Founder & CPO @ Metix AI
 location: California
-now: Building Metix AI, an AI-native hiring platform
+now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
 updated: 2026-10-27
 ---
@@ -50,11 +50,11 @@ Deep dives into AI leaders, HRTech platforms, and the forces reshaping how compa
 Latest:
 
 <!-- writing:start -->
+- 2026-10-27 [A 60,000-Worker Buyout Window Opens at Microsoft](https://genedai.me/2026/10/27/microsoft-60000-voluntary-exit-offer-workforce-plan/)
 - 2026-10-26 [Inside Ivan Burazin's Rebuild of Daytona](https://genedai.me/2026/10/26/ivan-burazin-daytona-agent-sandbox-pivot/)
 - 2026-10-26 [ManpowerGroup Grows While US Temp Payrolls Shrink](https://genedai.me/2026/10/26/manpowergroup-growth-us-temp-payrolls-ai-costs/)
 - 2026-10-25 [A Million AI Interviews Put Dayforce's Hiring Promise to the Test](https://genedai.me/2026/10/25/dayforce-ribbon-million-ai-interviews-hiring-test/)
 - 2026-10-25 [Eugenia Kuyda's Shared Agent Has to Earn the Group Chat](https://genedai.me/2026/10/25/eugenia-kuyda-shared-agent-group-chat/)
-- 2026-10-24 [Barclays' 5,000-Job Plan Leaves AI Savings Unpriced](https://genedai.me/2026/10/24/barclays-5000-jobs-ai-savings-cost-accounting/)
 <!-- writing:end -->
 
 Read on:
