@@ -3,6 +3,7 @@
 // Pure Node stdlib — no npm install required.
 
 import { readFileSync, statSync, readdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
 
 const ROOT = resolve(import.meta.dirname, '..');
@@ -27,6 +28,7 @@ const required = [
   'robots.txt', 'sitemap.xml', 'llms.txt', 'site.webmanifest',
   'favicon.svg', 'favicon-32.png', 'apple-touch-icon.png',
   'icon-192.png', 'icon-512.png', 'og-image.png',
+  'genedai.md', 'app.js', 'avatar.jpg',
 ];
 for (const f of required) {
   if (!exists(resolve(PUB, f))) fail(`public/${f} missing`);
@@ -104,6 +106,43 @@ if (blockquoteIdx < 0 || blockquoteIdx > 3) fail('llms.txt missing > blockquote 
 // 10. robots.txt references the sitemap
 const robots = readPub('robots.txt');
 if (!robots.includes('Sitemap:')) fail('robots.txt missing Sitemap: directive');
+
+// 11. One "updated" date everywhere: JSON-LD dateModified, page frontmatter, genedai.md, sitemap
+const md = readPub('genedai.md');
+const modified = html.match(/"dateModified": "(\d{4}-\d{2}-\d{2})/)?.[1];
+const dates = {
+  'index.html frontmatter': html.match(/<time datetime="(\d{4}-\d{2}-\d{2})"/)?.[1],
+  'genedai.md frontmatter': md.match(/^---\n[\s\S]*?^updated: (\d{4}-\d{2}-\d{2})$[\s\S]*?^---$/m)?.[1],
+  'sitemap.xml lastmod': sitemap.match(/<lastmod>(\d{4}-\d{2}-\d{2})/)?.[1],
+};
+for (const [where, d] of Object.entries(dates)) {
+  if (d !== modified) fail(`${where} is ${d}, but JSON-LD dateModified is ${modified}`);
+}
+
+// 12. Same project list (by URL, same order) in index.html, llms.txt, and genedai.md
+const projectUrls = (txt) => (txt.split(/^## Projects$/m)[1] ?? '').split(/^## /m)[0]
+  .match(/\]\((https?:\/\/[^)]+)\)/g)?.map((m) => m.slice(2, -1)) ?? [];
+const pageProjects = [...html.matchAll(/<a href="([^"]+)" class="md-link"/g)].map((m) => m[1]);
+for (const [name, txt] of [['llms.txt', readPub('llms.txt')], ['genedai.md', md]]) {
+  if (projectUrls(txt).join() !== pageProjects.join())
+    fail(`${name} projects differ from index.html: ${projectUrls(txt).join(', ')}`);
+}
+
+// 13. Every inline <script> (not JSON-LD) is allowed by a CSP hash
+const csp = headers.match(/Content-Security-Policy: (.*)/)?.[1] ?? '';
+for (const page of ['index.html', '404.html']) {
+  for (const [, code] of readPub(page).matchAll(/<script>([\s\S]*?)<\/script>/g)) {
+    const hash = createHash('sha256').update(code).digest('base64');
+    if (!csp.includes(`'sha256-${hash}'`)) fail(`${page}: inline script not allowed by CSP (add 'sha256-${hash}')`);
+  }
+}
+
+// 14. Latest-writing lists exist and match between index.html and genedai.md
+const writingUrls = (txt, re) => [...(txt.match(/<!-- writing:start -->([\s\S]*?)<!-- writing:end -->/)?.[1] ?? '').matchAll(re)].map((m) => m[1]);
+const pagePosts = writingUrls(html, /<a href="([^"]+)"/g);
+const mdPosts = writingUrls(md, /\]\((https?:\/\/[^)]+)\)/g);
+if (pagePosts.length === 0) fail('index.html: latest-writing list is empty');
+if (pagePosts.join() !== mdPosts.join()) fail('latest-writing lists differ between index.html and genedai.md');
 
 // Report
 if (warns.length) {

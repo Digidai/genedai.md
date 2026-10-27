@@ -14,7 +14,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <meta name="theme-color" content="#26251e" />
+  <meta name="theme-color" content="#f2f1ed" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#1a1915" media="(prefers-color-scheme: dark)" />
+  <script>try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="profile" />
@@ -65,7 +67,7 @@
     "name": "Gene Dai — Product Builder",
     "description": "Personal homepage of Gene Dai, Co-Founder & CPO of Metix AI.",
     "datePublished": "2026-04-12T00:00:00+00:00",
-    "dateModified": "2026-07-05T00:00:00+00:00",
+    "dateModified": "2026-10-27T00:00:00+00:00",
     "inLanguage": "en-US",
     "mainEntity": {
       "@type": "Person",
@@ -73,6 +75,7 @@
       "url": "https://genedai.md/",
       "description": "Gene Dai is a product builder and Co-Founder & CPO of Metix AI, an AI-native hiring platform that reached #1 on Product Hunt. He previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech across recruiting, education, and e-commerce.",
       "jobTitle": "Co-Founder & CPO",
+      "image": "https://genedai.md/avatar.jpg",
       "email": "hi@genedai.me",
       "worksFor": {
         "@type": "Organization",
@@ -113,33 +116,46 @@
 
   <!-- GEO: LLM discoverability -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly content" />
+  <link rel="alternate" type="text/markdown" href="/genedai.md" title="This page as Markdown" />
+  <script src="/app.js" defer></script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" />
+  <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
   <style>
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 300 600; font-display: optional; src: url(/fonts/inter.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'JetBrains Mono'; font-style: normal; font-weight: 400 500; font-display: optional; src: url(/fonts/jetbrains-mono.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Source Serif 4'; font-style: italic; font-weight: 400; font-display: optional; src: url(/fonts/source-serif-4-italic.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+    @font-face { font-family: 'Source Serif 4'; font-style: normal; font-weight: 400 600; font-display: optional; src: url(/fonts/source-serif-4.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --dark: #26251e;
-      --cream: #f2f1ed;
-      --surface-300: #ebeae5;
-      --surface-400: #e6e5e0;
-      --white: #ffffff;
-      --accent: #f54e00;
-      --accent-hover: #d94400;
-      --success: #1f8a65;
-      --text-primary: #26251e;
-      --text-secondary: rgba(38, 37, 30, 0.55);
-      --text-tertiary: rgba(38, 37, 30, 0.4);
-      --border-default: rgba(38, 37, 30, 0.1);
-      --border-medium: rgba(38, 37, 30, 0.2);
+      color-scheme: light dark;
+      --dark: light-dark(#26251e, #ecebe5);
+      --dark-hover: light-dark(#3a392f, #d6d5cf);
+      --cream: light-dark(#f2f1ed, #1a1915);
+      --nav-bg: light-dark(rgba(242, 241, 237, 0.88), rgba(26, 25, 21, 0.85));
+      --surface-300: light-dark(#ebeae5, #28271f);
+      --surface-400: light-dark(#e6e5e0, #313029);
+      --white: light-dark(#ffffff, #23221d);
+      --accent: light-dark(#bd3f00, #ff8a4c);
+      --accent-hover: light-dark(#9e3400, #ffa574);
+      --accent-line: light-dark(rgba(189, 63, 0, 0.35), rgba(255, 138, 76, 0.35));
+      --success: light-dark(#17704f, #5ccf9f);
+      --sha: light-dark(#7d5800, #e2b04a);
+      --text-primary: light-dark(#26251e, #ecebe5);
+      --text-secondary: light-dark(rgba(38, 37, 30, 0.75), rgba(236, 235, 229, 0.72));
+      --text-tertiary: light-dark(rgba(38, 37, 30, 0.68), rgba(236, 235, 229, 0.58));
+      --border-default: light-dark(rgba(38, 37, 30, 0.1), rgba(236, 235, 229, 0.12));
+      --border-medium: light-dark(rgba(38, 37, 30, 0.2), rgba(236, 235, 229, 0.22));
       --shadow-card: rgba(0,0,0,0.14) 0px 28px 70px 0px, rgba(0,0,0,0.1) 0px 14px 32px 0px, rgba(38,37,30,0.1) 0px 0px 0px 1px;
       --shadow-ambient: rgba(0,0,0,0.02) 0px 0px 16px 0px, rgba(0,0,0,0.008) 0px 0px 8px 0px;
       --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
       --font-serif: 'Source Serif 4', Georgia, serif;
       --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
     }
+    :root[data-theme="light"] { color-scheme: light; }
+    :root[data-theme="dark"] { color-scheme: dark; }
 
     html { scroll-behavior: smooth; }
     body {
@@ -157,7 +173,7 @@
       position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 10px 32px;
-      background: rgba(242, 241, 237, 0.88);
+      background: var(--nav-bg);
       backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border-default);
       font-family: var(--font-mono); font-size: 13px;
@@ -173,7 +189,7 @@
       border-radius: 6px; background: var(--dark); color: var(--cream);
       font-family: var(--font-mono); transition: background 0.15s;
     }
-    .nav-end a:hover { background: #3a392f; color: var(--cream); }
+    .nav-end a:hover { background: var(--dark-hover); color: var(--cream); }
 
     /* ── Document container ─────────────────────────── */
     .doc {
@@ -204,6 +220,7 @@
       font-size: 48px; font-weight: 400; letter-spacing: -1.5px;
       line-height: 1.15; margin-bottom: 20px;
     }
+    .hero .lead a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
     .hero h1 em {
       font-style: normal; color: var(--accent);
       border-bottom: 2px solid var(--accent);
@@ -227,7 +244,7 @@
     .badge-accent {
       background: var(--dark); color: var(--cream);
     }
-    .badge-accent:hover { background: #3a392f; color: var(--cream); }
+    .badge-accent:hover { background: var(--dark-hover); color: var(--cream); }
 
     /* ── Sections ───────────────────────────────────── */
     .section {
@@ -358,10 +375,102 @@
       margin: 0;
     }
 
+    /* ── Nav buttons (JS only) ──────────────────────── */
+    .nav-end { display: flex; align-items: center; gap: 8px; }
+    .js-only { display: none; }
+    .js .js-only { display: inline-flex; }
+    .show-mobile { display: none; }
+    .nav-btn {
+      align-items: center; padding: 5px 10px; font: 500 12px var(--font-mono);
+      color: var(--text-secondary); background: transparent; cursor: pointer;
+      border: 1px solid var(--border-medium); border-radius: 6px; transition: all 0.15s;
+    }
+    .nav-btn:hover, .nav-btn[aria-pressed="true"] { color: var(--text-primary); background: var(--surface-300); }
+
+    /* ── Frontmatter ───────────────────────────────── */
+    .frontmatter {
+      font-family: var(--font-mono); font-size: 13px; line-height: 1.7;
+      color: var(--text-secondary); margin-bottom: 28px; white-space: pre-wrap;
+    }
+    .frontmatter .fm-fence { color: var(--text-tertiary); }
+    .frontmatter .fm-key { color: var(--success); }
+
+    /* ── Journey as git log ────────────────────────── */
+    .cmd { font-family: var(--font-mono) !important; font-size: 13px !important; color: var(--text-tertiary) !important; margin: -12px 0 12px !important; }
+    .git-log { position: relative; }
+    .git-log::before { content: ''; position: absolute; left: 4px; top: 22px; bottom: 22px; border-left: 1px solid var(--accent-line); }
+    .git-log li::before { content: '*'; color: var(--accent); background: var(--cream); line-height: 1.2; }
+    .git-log .sha { font-family: var(--font-mono); font-size: 13px; color: var(--sha); margin-right: 4px; }
+    .git-log .ref { font-family: var(--font-mono); font-size: 13px; color: var(--success); margin-right: 4px; font-variant-ligatures: none; }
+
+    /* ── Avatar ────────────────────────────────────── */
+    .hero-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+    .avatar { width: 72px; height: 72px; border-radius: 50%; flex-shrink: 0; border: 1px solid var(--border-medium); }
+
+    /* ── Latest writing ────────────────────────────── */
+    .posts { margin-bottom: 12px; }
+    .posts .meta { margin-right: 10px; }
+    .posts a { color: var(--text-primary); }
+    .posts a:hover { color: var(--accent); }
+    .section > p.more { font-family: var(--font-mono); font-size: 13px; margin-bottom: 28px; }
+
+    /* ── Project activity ──────────────────────────── */
+    .activity { display: block; margin-top: 2px; font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); }
+
+    /* ── Source view ───────────────────────────────── */
+    .source-view { max-width: 820px; margin: 0 auto; padding: 40px 32px 64px; }
+    .source-view pre {
+      font-family: var(--font-mono); font-size: 13px; line-height: 1.75;
+      color: var(--text-primary); white-space: pre-wrap; word-break: break-word;
+      counter-reset: line;
+    }
+    .source-view .ln { display: block; padding-left: 3.5em; text-indent: -3.5em; }
+    .source-view .ln::before {
+      counter-increment: line; content: counter(line);
+      display: inline-block; width: 2.5em; margin-right: 1em; text-indent: 0;
+      text-align: right; color: var(--text-tertiary); opacity: 0.6;
+    }
+    .source-view .h { color: var(--accent); font-weight: 500; }
+    .source-view .k { color: var(--success); }
+    .source-view .p { color: var(--text-tertiary); }
+    .source-view .q { color: var(--text-secondary); font-style: italic; }
+    .source-view a { color: var(--accent); }
+
+    /* ── Command palette ───────────────────────────── */
+    .palette {
+      width: min(560px, calc(100vw - 32px)); margin: 12vh auto auto; padding: 0;
+      border: none; border-radius: 10px; background: var(--white);
+      box-shadow: var(--shadow-card); color: var(--text-primary);
+    }
+    .palette::backdrop { background: rgba(38, 37, 30, 0.35); backdrop-filter: blur(2px); }
+    .palette input {
+      width: 100%; padding: 16px 18px; border: none; outline: none;
+      border-bottom: 1px solid var(--border-default); background: transparent;
+      font: 15px var(--font-mono); color: var(--text-primary);
+    }
+    .palette ul { list-style: none; max-height: 50vh; overflow-y: auto; padding: 6px; }
+    .palette li {
+      display: flex; justify-content: space-between; gap: 12px;
+      padding: 9px 12px; border-radius: 6px; cursor: pointer; font-size: 14px;
+    }
+    .palette li .hint { font-family: var(--font-mono); font-size: 11px; color: var(--text-secondary); }
+    .palette li[aria-selected="true"] { background: var(--surface-300); }
+    .palette .empty { padding: 14px 18px; font-size: 13px; color: var(--text-tertiary); }
+    .palette .foot {
+      padding: 8px 14px; border-top: 1px solid var(--border-default);
+      font: 11px var(--font-mono); color: var(--text-secondary);
+    }
+
     /* ── Responsive ─────────────────────────────────── */
     @media (max-width: 768px) {
       nav { padding: 10px 16px; }
       .nav-links { display: none; }
+      .hide-mobile, .js .hide-mobile { display: none; }
+      .show-mobile { display: inline; }
+      .nav-mail { font-size: 11px; }
+      .avatar { width: 56px; height: 56px; }
+      .posts .meta { display: block; }
+      .source-view { padding: 24px 16px 48px; }
       .doc { padding: 0 16px; }
       .hero { padding: 48px 0 36px; }
       .hero h1 { font-size: 32px; }
@@ -370,7 +479,50 @@
       .section h2 { font-size: 22px; }
       .stats-row { gap: 24px; }
       .md-link { flex-wrap: wrap; }
-      .md-link .link-desc { margin-left: 0; margin-top: 4px; width: 100%; }
+      .md-link .link-desc { margin-left: 0; margin-top: 4px; flex-basis: 100%; order: 1; }
+    }
+    /* ── Print: one-page CV ─────────────────────────── */
+    @media print {
+      @page { margin: 11mm 14mm; }
+      :root { color-scheme: light !important; }
+      .hero-top { display: none !important; }
+      body { background: #fff; color: #000; font-size: 10pt; line-height: 1.45; }
+      header, footer, .palette, .source-view, .cmd, .topics, .stats-row, #writing, .activity, .link-tag, .frontmatter { display: none !important; }
+      article[hidden] { display: block !important; }
+      .doc { max-width: none; padding: 0; }
+      .hero { padding: 0 0 8pt; }
+      .hero h1 { font-size: 22pt; margin-bottom: 4pt; }
+      .hero .lead { font-size: 11pt; margin-bottom: 6pt; color: #000; }
+      .badge { background: none; padding: 0 6pt 0 0; color: #333; }
+      .section { padding: 6pt 0; }
+      .section h2 { break-after: avoid; }
+      .section h2 { font-size: 13pt; margin-bottom: 2pt; }
+      .section > p { margin-bottom: 4pt; font-size: 9.5pt; }
+      .md-list li, .md-link { padding: 3pt 0 3pt 14pt; font-size: 9.5pt; break-inside: avoid; }
+      .md-link { padding-left: 0; }
+      .md-list .desc, .md-link .link-desc, .md-list .meta { color: #333; font-size: 9pt; }
+      a, .md-link .link-title { color: #000; }
+      .connect-links { line-height: 1.6; font-size: 9pt; }
+      .connect-links a::after { color: #555; font-weight: 400; }
+      .md-h1::before, .md-h2::before, .md-h3::before, .git-log::before, .sha, .ref, .current-tag, .bracket, .hero-badges .badge:not(.badge-accent) { display: none !important; }
+      .md-list li::before { content: '–'; top: 3pt; color: #555; }
+      #about .md-list { display: none; }
+      .connect-links br { display: none; }
+      body { font-size: 9pt; line-height: 1.35; }
+      .hero h1 { font-size: 18pt; }
+      .hero .lead { font-size: 10pt; line-height: 1.4; }
+      .section > p { font-size: 9pt; line-height: 1.4; }
+      .section h2 { font-size: 11.5pt; margin-bottom: 1pt; }
+      .md-list li, .md-link { padding-top: 1.5pt; padding-bottom: 1.5pt; font-size: 9pt; border-bottom: none; }
+      .md-list .desc, .md-link .link-desc, .md-list .meta, .md-link .link-url { font-size: 8.5pt; line-height: 1.35; }
+      .md-link .link-desc { margin-left: 8pt; }
+      #journey .md-list li br { display: none; }
+      #journey .md-list .desc::before { content: ' — '; }
+      #journey > p:not(.cmd), #connect > p { display: none; }
+      .section > p, .md-list .desc, .md-link .link-desc, .md-list .meta { color: #222; }
+      .connect-links a, .md-link .link-url { color: #000; }
+      .connect-links a { display: inline-block; white-space: nowrap; margin-right: 10pt; }
+      .connect-links a::after { content: " · " attr(href); }
     }
   </style>
 </head>
@@ -387,7 +539,10 @@
       <li><a href="#connect">connect</a></li>
     </ul>
     <div class="nav-end">
-      <a href="mailto:hi@genedai.me">hi@genedai.me</a>
+      <button type="button" class="nav-btn js-only hide-mobile" data-action="source" aria-pressed="false">source</button>
+      <button type="button" class="nav-btn js-only" data-action="palette" aria-label="Open command menu"><span class="hide-mobile">⌘K</span><span class="show-mobile">menu</span></button>
+      <button type="button" class="nav-btn js-only" data-action="theme" aria-label="Toggle dark mode">◐</button>
+      <!--email_off--><a class="nav-mail" href="mailto:hi@genedai.me">hi@genedai.me</a><!--/email_off-->
     </div>
   </nav>
   </header>
@@ -397,6 +552,15 @@
 
     <!-- ── Hero ───────────────────────────────────── -->
     <section class="hero" aria-label="Introduction">
+      <div class="hero-top">
+        <pre class="frontmatter" aria-label="Profile metadata"><span class="fm-fence">---</span>
+<span class="fm-key">role</span>: Co-Founder &amp; CPO @ Metix AI
+<span class="fm-key">location</span>: California
+<span class="fm-key">now</span>: Building Metix AI, an AI-native hiring platform
+<span class="fm-key">updated</span>: <time datetime="2026-10-27">2026-10-27</time>
+<span class="fm-fence">---</span></pre>
+        <img class="avatar" src="/avatar.jpg" width="72" height="72" alt="Gene Dai" />
+      </div>
       <h1 class="md-h1">Gene Dai</h1>
       <p class="lead">Product builder. Led products at BOSS Zhipin, Liepin, and Zuoyebang. Now co-founding <a href="https://metix.ai" target="_blank" rel="noopener">Metix AI</a> — an <em>AI-native hiring platform</em>.</p>
       <div class="hero-badges">
@@ -410,12 +574,12 @@
     <!-- ── About ──────────────────────────────────── -->
     <section class="section" id="about">
       <h2 class="md-h2">About</h2>
-      <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI-native hiring platform that reached #1 on Product Hunt. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He has published 272+ articles on AI and HRTech across Medium, Substack, and his personal blog, and maintains 133 open-source repositories on GitHub.</p>
+      <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI-native hiring platform that reached #1 on Product Hunt. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 163 open-source repositories on GitHub.</p>
       <ul class="md-list">
         <li><span class="title">AI-Native Hiring</span> <span class="desc">— Building Metix, an AI-native hiring platform: define a role and meet interview-ready candidates within 24 hours.</span></li>
         <li><span class="title">Product Velocity</span> <span class="desc">— Led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech. Deep experience in user growth, community, and platform products.</span></li>
         <li><span class="title">Domain Expertise</span> <span class="desc">— Head of Product at Kanzhun and BOSS Zhipin, Head of Product at Liepin. Understanding hiring from every angle.</span></li>
-        <li><span class="title">Builder &amp; Writer</span> <span class="desc">— 272+ articles on AI, HRTech, and the people shaping the industry.</span></li>
+        <li><span class="title">Builder &amp; Writer</span> <span class="desc">— Writing on AI, HRTech, and the people shaping the industry.</span></li>
       </ul>
     </section>
 
@@ -423,38 +587,39 @@
     <section class="section" id="journey">
       <h2 class="md-h2">Journey</h2>
       <p>From Beijing to California.</p>
-      <ul class="md-list">
+      <p class="cmd" aria-hidden="true">$ git log --oneline career</p>
+      <ul class="md-list git-log">
         <li>
-          <span class="title">Co-Founder</span><span class="current-tag">current</span><br>
+          <span class="sha">a681319</span> <span class="ref">(HEAD -&gt; main)</span> <span class="title">Co-Founder</span><span class="current-tag">current</span><br>
           <span class="desc">Metix AI — AI-native hiring platform</span>
           <span class="meta"> · 2024 – Present</span>
         </li>
         <li>
-          <span class="title">Head of Product Management</span><br>
+          <span class="sha">fdff90b</span> <span class="title">Head of Product Management</span><br>
           <span class="desc">Zuoyebang — China's largest K12 online education platform</span>
         </li>
         <li>
-          <span class="title">Head of Product</span><br>
+          <span class="sha">5af5ac6</span> <span class="title">Head of Product</span><br>
           <span class="desc">Liepin (6100.HK) — Executive recruitment platform</span>
         </li>
         <li>
-          <span class="title">Product Director</span><br>
+          <span class="sha">a693f9c</span> <span class="title">Product Director</span><br>
           <span class="desc">Zhidemai Tech (300785.SZ) — Consumer content &amp; commerce platform</span>
         </li>
         <li>
-          <span class="title">Head of Product / Head of Product, Kanzhun.com</span><br>
+          <span class="sha">e97d858</span> <span class="title">Head of Product / Head of Product, Kanzhun.com</span><br>
           <span class="desc">BOSS Zhipin (BZ/2076.HK) — China's leading mobile recruiting platform</span>
         </li>
         <li>
-          <span class="title">Senior Product Manager</span><br>
+          <span class="sha">72ff87a</span> <span class="title">Senior Product Manager</span><br>
           <span class="desc">Dora Tech — Sequoia Capital China backed</span>
         </li>
         <li>
-          <span class="title">Co-founder &amp; Chief Product Officer</span><br>
+          <span class="sha">6b8eb59</span> <span class="title">Co-founder &amp; Chief Product Officer</span><br>
           <span class="desc">Feel — Health &amp; fitness app (ZhenFund backed)</span>
         </li>
         <li>
-          <span class="title">Beihang University</span><br>
+          <span class="sha">060c6c3</span> <span class="ref">(root)</span> <span class="title">Beihang University</span><br>
           <span class="desc">Computer Software Engineering</span>
           <span class="meta"> · Education</span>
         </li>
@@ -468,42 +633,37 @@
       <div class="md-links">
         <a href="https://metix.ai" class="md-link" target="_blank" rel="noopener">
           <span class="bracket">[</span><span class="link-title">Metix</span><span class="bracket">]</span><span class="link-url">(metix.ai)</span>
-          <span class="link-desc">AI-native hiring platform. Define the role, meet interview-ready candidates in 24 hours. Metix AI reached #1 on Product Hunt.</span>
+          <span class="link-desc">AI-native hiring platform. Define the role and meet interview-ready candidates: Metix AI reports 95% of roles get a first interview scheduled within 24 hours.</span>
           <span class="link-tag">AI Hiring</span>
         </a>
         <a href="https://raltic.com" class="md-link" target="_blank" rel="noopener">
           <span class="bracket">[</span><span class="link-title">Raltic</span><span class="bracket">]</span><span class="link-url">(raltic.com)</span>
-          <span class="link-desc">Team chat where AI agents are first-class teammates. Bring your own Claude Code, Codex, or run the cloud Agent.</span>
-          <span class="link-tag">AI Chat</span>
+          <span class="link-desc">Agent workflow rooms for product teams. Brief a cloud or local agent, inspect the proof, approve the decision, keep the outcome searchable. Private beta. <span class="activity" data-repo="Digidai/raltic">updated 2026-09-13</span></span>
+          <span class="link-tag">AI Agents</span>
         </a>
         <a href="https://venturedex.co" class="md-link" target="_blank" rel="noopener">
           <span class="bracket">[</span><span class="link-title">VentureDex</span><span class="bracket">]</span><span class="link-url">(venturedex.co)</span>
-          <span class="link-desc">A thoughtful gallery of 70 outstanding early-stage companies, curated with editorial commentary.</span>
-          <span class="link-tag">Directory</span>
-        </a>
-        <a href="https://openjobs.genedai.me" class="md-link" target="_blank" rel="noopener">
-          <span class="bracket">[</span><span class="link-title">OpenJobs Board</span><span class="bracket">]</span><span class="link-url">(openjobs.genedai.me)</span>
-          <span class="link-desc">Free, open-source job aggregator. 574+ positions, 422+ companies, auto-updated every 6 hours.</span>
-          <span class="link-tag">Open Source</span>
+          <span class="link-desc">Startup research on products, funding, and investors. 400+ company profiles across AI agents, developer tools, healthcare, and more.</span>
+          <span class="link-tag">Research</span>
         </a>
         <a href="https://hireai.genedai.me" class="md-link" target="_blank" rel="noopener">
           <span class="bracket">[</span><span class="link-title">HireAI Directory</span><span class="bracket">]</span><span class="link-url">(hireai.genedai.me)</span>
-          <span class="link-desc">149+ HR AI products organized by 5 technology eras, with 50+ browseable tags.</span>
+          <span class="link-desc">249 HR AI products across five technology eras, from 1990s ATS to 2024+ agentic platforms, with analysis pages and evaluation checklists. <span class="activity" data-repo="Digidai/HireAI">updated 2026-10-02</span></span>
           <span class="link-tag">Directory</span>
         </a>
         <a href="https://md.genedai.me" class="md-link" target="_blank" rel="noopener">
           <span class="bracket">[</span><span class="link-title">Website2Markdown</span><span class="bracket">]</span><span class="link-url">(md.genedai.me)</span>
-          <span class="link-desc">URL-to-Markdown converter with 21 platform adapters. Cloudflare Workers, 5-layer fallback.</span>
+          <span class="link-desc">URL-to-Markdown converter on Cloudflare Workers. 16 platform adapters, 5-layer fallback, plus streaming, batch, extract, and deep-crawl APIs. <span class="activity" data-repo="Digidai/website2markdown">updated 2026-10-01</span></span>
           <span class="link-tag">Dev Tool</span>
         </a>
         <a href="https://genedai.cv" class="md-link" target="_blank" rel="noopener">
-          <span class="bracket">[</span><span class="link-title">GeneDai CV</span><span class="bracket">]</span><span class="link-url">(genedai.cv)</span>
-          <span class="link-desc">AI-powered resume builder with 28+ professional templates.</span>
+          <span class="bracket">[</span><span class="link-title">ModernCV</span><span class="bracket">]</span><span class="link-url">(genedai.cv)</span>
+          <span class="link-desc">Free AI resume builder with 28 templates and instant PDF export. <span class="activity" data-repo="Digidai/modern-ai-resume-builder">updated 2026-02-22</span></span>
           <span class="link-tag">Resume</span>
         </a>
         <a href="https://recruit.genedai.me" class="md-link" target="_blank" rel="noopener">
           <span class="bracket">[</span><span class="link-title">Recruit Navigator</span><span class="bracket">]</span><span class="link-url">(recruit.genedai.me)</span>
-          <span class="link-desc">Recruitment tools directory. 300+ categories, 1,900+ resources. OSINT-framework-inspired.</span>
+          <span class="link-desc">Recruitment and AI hiring tools map. 320 categories, 2,100+ resources. OSINT-framework-inspired. <span class="activity" data-repo="Digidai/recruit-ai-framework">updated 2026-10-26</span></span>
           <span class="link-tag">Directory</span>
         </a>
       </div>
@@ -513,9 +673,18 @@
     <section class="section" id="writing">
       <h2 class="md-h2">Writing</h2>
       <p>Deep dives into AI leaders, HRTech platforms, and the forces reshaping how companies find talent.</p>
+      <ul class="md-list posts" aria-label="Latest articles">
+        <!-- writing:start -->
+        <li><time class="meta" datetime="2026-10-26">2026-10-26</time> <a href="https://genedai.me/2026/10/26/ivan-burazin-daytona-agent-sandbox-pivot/" target="_blank" rel="noopener">Inside Ivan Burazin's Rebuild of Daytona</a></li>
+        <li><time class="meta" datetime="2026-10-26">2026-10-26</time> <a href="https://genedai.me/2026/10/26/manpowergroup-growth-us-temp-payrolls-ai-costs/" target="_blank" rel="noopener">ManpowerGroup Grows While US Temp Payrolls Shrink</a></li>
+        <li><time class="meta" datetime="2026-10-25">2026-10-25</time> <a href="https://genedai.me/2026/10/25/dayforce-ribbon-million-ai-interviews-hiring-test/" target="_blank" rel="noopener">A Million AI Interviews Put Dayforce's Hiring Promise to the Test</a></li>
+        <li><time class="meta" datetime="2026-10-25">2026-10-25</time> <a href="https://genedai.me/2026/10/25/eugenia-kuyda-shared-agent-group-chat/" target="_blank" rel="noopener">Eugenia Kuyda's Shared Agent Has to Earn the Group Chat</a></li>
+        <li><time class="meta" datetime="2026-10-24">2026-10-24</time> <a href="https://genedai.me/2026/10/24/barclays-5000-jobs-ai-savings-cost-accounting/" target="_blank" rel="noopener">Barclays' 5,000-Job Plan Leaves AI Savings Unpriced</a></li>
+        <!-- writing:end -->
+      </ul>
+      <p class="more"><a href="https://genedai.me" target="_blank" rel="noopener">All writing on genedai.me →</a></p>
       <div class="stats-row">
-        <div class="stat-item"><span class="stat-num">272+</span><span class="stat-label">articles</span></div>
-        <div class="stat-item"><span class="stat-num">133</span><span class="stat-label">repos</span></div>
+        <div class="stat-item"><span class="stat-num">163</span><span class="stat-label">repos</span></div>
         <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">platforms</span></div>
       </div>
       <div class="topics">

@@ -11,3 +11,6 @@ node_modules/
 .dev.vars.*
 *.log
 .cache/
+
+# Private X ops docs — never publish
+x-*.md

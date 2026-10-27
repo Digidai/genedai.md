@@ -7,20 +7,20 @@ Based in California. Studied Computer Software Engineering at Beihang University
 ## Profile
 
 - [Personal homepage](https://genedai.md/): Hub for projects, writing, and contact.
+- [Homepage as Markdown](https://genedai.md/genedai.md): The full homepage as a single Markdown file with YAML frontmatter.
 - [Blog](https://genedai.me): Long-form writing on AI, HRTech, and product strategy.
 - [Medium](https://genedai.medium.com): English articles on AI leaders, HRTech, and hiring.
 - [Substack](https://genedai.substack.com): Newsletter on AI agents and the future of hiring.
 
 ## Projects
 
-- [Metix](https://metix.ai): AI-native hiring platform. Define the role, meet interview-ready candidates within 24 hours. Reached #1 on Product Hunt.
-- [Raltic](https://raltic.com): Team chat where AI agents (Claude Code, Codex, OpenClaw, Hermes) are first-class teammates. Code stays local; only chat crosses the wire.
-- [VentureDex](https://venturedex.co): A thoughtful gallery of 70 outstanding early-stage companies, curated with editorial commentary.
-- [OpenJobs Board](https://openjobs.genedai.me): Free, open-source job aggregator. 574+ positions across 422+ companies, refreshed every six hours.
-- [HireAI Directory](https://hireai.genedai.me): 149+ HR AI products organized by five technology eras, with 50+ browseable tags.
-- [Website2Markdown](https://md.genedai.me): URL-to-Markdown converter on Cloudflare Workers with 21 platform adapters and a 5-layer fallback chain.
-- [GeneDai CV](https://genedai.cv): AI-powered resume builder with 28+ professional templates.
-- [Recruit Navigator](https://recruit.genedai.me): Recruitment tools directory inspired by OSINT-framework. 300+ categories, 1,900+ resources.
+- [Metix](https://metix.ai): AI-native hiring platform. Define the role and meet interview-ready candidates; Metix AI reports 95% of roles get a first interview scheduled within 24 hours. Reached #1 on Product Hunt.
+- [Raltic](https://raltic.com): Agent workflow rooms for product teams. Brief a cloud or local agent (Claude, Codex), inspect the proof, approve the decision, and keep the outcome searchable. Private beta.
+- [VentureDex](https://venturedex.co): Startup research on products, funding, and investors. 400+ company profiles across AI agents, developer tools, healthcare, and more.
+- [HireAI Directory](https://hireai.genedai.me): 249 HR AI products across five technology eras, from 1990s ATS to 2024+ agentic platforms, with analysis pages and evaluation checklists.
+- [Website2Markdown](https://md.genedai.me): URL-to-Markdown converter on Cloudflare Workers with 16 platform adapters, a 5-layer fallback chain, and streaming, batch, extract, and deep-crawl APIs.
+- [ModernCV](https://genedai.cv): Free AI resume builder with 28 templates and instant PDF export.
+- [Recruit Navigator](https://recruit.genedai.me): Recruitment and AI hiring tools map inspired by OSINT-framework. 320 categories, 2,100+ resources.
 
 ## Career
 
@@ -35,6 +35,6 @@ Based in California. Studied Computer Software Engineering at Beihang University
 ## Optional
 
 - [X / Twitter](https://x.com/genedai): @genedai
-- [GitHub](https://github.com/Digidai): 133 public repositories.
+- [GitHub](https://github.com/Digidai): 163 public repositories.
 - [LinkedIn](https://linkedin.com/in/genedai): Professional profile.
 - [Email](mailto:hi@genedai.me): hi@genedai.me
