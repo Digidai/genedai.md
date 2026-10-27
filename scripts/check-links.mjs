@@ -30,6 +30,9 @@ async function check(url, retried = false) {
     let res = await fetch(url, { ...opts, method: 'HEAD' });
     if (res.status === 405 || res.status === 403 || res.status === 404) res = await fetch(url, { ...opts, method: 'GET' });
     const final = new URL(res.url);
+    // Bot protection on datacenter IPs (e.g. GitHub runners) answers 401/403/429/999;
+    // that says nothing about whether the page exists, so it is reported, not failed.
+    if ([401, 403, 429, 999].includes(res.status)) return { url, status: res.status, blocked: true };
     if (!res.ok) return { url, status: res.status, error: true };
     if (site(final.hostname) !== site(host)) return { url, status: res.status, error: true, note: `redirects off-site to ${res.url}` };
     return { url, status: res.status };
@@ -42,7 +45,7 @@ async function check(url, retried = false) {
 const results = [];
 for (let i = 0; i < urls.length; i += 6) results.push(...await Promise.all(urls.slice(i, i + 6).map(check)));
 
-for (const r of results) console.log(`${r.error ? '✖' : r.status === 'skip' ? '·' : '✓'} ${r.status} ${r.url}${r.note ? ` (${r.note})` : ''}`);
+for (const r of results) console.log(`${r.error ? '✖' : r.blocked ? '?' : r.status === 'skip' ? '·' : '✓'} ${r.status} ${r.url}${r.blocked ? ' (blocked by bot protection)' : ''}${r.note ? ` (${r.note})` : ''}`);
 const bad = results.filter((r) => r.error);
-console.log(`\n${results.length} links, ${bad.length} broken, ${results.filter((r) => r.status === 'skip').length} skipped`);
+console.log(`\n${results.length} links, ${bad.length} broken, ${results.filter((r) => r.blocked).length} blocked, ${results.filter((r) => r.status === 'skip').length} skipped`);
 if (bad.length) process.exit(1);
