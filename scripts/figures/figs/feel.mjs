@@ -1,45 +1,47 @@
-// Feel: a rep counter. A barbell is lifted off the J-hooks of a rack and lowered again;
-// each rep advances the counter dial in front of the rack.
+// Feel: a weekly check-in board. Three rows of habit pegs across seven days; each day's
+// column lights up in turn as the habits are checked off, and the streak dial in front advances.
 import * as k from "../kit/iso-kit.mjs";
 import { studio, figure } from "../studio.mjs";
 
 export default function feel() {
-  const PLATE = { x: -70, y: -40, w: 140, d: 80, r: 6 };
-  const TOP = 46, BAR_Y = -1, BAR_R = 1.2;
-  const HOOK = 14, LIFT = 14;                 // the bar rests on the hooks at z = HOOK + BAR_R
-  const UP = -8;                              // the uprights stand behind the bar
-  const s = studio([...k.boxCorners(PLATE, -11, 0), [-56, BAR_Y, HOOK + LIFT + 12], [-40, UP, TOP + 2]], { azimuth: 40 });
-  const { G, P, at, L, D, slab, disc, bench, post, dial, owned, moving, move, needle, needleSvg } = s;
-  const out = [bench(PLATE, { label: { x: 38, y: 22, w: 22, d: 11, r: 1 } })];
+  const PLATE = { x: -76, y: -44, w: 152, d: 88, r: 6 };
+  const s = studio([...k.boxCorners(PLATE, -11, 0), [-50, -30, 16]], { azimuth: 40 });
+  const { P, at, L, D, slab, cyl, bench, dial, moving, fade, needle, needleSvg } = s;
+  const out = [bench(PLATE, { strip: false, label: { x: 44, y: 24, w: 22, d: 11, r: 1 } })];
 
-  // Rack: two uprights, a crossbar on top, a J-hook on the front of each upright.
-  out.push(owned("rack", () => {
-    const o = [post(-40, UP, 2.2, 0, TOP), post(40, UP, 2.2, 0, TOP)];
-    o.push(slab({ x: -43, y: UP - 3, w: 86, d: 6, r: 1.5 }, TOP, 3, { tone: "mid", name: "rack.crossbar" }, 4, 0.5));
-    o.push(D([-40, 40].map((x) => at([x, UP, TOP + 3])), { size: 0.45 }));
-    for (const x of [-40, 40]) {
-      o.push(slab({ x: x - 1.6, y: UP + 2.2, w: 3.2, d: BAR_Y - UP - 2.2 + 2.4, r: 0.6 }, HOOK - 2, 2, { tone: "mid", name: "rack.hook" }, 3, 0.3));
-      o.push(slab({ x: x - 1.6, y: BAR_Y + 1.4, w: 3.2, d: 1, r: 0.4 }, HOOK, 2.4, { tone: "mid", name: "rack.hook-lip" }, 3, 0.2));
-    }
-    return o.join("");
-  }));
+  // The board: a tray with a habit name (rule lines) at the head of each row.
+  const BOARD = { x: -62, y: -32, w: 112, d: 42, r: 3 };
+  const BZ = 3;
+  out.push(slab(BOARD, 0, BZ, { tone: "mid" }, 4, 0.6));
+  const ROWS = [-22, -11, 0], DAYS = 7, X0 = -30, DX = 11;
+  out.push(L(ROWS.map((y) => k.lineOnTop([BOARD.x + 5, y], [BOARD.x + 5 + [16, 12, 18][ROWS.indexOf(y)], y], BZ, P)).join(""), { tone: "lo", free: true }));
+  out.push(D(Array.from({ length: DAYS }, (_, d) => at([X0 + d * DX, BOARD.y + 3, BZ])), { size: 0.4, tone: "lo" }));
 
-  // Barbell: the bar in front of the uprights, plates outside them.
-  const F = G.frameAlong([-56, BAR_Y, HOOK + BAR_R], [1, 0, 0]);
-  // The bar is cut where the plates sit, so each piece meets a plate face to face.
-  const bar = [[0, 8], [14, 98], [104, 112]].map(([s0, s1]) => disc(F, s0, s1, BAR_R, { tone: "mid", crease: "none", name: "bar" }));
-  for (const [s0, s1, r, lit] of [[8, 11, 9.5, false], [11, 14, 7.5, false], [98, 101, 7.5, false], [101, 104, 9.5, true]])
-    bar.push(disc(F, s0, s1, r, { tone: "hi", lit, name: "plate" }));
-  out.push(moving("bar", bar.join("")));
+  // Pegs, back to front; each peg gets a lit cap on its day.
+  const pegs = [];
+  for (const y of ROWS) for (let d = 0; d < DAYS; d++) pegs.push([X0 + d * DX, y, d]);
+  pegs.sort((a, b) => s.depth([a[0], a[1], 0]) - s.depth([b[0], b[1], 0]));
+  const R = 2.8, H = 5;
+  for (const [x, y, d] of pegs) {
+    out.push(cyl(x, y, R, BZ, H, { tone: "hi" }, 24, 0.4));
+    out.push(moving(`day${d}`, cyl(x, y, R - 0.3, BZ + H, 1.2, { tone: "hi", lit: true, name: "check" }, 24, 0.3)));
+  }
 
-  // Rep counter in front.
-  out.push(slab({ x: -12, y: 14, w: 24, d: 16, r: 2 }, 0, 4, { tone: "mid", name: "counter.base" }, 4, 0.5));
-  out.push(dial(0, 22, 9, 4, 3, { ticks: 30, every: 5 }));
-  out.push(needleSvg("reps"));
-  const parts = [
-    move("bar", [0, 0, 1], [[0, 0], [0.2, LIFT], [0.5, 0], [0.7, LIFT]]),
-    needle("reps", { c: [0, 22, 7.2], plane: "z", r0: 1.4, r1: 6.6, track: [[0, 0], [0.45, 0], [0.5, 0.1], [0.95, 0.1], [0.99, 0.2]] }),
-  ];
-  const svg = figure({ label: "A barbell on the J-hooks of a rack on a bench. It is lifted and lowered twice, and the counter dial in front advances with each rep.", body: out });
-  return { svg, P, loop: 4.4, still: 0.2, parts };
+  // Streak dial on a low drum at the front.
+  out.push(cyl(-30, 26, 10, 0, 3, { tone: "mid" }, 40, 0.5));
+  out.push(dial(-30, 26, 8, 3, 3, { ticks: 28, every: 7 }));
+  out.push(needleSvg("streak"));
+
+  const t0 = 0.06, dt = 0.11;
+  const parts = Array.from({ length: DAYS }, (_, d) => fade(`day${d}`, [[0, 0], [t0 + d * dt, 0], [t0 + d * dt + 0.03, 1], [0.92, 1], [0.97, 0]]));
+  const track = [[0, 0]];
+  for (let d = 0; d < DAYS; d++) track.push([t0 + d * dt, d / 28], [t0 + d * dt + 0.03, (d + 1) / 28]);
+  track.push([0.92, DAYS / 28], [0.98, 0]);
+  parts.push(needle("streak", { c: [-30, 26, 6.2], plane: "z", r0: 1.2, r1: 5.8, track }));
+
+  const svg = figure({
+    label: "A weekly check-in board on a bench: three rows of habit pegs across seven days. Day by day, each column of pegs lights up as the habits are checked off, and the streak dial in front advances one step per day.",
+    body: out,
+  });
+  return { svg, P, loop: 5.6, still: 0.6, parts };
 }

@@ -11,7 +11,7 @@ export default {
     name: "BOSS Zhipin", meta: "BZ · 2076.HK", kind: "Company",
     desc: "China's leading mobile recruiting platform, built on job seekers chatting directly with the hiring boss.",
     links: [["zhipin.com", "https://www.zhipin.com"]],
-    hint: "Direct line",
+    hint: "Direct chat",
   },
   kanzhun: {
     name: "Kanzhun.com", meta: "Kanzhun Ltd", kind: "Product",
@@ -47,7 +47,7 @@ export default {
     name: "Feel", meta: "ZhenFund backed", kind: "Company",
     desc: "Health and fitness app Gene co-founded and ran as Chief Product Officer.",
     links: [],
-    hint: "Rep counter",
+    hint: "Habit check-in",
   },
   beihang: {
     name: "Beihang University", meta: "Beijing", kind: "Education",
