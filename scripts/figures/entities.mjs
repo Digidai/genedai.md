@@ -59,7 +59,7 @@ export default {
     name: "Raltic", meta: "Private beta", kind: "Project",
     desc: "Agent workflow rooms for product teams: brief an agent, inspect the proof, approve the decision, keep the outcome searchable.",
     links: [["raltic.com", "https://raltic.com"]],
-    hint: "Approval stamp",
+    hint: "Agent workflow",
   },
   venturedex: {
     name: "VentureDex", meta: "400+ profiles", kind: "Project",
