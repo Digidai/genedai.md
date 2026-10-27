@@ -208,7 +208,7 @@
     if (!el || (e.type === 'pointerover' && e.pointerType !== 'mouse')) return;
     // Until cards.js has loaded, hand it each event; after that it listens itself.
     if (cards === true) return;
-    (cards ||= import('/cards.js')).then((m) => { m.start(el, e.type); cards = true; });
+    (cards ||= import('/cards.js?v=518b842569')).then((m) => { m.start(el, e.type); cards = true; });
   };
   ['pointerover', 'focusin', 'click'].forEach((t) => d.addEventListener(t, wake, { passive: t !== 'click' }));
 

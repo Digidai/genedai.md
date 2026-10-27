@@ -98,7 +98,10 @@ ${pose}
 ${ui}
 export { start, pose };
 `;
-if (!only) writeFileSync(OUT, js);
+if (!only) {
+  writeFileSync(OUT, js);
+  await import("../stamp-assets.mjs"); // new cards.js → new script URLs
+}
 if (auditing) {
   console.log(problems ? `\naudit failed: ${problems} problems` : "\naudit passed for every figure");
   if (problems) process.exitCode = 1;

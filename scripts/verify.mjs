@@ -165,6 +165,13 @@ for (const id of new Set([...html.matchAll(/data-ent="([\w-]+)"/g)].map((m) => m
   if (!exists(resolve(PUB, 'figs', `${id}.json`))) fail(`public/figs/${id}.json missing (run node scripts/figures/build.mjs)`);
 }
 
+// 18. Script URLs carry the current content hash (scripts/stamp-assets.mjs)
+const shortHash = (f) => createHash('sha256').update(readFileSync(resolve(PUB, f))).digest('hex').slice(0, 10);
+if (!readPub('app.js').includes(`/cards.js?v=${shortHash('cards.js')}'`)) fail('app.js imports a stale cards.js stamp (run node scripts/stamp-assets.mjs)');
+for (const page of ['index.html', '404.html']) {
+  if (!readPub(page).includes(`/app.js?v=${shortHash('app.js')}"`)) fail(`${page} loads a stale app.js stamp (run node scripts/stamp-assets.mjs)`);
+}
+
 // Report
 if (warns.length) {
   console.warn('Warnings:');
