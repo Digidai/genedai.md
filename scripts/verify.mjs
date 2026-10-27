@@ -144,9 +144,19 @@ const pagePosts = writingUrls(html, /<a href="([^"]+)"/g);
 const mdPosts = writingUrls(md, /\]\((https?:\/\/[^)]+)\)/g);
 if (pagePosts.length === 0) fail('index.html: latest-writing list is empty');
 if (pagePosts.join() !== mdPosts.join()) fail('latest-writing lists differ between index.html and genedai.md');
+const llmsPosts = writingUrls(readPub('llms.txt'), /\]\((https?:\/\/[^)]+)\)/g);
+if (pagePosts.join() !== llmsPosts.join()) fail('latest-writing lists differ between index.html and llms.txt');
 const ldWriting = html.match(/<script type="application\/ld\+json" id="ld-writing">([\s\S]*?)<\/script>/)?.[1];
 const ldPosts = (() => { try { return JSON.parse(ldWriting).itemListElement.map((e) => e.item.url); } catch { return []; } })();
 if (ldPosts.join() !== pagePosts.join()) fail('ld-writing JSON-LD does not match the latest-writing list');
+
+// 15. IndexNow key file: public/<32 hex>.txt whose content is exactly its name
+const keyFiles = readdirSync(PUB).filter((f) => /^[0-9a-f]{32}\.txt$/.test(f));
+if (keyFiles.length !== 1) fail(`expected one IndexNow key file in public/, found ${keyFiles.length}`);
+else if (readPub(keyFiles[0]) !== keyFiles[0].slice(0, -4)) fail(`${keyFiles[0]} content must equal its key`);
+
+// 16. robots.txt declares content signals
+if (!/^Content-Signal: .*search=yes/m.test(robots)) fail('robots.txt missing Content-Signal');
 
 // Report
 if (warns.length) {

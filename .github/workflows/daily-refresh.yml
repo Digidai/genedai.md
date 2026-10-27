@@ -22,12 +22,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Refresh latest writing
         run: node scripts/update-writing.mjs
+      - name: Detect changes
+        id: diff
+        run: git diff --quiet && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
+      - name: Bump modified dates
+        if: steps.diff.outputs.changed == 'true'
+        run: node scripts/bump-modified.mjs
       - name: Run verify
         run: node scripts/verify.mjs
-      - name: Commit if changed
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
         run: |
-          git diff --quiet && exit 0
           git config user.name 'github-actions[bot]'
           git config user.email '41898299+github-actions[bot]@users.noreply.github.com'
           git commit -am 'Refresh project activity and latest writing'
           git push
+      # Pushes made with GITHUB_TOKEN do not trigger indexnow.yml, so ping here.
+      - name: Notify search engines (IndexNow)
+        if: steps.diff.outputs.changed == 'true'
+        run: node scripts/indexnow.mjs

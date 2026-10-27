@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Refresh the "latest writing" lists in public/index.html and public/genedai.md
+// Refresh the "latest writing" lists in public/index.html, genedai.md, and llms.txt
 // from the blog's Atom feed. Run daily by .github/workflows/daily-refresh.yml.
 // Pure Node stdlib.
 
@@ -68,6 +68,9 @@ const ld = {
 
 block('index.html', () => posts.map((p) =>
   `        <li><time class="meta" datetime="${p.date}">${p.date}</time> <a href="${html(p.url)}" target="_blank" rel="noopener">${html(p.title)}</a></li>`
+).join('\n'));
+block('llms.txt', () => posts.map((p) =>
+  `- [${p.title.replace(/([[\]])/g, '\\$1')}](${p.url}): ${p.date}`
 ).join('\n'));
 block('genedai.md', () => posts.map((p) =>
   `- ${p.date} [${p.title.replace(/([[\]])/g, '\\$1')}](${p.url})`

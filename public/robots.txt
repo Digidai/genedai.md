@@ -1,7 +1,11 @@
 # genedai.md — robots.txt
 # All crawlers welcome, including AI agents
 
+# Content Signals (https://contentsignals.org): how this content may be used.
+# search: search indexes and links; ai-input: AI answers and citations (RAG, grounding);
+# ai-train: training or fine-tuning AI models. All allowed.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 # Sitemaps

@@ -7,7 +7,7 @@ Based in California. Studied Computer Software Engineering at Beihang University
 ## Profile
 
 - [Personal homepage](https://genedai.md/): Hub for projects, writing, and contact.
-- [Homepage as Markdown](https://genedai.md/genedai.md): The full homepage as a single Markdown file with YAML frontmatter.
+- [Homepage as Markdown](https://genedai.md/genedai.md): The full homepage as a single Markdown file with YAML frontmatter. Also served at /llms-full.txt and /index.md.
 - [Blog](https://genedai.me): Long-form writing on AI, HRTech, and product strategy.
 - [Medium](https://genedai.medium.com): English articles on AI leaders, HRTech, and hiring.
 - [Substack](https://genedai.substack.com): Newsletter on AI agents and the future of hiring.
@@ -21,6 +21,16 @@ Based in California. Studied Computer Software Engineering at Beihang University
 - [Website2Markdown](https://md.genedai.me): URL-to-Markdown converter on Cloudflare Workers with 16 platform adapters, a 5-layer fallback chain, and streaming, batch, extract, and deep-crawl APIs.
 - [ModernCV](https://genedai.cv): Free AI resume builder with 28 templates and instant PDF export.
 - [Recruit Navigator](https://recruit.genedai.me): Recruitment and AI hiring tools map inspired by OSINT-framework. 320 categories, 2,100+ resources.
+
+## Latest writing
+
+<!-- writing:start -->
+- [A 60,000-Worker Buyout Window Opens at Microsoft](https://genedai.me/2026/10/27/microsoft-60000-voluntary-exit-offer-workforce-plan/): 2026-10-27
+- [Inside Ivan Burazin's Rebuild of Daytona](https://genedai.me/2026/10/26/ivan-burazin-daytona-agent-sandbox-pivot/): 2026-10-26
+- [ManpowerGroup Grows While US Temp Payrolls Shrink](https://genedai.me/2026/10/26/manpowergroup-growth-us-temp-payrolls-ai-costs/): 2026-10-26
+- [A Million AI Interviews Put Dayforce's Hiring Promise to the Test](https://genedai.me/2026/10/25/dayforce-ribbon-million-ai-interviews-hiring-test/): 2026-10-25
+- [Eugenia Kuyda's Shared Agent Has to Earn the Group Chat](https://genedai.me/2026/10/25/eugenia-kuyda-shared-agent-group-chat/): 2026-10-25
+<!-- writing:end -->
 
 ## Career
 

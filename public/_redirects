@@ -1,2 +1,5 @@
 /llm.txt /llms.txt 301
 /llms /llms.txt 301
+# Common agent conventions for the full-text Markdown version
+/llms-full.txt /genedai.md 200
+/index.md /genedai.md 200

@@ -1,0 +1,21 @@
+name: indexnow
+
+on:
+  push:
+    branches: [master]
+    paths: ['public/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+      - name: Notify search engines once the deploy is live
+        run: node scripts/indexnow.mjs
