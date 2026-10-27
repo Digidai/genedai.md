@@ -199,6 +199,19 @@
   });
   dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
 
+  // ── Hover cards ────────────────────────────────────
+  // Names marked data-ent open a card with an animated isometric figure. The card
+  // code (cards.js) and each figure (/figs/<id>.json) load only when first needed.
+  let cards = null;
+  const wake = (e) => {
+    const el = e.target.closest?.('[data-ent]');
+    if (!el || (e.type === 'pointerover' && e.pointerType !== 'mouse')) return;
+    // Until cards.js has loaded, hand it each event; after that it listens itself.
+    if (cards === true) return;
+    (cards ||= import('/cards.js')).then((m) => { m.start(el, e.type); cards = true; });
+  };
+  ['pointerover', 'focusin', 'click'].forEach((t) => d.addEventListener(t, wake, { passive: t !== 'click' }));
+
   d.querySelectorAll('[data-action="palette"]').forEach((b) => b.addEventListener('click', openPalette));
   d.addEventListener('keydown', (e) => {
     const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(d.activeElement?.tagName) || d.activeElement?.isContentEditable;

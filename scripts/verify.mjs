@@ -28,7 +28,7 @@ const required = [
   'robots.txt', 'sitemap.xml', 'llms.txt', 'site.webmanifest',
   'favicon.svg', 'favicon-32.png', 'apple-touch-icon.png',
   'icon-192.png', 'icon-512.png', 'og-image.png',
-  'genedai.md', 'app.js', 'avatar.jpg',
+  'genedai.md', 'app.js', 'avatar.jpg', 'cards.js',
 ];
 for (const f of required) {
   if (!exists(resolve(PUB, f))) fail(`public/${f} missing`);
@@ -157,6 +157,13 @@ else if (readPub(keyFiles[0]) !== keyFiles[0].slice(0, -4)) fail(`${keyFiles[0]}
 
 // 16. robots.txt declares content signals
 if (!/^Content-Signal: .*search=yes/m.test(robots)) fail('robots.txt missing Content-Signal');
+
+// 17. Every hover-card name on the page has its card text and figure (scripts/figures/build.mjs)
+const cardsJs = readPub('cards.js');
+for (const id of new Set([...html.matchAll(/data-ent="([\w-]+)"/g)].map((m) => m[1]))) {
+  if (!cardsJs.includes(`"${id}":{`)) fail(`cards.js has no card text for data-ent="${id}" (run node scripts/figures/build.mjs)`);
+  if (!exists(resolve(PUB, 'figs', `${id}.json`))) fail(`public/figs/${id}.json missing (run node scripts/figures/build.mjs)`);
+}
 
 // Report
 if (warns.length) {
