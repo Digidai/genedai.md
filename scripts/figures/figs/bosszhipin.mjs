@@ -7,7 +7,7 @@ export default function bosszhipin() {
   const PLATE = { x: -100, y: -34, w: 200, d: 68, r: 6 };
   const H = 26;
   const s = studio([...k.boxCorners(PLATE, -11, 0), [-70, -9, H + 14], [70, 5, H + 18]], { azimuth: 54 });
-  const { G, P, at, S, L, D, slab, bench, post, knob, dial, moving, move, needle, needleSvg } = s;
+  const { G, P, at, S, L, D, slab, bench, post, knob, dial, moving, move, needle, needleSvg, disc } = s;
 
   function station(x, boss) {
     const out = [];
@@ -24,7 +24,7 @@ export default function bosszhipin() {
       out.push(knob(x - 9, 2.5, 1.6, top, 1.6));
     } else {
       const screen = k.insetPlan(head, 2.6);
-      out.push(S(k.slabOf(screen, top, 0.4, P, 3), { tone: "lo", crease: "none" }));
+      out.push(slab(screen, top, 0.4, { tone: "lo", crease: "none" }, 3, 0));
       [0.75, 0.5, 0.62].forEach((share, i) => out.push(L(k.lineOnTop([screen.x + 2.4, screen.y + 2.6 + i * 3], [screen.x + 2.4 + (screen.w - 4.8) * share, screen.y + 2.6 + i * 3], top + 0.4, P), { tone: "mid", free: true })));
     }
     return out.join("");
@@ -34,10 +34,10 @@ export default function bosszhipin() {
   const RZ = H + 7;
   const rail = slab(RAIL, RZ, 3, { tone: "mid" }, 3, 0.4) + D([-40, -14, 14, 40].map((x) => at([x, 0, RZ + 3])), { size: 0.4, tone: "lo" });
   const X0 = -48, X1 = 48;
-  const F = G.frameAlong([X0, 0, RZ + 6.4], [1, 0, 0]);
+  const F = G.frameAlong([X0, 0, RZ + 7.4], [1, 0, 0]);
   const capsule = moving("capsule",
     slab({ x: X0 - 5, y: -3.5, w: 10, d: 7, r: 1.6 }, RZ + 3, 1.2, { tone: "mid" }, 3, 0.3) +
-    S(G.disc(-6, 6, 3.2, F, P), { tone: "hi", lit: true }) +
+    disc(F, -6, 6, 3.2, { tone: "hi", lit: true }) +
     L(G.arcOf(F, -2.5, 3.2, P) + G.arcOf(F, 2.5, 3.2, P), { tone: "lo" }));
 
   // Rest at the candidate, run to the boss, wait, run back.

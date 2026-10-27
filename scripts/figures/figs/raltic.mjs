@@ -21,9 +21,10 @@ export default function raltic() {
   sheet.push(moving("mark", L(k.ring(SH.x + SH.w / 2, SH.y + SH.d / 2, 5, 2.45, P, 32) + k.onTop([[SH.x + 8, SH.y + 10], [SH.x + 10.5, SH.y + 12.5], [SH.x + 14.5, SH.y + 7]], 2.45, P), { tone: "lit" })));
   out.push(moving("sheet", sheet.join("")));
   // Ram and stamp coming down over the sheet's stop position (x = 0).
-  const ram = [cyl(0, 0, 1.8, 14, TOP - 14, { tone: "mid", crease: "none" }, 16), slab({ x: -7, y: -7, w: 14, d: 14, r: 2 }, 8, 6, { tone: "hi", lit: true }, 4, 0.5), slab({ x: -8, y: -8, w: 16, d: 16, r: 2 }, 14, 2, { tone: "mid" }, 4, 0.3)];
-  out.push(slab({ x: -8, y: -24, w: 16, d: 30, r: 1.5 }, TOP - 6, 6, { tone: "mid" }, 4, 0.4));
+  const ram = [cyl(0, 0, 1.8, 16, TOP - 16, { tone: "mid", crease: "none", name: "ram.rod" }, 16), slab({ x: -7, y: -7, w: 14, d: 14, r: 2 }, 8, 6, { tone: "hi", lit: true }, 4, 0.5), slab({ x: -8, y: -8, w: 16, d: 16, r: 2 }, 14, 2, { tone: "mid" }, 4, 0.3)];
   out.push(moving("ram", ram.join("")));
+  // The rod slides through the guide block under the head.
+  out.push(slab({ x: -8, y: -24, w: 16, d: 30, r: 1.5 }, TOP - 6, 6, { tone: "mid", name: "guide" }, 4, 0.4));
   const parts = [
     move("sheet", [1, 0, 0], [[0, 0], [0.25, 47], [0.75, 47], [0.95, 92]]),
     fade("sheet", [[0, 0], [0.05, 1], [0.88, 1], [0.95, 0]]),
@@ -31,5 +32,5 @@ export default function raltic() {
     fade("mark", [[0, 0], [0.4, 0], [0.42, 1], [0.95, 1], [0.97, 0]]),
   ];
   const svg = figure({ label: "A stamp press on a bench. A proof sheet slides in on a tray, the lit stamp comes down, and the sheet leaves marked approved with a check in a ring.", body: out });
-  return { svg, P, loop: 4.6, still: 0.6, parts };
+  return { svg, P, loop: 4.6, still: 0.6, parts, through: [["ram.rod", "guide"]] };
 }

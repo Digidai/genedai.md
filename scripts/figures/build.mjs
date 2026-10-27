@@ -4,11 +4,15 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync } from "nod
 import { resolve } from "node:path";
 import { ISO_CSS } from "./kit/iso-kit.mjs";
 import ENTS from "./entities.mjs";
+import { finish } from "./studio.mjs";
+import * as A from "./kit/audit.mjs";
 
 const HERE = import.meta.dirname;
 const OUT = resolve(HERE, "../../public/cards.js");
 const FIG_DIR = resolve(HERE, "../../public/figs");
 const only = process.argv.find((a) => a.startsWith("--only="))?.slice(7);
+const auditing = process.argv.includes("--audit");
+let problems = 0;
 
 if (!only) rmSync(FIG_DIR, { recursive: true, force: true });
 mkdirSync(FIG_DIR, { recursive: true });
@@ -20,6 +24,37 @@ for (const id of Object.keys(ENTS)) {
   if (only && only !== id) continue;
   const { default: build } = await import(file);
   const fig = build();
+  const done = finish(fig, { audit: auditing });
+  fig.svg = done.svg;
+  if (auditing) {
+    const r = done.result;
+    // Moving parts that pass through a real opening the shapes can't model (a slot, a bore) are listed per figure.
+    const through = fig.through ?? [];
+    const pairIn = (list, x, y) => list.some(([a, b]) => (x.startsWith(a) && y.startsWith(b)) || (x.startsWith(b) && y.startsWith(a)));
+    r.supports.sunk = r.supports.sunk.filter((d) => !pairIn(through, d.a, d.b));
+    // A part seen through an opening is clipped by it, so its order against the opening's walls doesn't show.
+    r.depth.problems = r.depth.problems.filter((d) => !pairIn(fig.hidden ?? [], d.front, d.back));
+    const seen = new Map();
+    for (const c of r.flight) {
+      if (through.some(([a, b]) => (c.tube.startsWith(a) && c.other.startsWith(b)) || (c.tube.startsWith(b) && c.other.startsWith(a)))) continue;
+      const key = [c.tube, c.other].sort().join("|");
+      if (!seen.has(key) || seen.get(key).clearance > c.clearance) seen.set(key, c);
+    }
+    r.flight = [...seen.values()];
+    // One line per misordered pair, with how many poses it shows in.
+    const pairs = new Map();
+    for (const d of r.depth.problems) {
+      const key = `${d.front}|${d.back}`;
+      const had = pairs.get(key);
+      if (had) had.n++, had.area = Math.max(had.area, d.area);
+      else pairs.set(key, { ...d, n: 1 });
+    }
+    r.depth.problems = [...pairs.values()].map((d) => ({ ...d, label: `${d.n} poses, e.g. ${d.label}` }));
+    const count = A.failures(r);
+    problems += count;
+    console.log(`\n── ${id}: ${count ? `${count} problem${count === 1 ? "" : "s"}` : "audit passed"} · ${done.R.items.length} items`);
+    if (count) console.log(A.report(r).split("\n").filter((line) => !/: 0 /.test(line) && !/^\w[^:]*: 0$/.test(line)).join("\n"));
+  }
   const P = { origin: fig.P.origin.map((v) => +v.toFixed(3)), scale: +fig.P.scale.toFixed(5), azimuth: fig.P.azimuth, elevation: fig.P.elevation };
   const json = JSON.stringify({ svg: fig.svg, P, loop: fig.loop, still: fig.still ?? 0, parts: fig.parts });
   writeFileSync(resolve(FIG_DIR, `${id}.json`), json);
@@ -64,4 +99,8 @@ ${ui}
 export { start, pose };
 `;
 if (!only) writeFileSync(OUT, js);
+if (auditing) {
+  console.log(problems ? `\naudit failed: ${problems} problems` : "\naudit passed for every figure");
+  if (problems) process.exitCode = 1;
+}
 console.log(`wrote public/cards.js (${(Buffer.byteLength(js) / 1024).toFixed(1)} KB) and public/figs/ (${(figBytes / 1024).toFixed(1)} KB)`);

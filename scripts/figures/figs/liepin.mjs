@@ -8,7 +8,7 @@ export default function liepin() {
   const GZ = 30;
   const s = studio([...k.boxCorners(PLATE, -11, 0), [-60, -40, GZ + 10], [60, 40, GZ + 4]], { azimuth: 42 });
   const { P, at, L, D, slab, cyl, bench, post, moving, move, knob } = s;
-  const out = [bench(PLATE, { strip: false, label: { x: 52, y: 26, w: 22, d: 12, r: 1 } })];
+  const out = [bench(PLATE, { strip: false, label: { x: 52, y: 16, w: 22, d: 12, r: 1 } })];
 
   // Board of candidate pins: a raised tray with a dot grid and rows of short pins.
   const BOARD = { x: -50, y: -30, w: 96, d: 60, r: 3 };
@@ -35,10 +35,10 @@ export default function liepin() {
   gantry.push(post(X0, -38, 2, 6, GZ, { collar: false, cap: false }));
   gantry.push(slab({ x: X0 - 3, y: -42, w: 6, d: 82, r: 1.4 }, GZ, 4, { tone: "mid" }, 4, 0.5));
   gantry.push(D([-38, 34].map((y) => at([X0, y, GZ + 4])), { size: 0.45 }));
-  // Carriage on the bridge with the magnifier hanging under it.
-  gantry.push(slab({ x: X0 - 5, y: 0, w: 10, d: 12, r: 1.5 }, GZ - 1, 6, { tone: "mid" }, 4, 0.5));
-  gantry.push(knob(X0, 6, 2, GZ + 5, 2));
-  gantry.push(cyl(X0, 6, 1.1, 18, GZ - 19, { tone: "mid", crease: "none" }, 14));
+  // Carriage hung under the bridge with the magnifier hanging under it.
+  gantry.push(slab({ x: X0 - 5, y: 0, w: 10, d: 12, r: 1.5 }, GZ - 6, 6, { tone: "mid" }, 4, 0.5));
+  gantry.push(knob(X0, 6, 2, GZ + 4, 2));
+  gantry.push(cyl(X0, 6, 1.1, 18, GZ - 24, { tone: "mid", crease: "none" }, 14));
   gantry.push(cyl(X0, 6, 7, 15, 3, { tone: "hi", crease: "lo" }, 40, 0.4));
   gantry.push(L(k.ring(X0, 6, 5.2, 18, P, 36), { tone: "lit" }));
   gantry.push(post(X0, 37, 2, 6, GZ, { collar: false, cap: false }));

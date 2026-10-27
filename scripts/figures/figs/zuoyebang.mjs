@@ -21,17 +21,17 @@ export default function zuoyebang() {
   out.push(slab(BOARD, 0, 1.6, { tone: "mid" }, 4, 0.3));
   const SHEET = { x: -46, y: -12, w: 50, d: 38, r: 0.6 };
   out.push(slab(SHEET, 1.6, 0.3, { tone: "hi", crease: "none" }, 3, 0));
-  out.push(slab({ x: -30, y: -18, w: 18, d: 5, r: 1.2 }, 1.6, 2.4, { tone: "mid" }, 3, 0.4));
   const lines = [];
   for (let i = 0; i < 6; i++) lines.push(L(k.lineOnTop([SHEET.x + 4, SHEET.y + 6 + i * 5.4], [SHEET.x + 4 + (SHEET.w - 8) * [0.8, 0.6, 0.9, 0.5, 0.7, 0.4][i], SHEET.y + 6 + i * 5.4], 1.9, P), { tone: i < 2 ? "mid" : "lo", free: true }));
   out.push(lines.join(""));
   // Scan bar (lit) sweeping across the sheet in y.
-  out.push(moving("scan", L(k.lineOnTop([SHEET.x + 1, SHEET.y + 2], [SHEET.x + SHEET.w - 1, SHEET.y + 2], 2, P), { tone: "lit" })));
+  out.push(moving("scan", L(k.lineOnTop([SHEET.x, SHEET.y + 2], [SHEET.x + SHEET.w, SHEET.y + 2], 1.9, P), { tone: "lit" })));
 
-  // Camera head at the arm end: housing and lens pointing down; drawn after the sheet.
-  out.push(slab({ x: -26, y: -35, w: 14, d: 12, r: 2 }, AZ - 6, 10, { tone: "mid" }, 4, 0.6));
-  out.push(cyl(-19, -29, 3.4, AZ - 9, 3, { tone: "hi", crease: "lo" }, 28));
-  out.push(moving("flash", L(k.ring(-19, -29, 2.2, AZ - 9, P, 24), { tone: "lit" })));
+  out.push(slab({ x: -30, y: -18, w: 18, d: 5, r: 1.2 }, 1.6, 2.4, { tone: "mid" }, 3, 0.4));
+  // Camera head hung under the arm end: housing and lens pointing down; drawn after the sheet.
+  out.push(slab({ x: -26, y: -35, w: 14, d: 12, r: 2 }, AZ - 10, 10, { tone: "mid" }, 4, 0.6));
+  out.push(cyl(-19, -29, 3.4, AZ - 13, 3, { tone: "hi", crease: "lo" }, 28));
+  out.push(moving("flash", L(k.ring(-19, -29, 2.2, AZ - 13, P, 24), { tone: "lit" })));
 
   // Solution screen on a stand at the right.
   out.push(slab({ x: 30, y: -24, w: 30, d: 16, r: 2 }, 0, 3, { tone: "mid" }, 4, 0.5));

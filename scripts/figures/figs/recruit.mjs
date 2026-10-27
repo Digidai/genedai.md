@@ -5,7 +5,7 @@ import { studio, figure } from "../studio.mjs";
 export default function recruit() {
   const PLATE = { x: -80, y: -46, w: 160, d: 92, r: 6 };
   const s = studio([...k.boxCorners(PLATE, -11, 0), [-60, -30, 14]], { azimuth: 44 });
-  const { P, at, L, D, slab, cyl, bench, moving, move } = s;
+  const { P, L, D, slab, cyl, bench, moving, fade } = s;
   const out = [bench(PLATE, { strip: false, label: { x: 50, y: 28, w: 22, d: 11, r: 1 } })];
   const BOARD = { x: -66, y: -36, w: 120, d: 62, r: 3 };
   out.push(slab(BOARD, 0, 3, { tone: "mid" }, 4, 0.6));
@@ -18,17 +18,17 @@ export default function recruit() {
   out.push(L(links.map(([a, b]) => route(a, b)).join(""), { tone: "lo" }));
   const pathTo = [ROOT, mids[1], leaves[3], leaves[7]];
   out.push(L(pathTo.slice(1).map((b, i) => route(pathTo[i], b)).join(""), { tone: "hi" }));
+  // The route to one resource lights up leg by leg, then the resource's pin lights.
+  const parts = [];
+  pathTo.slice(1).forEach((b, i) => {
+    out.push(moving(`leg${i}`, L(route(pathTo[i], b), { tone: "lit" })));
+    parts.push(fade(`leg${i}`, [[0, 0], [0.08 + i * 0.16, 0], [0.16 + i * 0.16, 1], [0.86, 1], [0.94, 0]]));
+  });
   const pins = [[ROOT, 4, 6], ...mids.map((m) => [m, 3, 4]), ...leaves.map((l) => [l, 2.2, 3])].sort((a, b) => s.depth([...a[0], 0]) - s.depth([...b[0], 0]));
   for (const [[x, y], r, h] of pins) out.push(cyl(x, y, r, 3, h, { tone: "hi" }, 24, 0.3));
-  const pts = [];
-  for (let i = 1; i < pathTo.length; i++) { const a = pathTo[i - 1], b = pathTo[i], mx = (a[0] + b[0]) / 2; pts.push([mx, a[1]], [mx, b[1]], b); }
-  const all = [ROOT, ...pts];
-  const puck = cyl(ROOT[0], ROOT[1], 2.6, 3, 2.2, { tone: "hi", lit: true }, 20, 0.3);
-  out.push(moving("puckx", moving("pucky", puck)));
-  const tx = [], ty = [];
-  all.forEach((p, i) => { const t = (i / (all.length - 1)) * 0.8; tx.push([t, p[0] - ROOT[0]]); ty.push([t, p[1] - ROOT[1]]); });
-  const parts = [move("puckx", [1, 0, 0], tx, { linear: true }), move("pucky", [0, 1, 0], ty, { linear: true })];
-  void at;
-  const svg = figure({ label: "A chart table on a bench: a board of category pins joined by routes branching from one root. A lit puck travels from the root along a route to one resource.", body: out });
+  const [gx, gy] = pathTo[pathTo.length - 1];
+  out.push(moving("goal", cyl(gx, gy, 2.2, 6, 0.6, { tone: "hi", lit: true, name: "goal" }, 20)));
+  parts.push(fade("goal", [[0, 0], [0.56, 0], [0.62, 1], [0.86, 1], [0.94, 0]]));
+  const svg = figure({ label: "A chart table on a bench: a board of category pins joined by routes branching from one root. A route lights up leg by leg from the root to one resource, whose pin then lights.", body: out });
   return { svg, P, loop: 6, still: 0.85, parts };
 }

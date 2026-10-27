@@ -14,7 +14,9 @@ export default function hireai() {
     out.push(slab(plan, 0, h, { tone: "mid", inner: L(k.sideSeam(plan, h - 3, P, 4), { tone: "faint" }) }, 4, 0.5));
     // Products on each era's stand: more and smaller as time goes on.
     const n = i + 1;
-    for (let j = 0; j < n; j++) out.push(cyl(x - 5 + (10 / Math.max(1, n - 1)) * j * (n > 1 ? 1 : 0) + (n === 1 ? 5 : 0), -10, 2.2, h, 3 + (j % 2), { tone: "hi" }, 18));
+    // Spread them evenly inside the stand top so neighbours never touch.
+    const r = n >= 5 ? 1.5 : n === 4 ? 2 : 2.2, spread = 2 * (9 - r - 0.5);
+    for (let j = 0; j < n; j++) out.push(cyl(n === 1 ? x : x - spread / 2 + (spread / (n - 1)) * j, -10, r, h, 3 + (j % 2), { tone: "hi" }, 18));
   });
   out.push(slab({ x: -70, y: 6, w: 148, d: 5, r: 1 }, 0, 2.4, { tone: "mid" }, 3, 0.4));
   const ticks = k.topTicks(-66, 74, 3.5, 5, 6.6, 2.4, [1.4, 2.6], P);

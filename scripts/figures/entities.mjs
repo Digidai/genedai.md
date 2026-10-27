@@ -39,9 +39,9 @@ export default {
   },
   dora: {
     name: "Dora Tech", meta: "Sequoia Capital China backed", kind: "Company",
-    desc: "Venture-backed startup where Gene worked as Senior Product Manager.",
+    desc: "Shared self-service printers: send a document from your phone and pick up the print at a nearby machine. Gene was Senior Product Manager.",
     links: [],
-    hint: "Gear train",
+    hint: "Shared printer",
   },
   feel: {
     name: "Feel", meta: "ZhenFund backed", kind: "Company",
