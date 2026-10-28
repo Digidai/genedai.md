@@ -14,6 +14,9 @@ export const W = 320;
 export const H = 184;
 const MARK = /\u0001(\d+)\u0002/g;
 let current = null;
+// The official logo for the figure being built ({ href, aspect }), printed on its label plate. Set by build.mjs.
+let logo = null;
+export const useLogo = (l) => { logo = l; };
 
 export function studio(points, { azimuth = 40, elevation = 30, pad = 16 } = {}) {
   const P = k.fitProjection(points, W, H, { pad, azimuth, elevation });
@@ -88,14 +91,26 @@ export function studio(points, { azimuth = 40, elevation = 30, pad = 16 } = {}) 
       const t = k.topTicks(s.x + 3, s.x + s.w - 3, 3, 5, s.y + 0.6, 0.5, [1.5, 2.8], P);
       out.push(L(t.minor, { tone: "lo" }), L(t.major, { tone: "mid" }));
     }
-    if (label) out.push(labelPlate(label));
+    if (label) out.push(labelPlate(label, plan));
     return out.join("");
   }
 
-  // Small engraved label plate: three rule lines stand for printed text.
-  function labelPlate(plan) {
+  // Small label plate: the product's official logo printed on it when there is one,
+  // otherwise three rule lines standing for printed text.
+  function labelPlate(plan, bench = null) {
+    if (logo) {
+      // A logo needs a larger plate; keep it inside the bench's inner groove.
+      const w = Math.max(plan.w, 34), d = Math.max(plan.d, 17), m = 4.5;
+      let { x, y } = plan;
+      if (bench) {
+        x = Math.min(Math.max(x, bench.x + m), bench.x + bench.w - m - w);
+        y = Math.min(Math.max(y, bench.y + m), bench.y + bench.d - m - d);
+      }
+      plan = { ...plan, x, y, w, d };
+    }
     const out = [slab(plan, 0, 0.6, { tone: "lo", name: "stand.label" }, 3, 0)];
     out.push(L(k.planOutline(k.insetPlan(plan, 1.2), 0.6, P, 3), { tone: "faint" }));
+    if (logo) return out.join("") + logoOn(plan, 0.6);
     const y0 = plan.y + plan.d * 0.3;
     const gap = plan.d * 0.2;
     [0.7, 0.5, 0.6].forEach((share, i) => {
@@ -103,6 +118,24 @@ export function studio(points, { azimuth = 40, elevation = 30, pad = 16 } = {}) 
     });
     out.push(D([at([plan.x + plan.w - 2.4, plan.y + 2.4, 0.6]), at([plan.x + plan.w - 2.4, plan.y + plan.d - 2.4, 0.6])], { size: 0.4 }));
     return out.join("");
+  }
+
+  // Lay the logo flat on a plan's top face, reading left to right as seen from the camera:
+  // image u runs along the plan axis that points most to the right on screen.
+  function logoOn(plan, z) {
+    const c = [plan.x + plan.w / 2, plan.y + plan.d / 2];
+    const scr = (dx, dy) => { const p = at([c[0] + dx, c[1] + dy, z]), o = at([c[0], c[1], z]); return [p[0] - o[0], p[1] - o[1]]; };
+    const axes = [[1, 0], [-1, 0], [0, 1], [0, -1]];
+    const U = axes.reduce((m, a) => (scr(...a)[0] > scr(...m)[0] ? a : m));
+    const V = [[U[1], -U[0]], [-U[1], U[0]]].find((v) => { const su = scr(...U), sv = scr(...v); return su[0] * sv[1] - su[1] * sv[0] > 0; });
+    const along = (a) => (a[0] ? plan.w : plan.d);
+    const room = [along(U) - 2.4, along(V) - 2.4];
+    // An icon fills the plate's height; a wordmark fills its width.
+    let lu = Math.min(room[0], room[1] * logo.aspect), lv = lu / logo.aspect;
+    const o = [c[0] - (U[0] * lu + V[0] * lv) / 2, c[1] - (U[1] * lu + V[1] * lv) / 2];
+    const p0 = at([o[0], o[1], z]), pu = at([o[0] + U[0] * lu, o[1] + U[1] * lu, z]), pv = at([o[0] + V[0] * lv, o[1] + V[1] * lv, z]);
+    const m = [pu[0] - p0[0], pu[1] - p0[1], pv[0] - p0[0], pv[1] - p0[1], p0[0], p0[1]].map((n) => +n.toFixed(3));
+    return `<image class="iso-logo" href="${logo.href}" width="1" height="1" preserveAspectRatio="none" transform="matrix(${m.join(" ")})"/>`;
   }
 
   // Post with collar, seam rings and a cap.

@@ -8,7 +8,7 @@ export default function zuoyebang() {
   const AZ = 40;
   const s = studio([...k.boxCorners(PLATE, -11, 0), [-56, -30, AZ + 6], [56, -18, 40]], { azimuth: 44 });
   const { P, at, L, D, slab, cyl, bench, post, knob, moving, move, fade } = s;
-  const out = [bench(PLATE, { label: { x: -76, y: 24, w: 22, d: 11, r: 1 } })];
+  const out = [bench(PLATE, { label: { x: -85, y: 24, w: 22, d: 11, r: 1 } })];
 
   // Camera column at the back left, arm reaching over the sheet.
   out.push(slab({ x: -66, y: -38, w: 22, d: 18, r: 2 }, 0, 4, { tone: "mid" }, 4, 0.6));

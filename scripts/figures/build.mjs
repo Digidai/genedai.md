@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync } from "nod
 import { resolve } from "node:path";
 import { ISO_CSS } from "./kit/iso-kit.mjs";
 import ENTS from "./entities.mjs";
-import { finish } from "./studio.mjs";
+import { finish, useLogo } from "./studio.mjs";
 import * as A from "./kit/audit.mjs";
 
 const HERE = import.meta.dirname;
@@ -16,6 +16,16 @@ let problems = 0;
 
 if (!only) rmSync(FIG_DIR, { recursive: true, force: true });
 mkdirSync(FIG_DIR, { recursive: true });
+// Official logos (scripts/figures/logos/<id>.png|svg), inlined as data URIs.
+function logoFor(id) {
+  const dir = resolve(HERE, "logos");
+  const file = readdirSync(dir).find((f) => f === `${id}.png` || f === `${id}.svg`);
+  if (!file) return null;
+  const buf = readFileSync(resolve(dir, file));
+  if (file.endsWith(".png")) return { href: `data:image/png;base64,${buf.toString("base64")}`, aspect: buf.readUInt32BE(16) / buf.readUInt32BE(20) };
+  const [, , w, h] = buf.toString().match(/viewBox="([^"]+)"/)[1].split(/\s+/).map(Number);
+  return { href: `data:image/svg+xml;base64,${buf.toString("base64")}`, aspect: w / h };
+}
 let n = 0, figBytes = 0;
 for (const id of Object.keys(ENTS)) {
   n++;
@@ -23,7 +33,9 @@ for (const id of Object.keys(ENTS)) {
   if (!readdirSync(resolve(HERE, "figs")).includes(`${id}.mjs`)) { console.warn(`no figure for ${id}`); continue; }
   if (only && only !== id) continue;
   const { default: build } = await import(file);
+  useLogo(logoFor(id));
   const fig = build();
+  useLogo(null);
   const done = finish(fig, { audit: auditing });
   fig.svg = done.svg;
   if (auditing) {

@@ -10,7 +10,7 @@ export default function kanzhun() {
   const s = studio([...k.boxCorners(PLATE, -11, 0), [BOX.x, BOX.y, BH + 34]], { azimuth: 40 });
   const { P, at, L, D, slab, bench, post, moving, move, fade } = s;
 
-  const out = [bench(PLATE)];
+  const out = [bench(PLATE, { label: { x: -76, y: 2, w: 20, d: 34, r: 1 } })];
   // A stack of sealed reviews waiting at the back.
   for (let i = 0; i < 5; i++) out.push(slab({ x: 22 + i * 0.6, y: -37, w: 18, d: 12, r: 1 }, i * 1.2, 1.2, { tone: i === 4 ? "hi" : "mid" }, 3, 0.2));
   // Ballot box: body, lid with lip, slot, hinge pins, seam.
