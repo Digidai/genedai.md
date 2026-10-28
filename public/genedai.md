@@ -24,11 +24,11 @@ Gene Dai is a product builder and Co-Founder & CPO of Metix AI, an AI-native hir
 
 From Beijing to California.
 
-- **Co-Founder**, Metix AI: AI-native hiring platform (2024 – present)
+- **Co-Founder & CPO**, Metix AI: AI-native hiring platform (2024 – present)
 - **Head of Product Management**, Zuoyebang: China's largest K12 online education platform
 - **Head of Product**, Liepin (6100.HK): Executive recruitment platform
 - **Product Director**, Zhidemai Tech (300785.SZ): Consumer content & commerce platform
-- **Head of Product / Head of Product, Kanzhun.com**, BOSS Zhipin (BZ/2076.HK): China's leading mobile recruiting platform
+- **Head of Product, incl. Kanzhun.com**, BOSS Zhipin (BZ/2076.HK): China's leading mobile recruiting platform
 - **Senior Product Manager**, Dora Tech: Sequoia Capital China backed
 - **Co-founder & Chief Product Officer**, Feel: Health & fitness app (ZhenFund backed)
 - **Beihang University**: Computer Software Engineering

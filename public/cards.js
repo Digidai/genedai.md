@@ -116,6 +116,10 @@ function open(el) {
   if (el.getAttribute('role') === 'button') el.setAttribute('aria-expanded', 'true');
   el.setAttribute('aria-controls', card.id);
   place();
+  // On a phone the card may fit neither above nor below the name: scroll just enough to show all of it.
+  // Not on mouse hover, where scrolling would pull the name out from under the pointer.
+  const over = parseFloat(card.style.top) + card.offsetHeight - (innerHeight - 8);
+  if (over > 0 && !finePointer.matches) scrollBy({ top: over, behavior: still.matches ? 'instant' : 'smooth' });
   fig = null;
   void card.offsetWidth; // commit the hidden state so the fade-in runs
   card.classList.add('on');
@@ -142,6 +146,7 @@ function close() {
 
 const later = (fn, ms) => { clearTimeout(closeTimer); closeTimer = setTimeout(fn, ms); };
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+const touch = matchMedia('(hover: none)');
 
 d.addEventListener('pointerover', (e) => {
   if (e.pointerType !== 'mouse' || !finePointer.matches) return;
@@ -171,6 +176,8 @@ d.addEventListener('click', (e) => {
     current === el && e.pointerType !== 'mouse' && performance.now() - openedAt > 400 ? close() : open(el);
     return;
   }
+  // On touch screens a linked name (a project) shows its card on the first tap; the next tap follows the link.
+  if (el && touch.matches && current !== el) { e.preventDefault(); open(el); return; }
   if (current && !e.target.closest('.ent-card')) close();
 });
 d.addEventListener('keydown', (e) => {
@@ -182,7 +189,7 @@ addEventListener('resize', place);
 still.addEventListener('change', () => { if (current) { close(); } });
 
 function start(el, type) {
-  if (type === 'click') { if (el.getAttribute('role') === 'button') open(el); }
+  if (type === 'click') { if (el.getAttribute('role') === 'button' || touch.matches) open(el); }
   else if (type === 'focusin') { if (el.matches(':focus-visible')) open(el); }
   else { fetchFig(el.dataset.ent); openTimer = setTimeout(() => el.matches(':hover') && open(el), 140); }
 }

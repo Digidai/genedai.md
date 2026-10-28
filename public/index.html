@@ -208,7 +208,7 @@
   <!-- GEO: LLM discoverability -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly content" />
   <link rel="alternate" type="text/markdown" href="/genedai.md" title="This page as Markdown" />
-  <script src="/app.js?v=50731aeac5" defer></script>
+  <script src="/app.js?v=aa41ea8155" defer></script>
 
   <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
@@ -336,6 +336,10 @@
       background: var(--dark); color: var(--cream);
     }
     .badge-accent:hover { background: var(--dark-hover); color: var(--cream); }
+    /* Focus areas are labels, not links: no fill, so they don't read as buttons. */
+    .hero-badges span.badge { background: none; padding: 5px 2px; color: var(--text-tertiary); }
+    .hero-badges span.badge:hover { background: none; color: var(--text-tertiary); }
+    .hero-badges span.badge + span.badge::before { content: "·"; margin-right: 6px; }
 
     /* ── Sections ───────────────────────────────────── */
     .section {
@@ -422,27 +426,18 @@
       margin-left: auto; white-space: nowrap;
     }
 
-    /* ── Stats row ──────────────────────────────────── */
-    .stats-row {
-      display: flex; gap: 40px; margin-bottom: 24px;
-      flex-wrap: wrap;
+    /* ── Topics: plain text, not buttons ────────────── */
+    .topics {
+      font-family: var(--font-mono); font-size: 12px; line-height: 1.9;
+      color: var(--text-secondary); margin: 0;
     }
-    .stat-item { display: flex; align-items: baseline; gap: 8px; }
-    .stat-num {
-      font-family: var(--font-mono); font-size: 28px;
-      font-weight: 400; letter-spacing: -1px; color: var(--dark);
-    }
-    .stat-label { font-size: 13px; color: var(--text-tertiary); }
+    .topics-label { color: var(--text-tertiary); margin-right: 6px; }
+    .topic + .topic::before { content: "·"; margin: 0 8px; color: var(--text-tertiary); }
 
-    /* ── Topic pills ───────────────────────────────── */
-    .topics { display: flex; gap: 6px; flex-wrap: wrap; }
-    .topic {
-      font-family: var(--font-mono); font-size: 11px;
-      padding: 4px 10px; border-radius: 4px;
-      background: var(--surface-300); color: var(--text-secondary);
-      transition: all 0.15s;
-    }
-    .topic:hover { background: var(--surface-400); color: var(--text-primary); }
+    /* ── Hover-card hint ───────────────────────────── */
+    .ent-hint { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); margin-top: -4px; }
+    .hint-tap { display: none; }
+    @media (hover: none) { .hint-hover { display: none; } .hint-tap { display: inline; } }
 
     /* ── Connect: inline markdown links ─────────────── */
     .connect-links {
@@ -588,7 +583,6 @@
       .hero h1::before { font-size: 24px; }
       .section { padding: 32px 0; }
       .section h2 { font-size: 22px; }
-      .stats-row { gap: 24px; }
       .md-link { flex-wrap: wrap; }
       .md-link .link-desc { margin-left: 0; margin-top: 4px; flex-basis: 100%; order: 1; }
     }
@@ -598,7 +592,7 @@
       :root { color-scheme: light !important; }
       .hero-top { display: none !important; }
       body { background: #fff; color: #000; font-size: 10pt; line-height: 1.45; }
-      header, footer, .palette, .source-view, .cmd, .topics, .stats-row, #writing, .activity, .link-tag, .frontmatter { display: none !important; }
+      header, footer, .palette, .source-view, .cmd, .topics, .ent-hint, #writing, .activity, .link-tag, .frontmatter { display: none !important; }
       article[hidden] { display: block !important; }
       .doc { max-width: none; padding: 0; }
       .hero { padding: 0 0 8pt; }
@@ -700,10 +694,11 @@
     <section class="section" id="journey">
       <h2 class="md-h2">Journey</h2>
       <p>From Beijing to California.</p>
+      <p class="ent-hint"><span class="hint-hover">Hover a company to see what it does.</span><span class="hint-tap">Tap a company to see what it does.</span></p>
       <p class="cmd" aria-hidden="true">$ git log --oneline career</p>
       <ul class="md-list git-log">
         <li>
-          <span class="sha">a681319</span> <span class="ref">(HEAD -&gt; main)</span> <span class="title">Co-Founder</span><span class="current-tag">current</span><br>
+          <span class="sha">a681319</span> <span class="ref">(HEAD -&gt; main)</span> <span class="title">Co-Founder &amp; CPO</span><span class="current-tag">current</span><br>
           <span class="desc"><span class="ent" data-ent="metix" tabindex="0" role="button" aria-haspopup="dialog">Metix AI</span> — AI-native hiring platform</span>
           <span class="meta"> · 2024 – Present</span>
         </li>
@@ -720,7 +715,7 @@
           <span class="desc"><span class="ent" data-ent="zhidemai" tabindex="0" role="button" aria-haspopup="dialog">Zhidemai Tech</span> (300785.SZ) — Consumer content &amp; commerce platform</span>
         </li>
         <li>
-          <span class="sha">e97d858</span> <span class="title">Head of Product / Head of Product, <span class="ent" data-ent="kanzhun" tabindex="0" role="button" aria-haspopup="dialog">Kanzhun.com</span></span><br>
+          <span class="sha">e97d858</span> <span class="title">Head of Product, incl. <span class="ent" data-ent="kanzhun" tabindex="0" role="button" aria-haspopup="dialog">Kanzhun.com</span></span><br>
           <span class="desc"><span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS Zhipin</span> (BZ/2076.HK) — China's leading mobile recruiting platform</span>
         </li>
         <li>
@@ -743,10 +738,11 @@
     <section class="section" id="projects">
       <h2 class="md-h2">Projects</h2>
       <p>Products, tools, and resources — mostly at the intersection of AI and hiring.</p>
+      <p class="ent-hint"><span class="hint-hover">Hover a project for a quick look; click to visit.</span><span class="hint-tap">Tap a project for a quick look; tap again to visit.</span></p>
       <div class="md-links">
         <a href="https://metix.ai" class="md-link" target="_blank" rel="noopener" data-ent="metix">
           <span class="bracket">[</span><span class="link-title">Metix</span><span class="bracket">]</span><span class="link-url">(metix.ai)</span>
-          <span class="link-desc">AI-native hiring platform. Define the role and meet interview-ready candidates: Metix AI reports 95% of roles get a first interview scheduled within 24 hours.</span>
+          <span class="link-desc">AI-native hiring platform. Define the role and meet interview-ready candidates: Metix AI reports 95% of roles get a first interview scheduled within 24 hours. <span class="activity">in production · since 2024</span></span>
           <span class="link-tag">AI Hiring</span>
         </a>
         <a href="https://raltic.com" class="md-link" target="_blank" rel="noopener" data-ent="raltic">
@@ -756,7 +752,7 @@
         </a>
         <a href="https://venturedex.co" class="md-link" target="_blank" rel="noopener" data-ent="venturedex">
           <span class="bracket">[</span><span class="link-title">VentureDex</span><span class="bracket">]</span><span class="link-url">(venturedex.co)</span>
-          <span class="link-desc">Startup research on products, funding, and investors. 400+ company profiles across AI agents, developer tools, healthcare, and more.</span>
+          <span class="link-desc">Startup research on products, funding, and investors. 400+ company profiles across AI agents, developer tools, healthcare, and more. <span class="activity">live · weekly digest</span></span>
           <span class="link-tag">Research</span>
         </a>
         <a href="https://hireai.genedai.me" class="md-link" target="_blank" rel="noopener" data-ent="hireai">
@@ -796,11 +792,7 @@
         <!-- writing:end -->
       </ul>
       <p class="more"><a href="https://genedai.me" target="_blank" rel="noopener">All writing on genedai.me →</a></p>
-      <div class="stats-row">
-        <div class="stat-item"><span class="stat-num">163</span><span class="stat-label">repos</span></div>
-        <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">platforms</span></div>
-      </div>
-      <div class="topics">
+      <p class="topics"><span class="topics-label">Topics:</span>
         <span class="topic">AI Leader Profiles</span>
         <span class="topic">HRTech Deep Dives</span>
         <span class="topic">Hiring AI</span>
@@ -809,7 +801,7 @@
         <span class="topic">Product Strategy</span>
         <span class="topic">AI Agents</span>
         <span class="topic">Skills-Based Hiring</span>
-      </div>
+      </p>
     </section>
 
     <!-- ── Connect ────────────────────────────────── -->
