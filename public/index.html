@@ -337,6 +337,7 @@
     }
     .badge-accent:hover { background: var(--dark-hover); color: var(--cream); }
     /* Focus areas are labels, not links: no fill, so they don't read as buttons. */
+    .badge-group { display: inline-flex; gap: 8px; white-space: nowrap; }
     .hero-badges span.badge { background: none; padding: 5px 2px; color: var(--text-tertiary); }
     .hero-badges span.badge:hover { background: none; color: var(--text-tertiary); }
     .hero-badges span.badge + span.badge::before { content: "·"; margin-right: 6px; }
@@ -351,7 +352,7 @@
       font-size: 26px; font-weight: 500; letter-spacing: -0.5px;
       margin-bottom: 8px;
     }
-    .section > p {
+    .section > :where(p) {
       font-family: var(--font-serif); font-size: 16px;
       color: var(--text-secondary); margin-bottom: 28px;
       line-height: 1.7;
@@ -399,7 +400,7 @@
     /* ── Markdown-style link blocks ─────────────────── */
     .md-links { display: flex; flex-direction: column; gap: 0; }
     .md-link {
-      display: flex; align-items: baseline; gap: 0;
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 0;
       padding: 12px 0;
       border-bottom: 1px solid var(--border-default);
       font-size: 15px; color: var(--text-primary);
@@ -415,8 +416,8 @@
     }
     .md-link .link-desc {
       font-family: var(--font-serif); font-size: 14px;
-      color: var(--text-secondary); margin-left: 16px;
-      flex: 1;
+      color: var(--text-secondary);
+      flex-basis: 100%; order: 1; margin-top: 4px;
     }
     .md-link .link-tag {
       font-family: var(--font-mono); font-size: 10px;
@@ -432,7 +433,8 @@
       color: var(--text-secondary); margin: 0;
     }
     .topics-label { color: var(--text-tertiary); margin-right: 6px; }
-    .topic + .topic::before { content: "·"; margin: 0 8px; color: var(--text-tertiary); }
+    .topic { white-space: nowrap; }
+    .topic:not(:last-child)::after { content: "·"; margin: 0 2px 0 8px; color: var(--text-tertiary); }
 
     /* ── Hover-card hint ───────────────────────────── */
     .ent-hint { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); margin-top: -4px; }
@@ -583,8 +585,6 @@
       .hero h1::before { font-size: 24px; }
       .section { padding: 32px 0; }
       .section h2 { font-size: 22px; }
-      .md-link { flex-wrap: wrap; }
-      .md-link .link-desc { margin-left: 0; margin-top: 4px; flex-basis: 100%; order: 1; }
     }
     /* ── Print: one-page CV ─────────────────────────── */
     @media print {
@@ -672,16 +672,16 @@
       <p class="lead">Product builder. Led products at <span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS Zhipin</span>, <span class="ent" data-ent="liepin" tabindex="0" role="button" aria-haspopup="dialog">Liepin</span>, and <span class="ent" data-ent="zuoyebang" tabindex="0" role="button" aria-haspopup="dialog">Zuoyebang</span>. Now co-founding <a href="https://metix.ai" target="_blank" rel="noopener" data-ent="metix">Metix AI</a> — an <em>AI-native hiring platform</em>.</p>
       <div class="hero-badges">
         <a href="https://metix.ai" class="badge badge-accent" target="_blank" rel="noopener">Co-Founder &amp; CPO @ Metix AI</a>
-        <span class="badge">User Growth</span>
+        <span class="badge-group"><span class="badge">User Growth</span>
         <span class="badge">Platform Products</span>
-        <span class="badge">AI Hiring</span>
+        <span class="badge">AI Hiring</span></span>
       </div>
     </section>
 
     <!-- ── About ──────────────────────────────────── -->
     <section class="section" id="about">
       <h2 class="md-h2">About</h2>
-      <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI-native hiring platform that reached #1 on Product Hunt. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 163 open-source repositories on GitHub.</p>
+      <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI-native hiring platform that reached #1 on Product Hunt. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>
       <ul class="md-list">
         <li><span class="title">AI-Native Hiring</span> <span class="desc">— Building Metix, an AI-native hiring platform: define a role and meet interview-ready candidates within 24 hours.</span></li>
         <li><span class="title">Product Velocity</span> <span class="desc">— Led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech. Deep experience in user growth, community, and platform products.</span></li>

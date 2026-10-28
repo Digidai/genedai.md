@@ -13,7 +13,7 @@ Product builder. Led products at BOSS Zhipin, Liepin, and Zuoyebang. Now co-foun
 
 ## About
 
-Gene Dai is a product builder and Co-Founder & CPO of Metix AI, an AI-native hiring platform that reached #1 on Product Hunt. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 163 open-source repositories on GitHub.
+Gene Dai is a product builder and Co-Founder & CPO of Metix AI, an AI-native hiring platform that reached #1 on Product Hunt. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.
 
 - **AI-Native Hiring**: Building Metix, an AI-native hiring platform: define a role and meet interview-ready candidates within 24 hours.
 - **Product Velocity**: Led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech. Deep experience in user growth, community, and platform products.

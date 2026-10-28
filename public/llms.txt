@@ -45,6 +45,6 @@ Based in California. Studied Computer Software Engineering at Beihang University
 ## Optional
 
 - [X / Twitter](https://x.com/genedai): @genedai
-- [GitHub](https://github.com/Digidai): 163 public repositories.
+- [GitHub](https://github.com/Digidai): 160+ public repositories.
 - [LinkedIn](https://linkedin.com/in/genedai): Professional profile.
 - [Email](mailto:hi@genedai.me): hi@genedai.me
