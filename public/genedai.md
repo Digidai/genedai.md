@@ -4,7 +4,7 @@ role: Co-Founder & CPO @ Metix AI
 location: California
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
-updated: 2026-10-27
+updated: 2026-10-28
 ---
 
 # Gene Dai
@@ -50,11 +50,11 @@ Deep dives into AI leaders, HRTech platforms, and the forces reshaping how compa
 Latest:
 
 <!-- writing:start -->
+- 2026-10-28 [LinkedIn Finds Founder Roles Rising in Five Economies](https://genedai.me/2026/10/28/linkedin-founder-roles-five-economies-small-teams/)
+- 2026-10-27 [Jack Clark's Public Benefit Test at Anthropic's IPO](https://genedai.me/2026/10/27/jack-clark-anthropic-public-benefit-ipo/)
 - 2026-10-27 [A 60,000-Worker Buyout Window Opens at Microsoft](https://genedai.me/2026/10/27/microsoft-60000-voluntary-exit-offer-workforce-plan/)
 - 2026-10-26 [Inside Ivan Burazin's Rebuild of Daytona](https://genedai.me/2026/10/26/ivan-burazin-daytona-agent-sandbox-pivot/)
 - 2026-10-26 [ManpowerGroup Grows While US Temp Payrolls Shrink](https://genedai.me/2026/10/26/manpowergroup-growth-us-temp-payrolls-ai-costs/)
-- 2026-10-25 [A Million AI Interviews Put Dayforce's Hiring Promise to the Test](https://genedai.me/2026/10/25/dayforce-ribbon-million-ai-interviews-hiring-test/)
-- 2026-10-25 [Eugenia Kuyda's Shared Agent Has to Earn the Group Chat](https://genedai.me/2026/10/25/eugenia-kuyda-shared-agent-group-chat/)
 <!-- writing:end -->
 
 Read on:
