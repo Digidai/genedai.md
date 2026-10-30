@@ -2,7 +2,7 @@
 // Only link official sites that resolve; leave links empty when unsure.
 export default {
   metix: {
-    name: "Metix AI", meta: "2024 – now", kind: "Company",
+    name: "Metix AI", meta: "2025 – now", kind: "Company",
     desc: "AI-native hiring platform. Define the role and meet interview-ready candidates within 24 hours; pay only for the ones worth meeting.",
     links: [["metix.ai", "https://metix.ai"]],
     hint: "Brief to interview",

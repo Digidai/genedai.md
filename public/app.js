@@ -130,7 +130,7 @@
     <input type="text" placeholder="Type a command or search…" aria-label="Search commands"
       role="combobox" aria-expanded="true" aria-controls="palette-list" autocomplete="off" spellcheck="false">
     <ul id="palette-list" role="listbox"></ul>
-    <div class="foot" aria-live="polite">↑↓ navigate · ↵ run · esc close</div>`;
+    <div class="foot" aria-live="polite">${matchMedia('(hover: none)').matches ? 'Tap a command to run it' : '↑↓ navigate · ↵ run · esc close'}</div>`;
   d.body.append(dialog);
   const input = dialog.querySelector('input');
   const list = dialog.querySelector('ul');
@@ -210,7 +210,7 @@
     if (cards === true) return;
     // On touch screens the first tap on a linked name opens its card instead of leaving the page.
     if (e.type === 'click' && !el.matches('[role="button"]') && matchMedia('(hover: none)').matches) e.preventDefault();
-    (cards ||= import('/cards.js?v=81612a3fc4')).then((m) => { m.start(el, e.type); cards = true; });
+    (cards ||= import('/cards.js?v=4dd1dd0016')).then((m) => { m.start(el, e.type); cards = true; });
   };
   ['pointerover', 'focusin', 'click'].forEach((t) => d.addEventListener(t, wake, { passive: t !== 'click' }));
 
