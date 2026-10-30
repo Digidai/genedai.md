@@ -214,7 +214,7 @@
   <!-- GEO: LLM discoverability -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly content" />
   <link rel="alternate" type="text/markdown" href="/genedai.md" title="This page as Markdown" />
-  <script src="/app.js?v=7065ccecc5" defer></script>
+  <script src="/app.js?v=f9ac21d4f2" defer></script>
 
   <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
@@ -637,6 +637,8 @@
       .md-link .link-desc { margin: 0 0 0 8pt; flex: 1; flex-basis: auto; order: 0; }
       #journey .md-list li br { display: none; }
       #journey .md-list .desc::before { content: ' — '; }
+      .print-short { font-size: 0; }
+      .print-short::after { content: attr(data-short); font-size: 8.5pt; }
       #journey > p:not(.cmd), #connect > p { display: none; }
       .section > p, .md-list .desc, .md-link .link-desc, .md-list .meta { color: #222; }
       .connect-links a, .md-link .link-url { color: #000; }
@@ -733,7 +735,7 @@
         </li>
         <li>
           <span class="sha">e97d858</span> <span class="title">Head of Product, incl. <span class="ent" data-ent="kanzhun" tabindex="0" role="button" aria-haspopup="dialog">Kanzhun.com</span></span><br>
-          <span class="desc"><span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS Zhipin</span> (BZ/2076.HK) — China's leading mobile recruiting platform</span>
+          <span class="desc"><span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS Zhipin</span> (BZ/2076.HK) — <span class="print-short" data-short="Mobile recruiting platform">China's leading mobile recruiting platform</span></span>
           <span class="meta">2018 – 2020</span>
         </li>
         <li>

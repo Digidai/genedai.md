@@ -108,6 +108,11 @@
       keywords: text(a.querySelector('.link-desc')),
       run: () => open(a.href),
     })),
+    ...[...d.querySelectorAll('#journey [data-ent]')].map((el) => ({
+      label: `Show ${text(el)}`, hint: 'journey',
+      keywords: text(el.closest('li')),
+      run: () => { el.scrollIntoView({ block: 'center' }); el.focus({ preventScroll: true }); el.click(); },
+    })),
     ...[...d.querySelectorAll('.connect-links a')].map((a) => ({
       label: `Open ${text(a)}`, hint: new URL(a.href).hostname, run: () => open(a.href),
     })),
@@ -142,18 +147,20 @@
     setTimeout(() => { foot.textContent = footDefault; }, 1600);
   }
 
-  // Every query character must appear in order (loose fuzzy match).
-  const matches = (q, s) => {
+  // A command matches when the query characters appear in order in its name (loose
+  // fuzzy match), or the whole query appears in its hint or keywords.
+  const squash = (s) => s.toLowerCase().replace(/\s+/g, '');
+  const matches = (q, c) => {
     let i = 0;
-    for (const c of s.toLowerCase()) if (c === q[i]) i++;
-    return i === q.length;
+    for (const ch of squash(c.label)) if (ch === q[i]) i++;
+    return i === q.length || squash(`${c.hint} ${c.keywords ?? ''}`).includes(q);
   };
 
   let shown = [];
   let active = 0;
   function render() {
     const q = input.value.trim().toLowerCase().replace(/\s+/g, '');
-    shown = commands.filter((c) => !q || matches(q, `${c.label} ${c.hint} ${c.keywords ?? ''}`));
+    shown = commands.filter((c) => !q || matches(q, c));
     // Commands whose name contains the query come first.
     const inName = (c) => c.label.toLowerCase().replace(/\s+/g, '').includes(q);
     if (q) shown.sort((a, b) => inName(b) - inName(a));
