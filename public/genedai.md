@@ -4,7 +4,7 @@ role: Co-Founder & CPO @ Metix AI
 location: California
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
-updated: 2026-10-29
+updated: 2026-10-30
 ---
 
 # Gene Dai
@@ -50,11 +50,11 @@ Deep dives into AI leaders, HRTech platforms, and the forces reshaping how compa
 Latest:
 
 <!-- writing:start -->
+- 2026-10-30 [Banks Pay a 13% Premium as AI Talent Spreads Beyond Tech](https://genedai.me/2026/10/30/ai-talent-bank-premium-flexible-hiring/)
+- 2026-10-29 [Finn Puklowski Puts Rival AI Chips on the Balance Sheet](https://genedai.me/2026/10/29/finn-puklowski-alternative-chips-balance-sheet/)
 - 2026-10-29 [Uber Opens ChatGPT Work to 30,000 After a 10% Cut](https://genedai.me/2026/10/29/uber-chatgpt-work-rollout-workforce-cut/)
 - 2026-10-28 [LinkedIn Finds Founder Roles Rising in Five Economies](https://genedai.me/2026/10/28/linkedin-founder-roles-five-economies-small-teams/)
 - 2026-10-28 [Rohit Patel Wants the AI Document to Show Its Work](https://genedai.me/2026/10/28/rohit-patel-ndoc-inspectable-ai-document/)
-- 2026-10-27 [Jack Clark's Public Benefit Test at Anthropic's IPO](https://genedai.me/2026/10/27/jack-clark-anthropic-public-benefit-ipo/)
-- 2026-10-27 [A 60,000-Worker Buyout Window Opens at Microsoft](https://genedai.me/2026/10/27/microsoft-60000-voluntary-exit-offer-workforce-plan/)
 <!-- writing:end -->
 
 Read on:

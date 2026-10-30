@@ -25,11 +25,11 @@ Based in California. Studied Computer Software Engineering at Beihang University
 ## Latest writing
 
 <!-- writing:start -->
+- [Banks Pay a 13% Premium as AI Talent Spreads Beyond Tech](https://genedai.me/2026/10/30/ai-talent-bank-premium-flexible-hiring/): 2026-10-30
+- [Finn Puklowski Puts Rival AI Chips on the Balance Sheet](https://genedai.me/2026/10/29/finn-puklowski-alternative-chips-balance-sheet/): 2026-10-29
 - [Uber Opens ChatGPT Work to 30,000 After a 10% Cut](https://genedai.me/2026/10/29/uber-chatgpt-work-rollout-workforce-cut/): 2026-10-29
 - [LinkedIn Finds Founder Roles Rising in Five Economies](https://genedai.me/2026/10/28/linkedin-founder-roles-five-economies-small-teams/): 2026-10-28
 - [Rohit Patel Wants the AI Document to Show Its Work](https://genedai.me/2026/10/28/rohit-patel-ndoc-inspectable-ai-document/): 2026-10-28
-- [Jack Clark's Public Benefit Test at Anthropic's IPO](https://genedai.me/2026/10/27/jack-clark-anthropic-public-benefit-ipo/): 2026-10-27
-- [A 60,000-Worker Buyout Window Opens at Microsoft](https://genedai.me/2026/10/27/microsoft-60000-voluntary-exit-offer-workforce-plan/): 2026-10-27
 <!-- writing:end -->
 
 ## Career
