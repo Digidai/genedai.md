@@ -615,6 +615,8 @@
       color: var(--text-tertiary); font-size: 18px; cursor: pointer;
     }
     .zh-hint button:hover { color: var(--text-primary); background: var(--surface-300); }
+    /* No one-word last lines. */
+    p, li { text-wrap: pretty; }
     /* ── Print: one-page CV ─────────────────────────── */
     @media print {
       @page { margin: 11mm 14mm; }
@@ -874,7 +876,7 @@
   <footer role="contentinfo">
     <div class="doc">
       <hr class="md-hr" style="margin-bottom: 24px;">
-      <p>genedai.md &middot; California &middot; Building with intent</p>
+      <p>genedai.md &middot; California &middot; &copy; Gene Dai</p>
     </div>
   </footer>
 

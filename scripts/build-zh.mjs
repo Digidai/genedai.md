@@ -47,7 +47,7 @@ const TEXT = [
 
   // ── Hero
   ['<section class="hero" aria-label="Introduction">', '<section class="hero" aria-label="介绍">'],
-  ['<span class="hm-label">Now</span> Building HR tools and AI agents for hiring, at Metix AI and in the open<br>California · Updated ', '<span class="hm-label">现在</span> 在 Metix AI 和开源项目里，打造招聘工具和 AI 智能体<br>美国加州 · 更新于 '],
+  ['<span class="hm-label">Now</span> Building HR tools and AI agents for hiring, at Metix AI and in the open<br>California · Updated ', '<span class="hm-label">现在</span> 在 Metix AI 做招聘工具和 AI 智能体，也做开源<br>美国加州 · 更新于 '],
   ['alt="Gene Dai" />', 'alt="戴金乘 Gene Dai" />'],
   ['<h1 class="md-h1">Gene Dai</h1>', '<h1 class="md-h1">戴金乘 <span class="h1-en">Gene Dai</span></h1>'],
   ['linkedin.com/in/genedai · California</p>', 'linkedin.com/in/genedai · 美国加州</p>'],
@@ -60,7 +60,7 @@ const TEXT = [
 
   // ── About
   ['<h2 class="md-h2">About</h2>', '<h2 class="md-h2">简介</h2>'],
-  ['<p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI hiring platform that reached <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">#1 on Product Hunt</a>. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China\'s leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>', '<p>戴金乘（Gene Dai），产品人，AI 招聘平台 Metix AI 联合创始人兼首席产品官，Metix AI 曾获 <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">Product Hunt 当日第一</a>。此前在中国领先的移动招聘平台 BOSS直聘（BZ/2076.HK）、猎聘（6100.HK）、作业帮和值得买科技（300785.SZ）担任产品负责人，覆盖招聘、教育和电商。他在 Medium、Substack 和个人博客上写 AI 与 HRTech，并在 GitHub 维护 160 多个开源项目。</p>'],
+  ['<p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI hiring platform that reached <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">#1 on Product Hunt</a>. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China\'s leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>', '<p>戴金乘（Gene Dai），产品人，AI 招聘平台 Metix AI 联合创始人兼首席产品官，Metix AI 曾获 <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">Product Hunt 当日第一</a>。此前在 BOSS直聘（BZ/2076.HK，中国领先的移动招聘平台）、猎聘（6100.HK）、作业帮和值得买科技（300785.SZ）担任产品负责人，覆盖招聘、教育和电商。他在 Medium、Substack 和个人博客上写 AI 与 HRTech，并在 GitHub 维护 160 多个开源项目。</p>'],
   ['<figcaption>How I think about products</figcaption>', '<figcaption>我怎么看产品</figcaption>'],
   ['<blockquote><p>Conversation is an interaction model with stronger feedback than anything before it. So when the work is getting a task done efficiently, two things become critical: the purpose, and the experience of the flow toward the goal.</p></blockquote>', '<blockquote><p>对话是前所未有的强反馈的交互模式，而在完成任务、追求效率的过程中，目的和目标流程体验就变得极其重要。</p></blockquote>'],
   ['<li><span class="title">AI Hiring</span> <span class="desc">— Building Metix: define a role and meet interview-ready candidates within 24 hours.</span></li>', '<li><span class="title">AI 招聘</span> <span class="desc">— 打造 Metix：定义岗位，24 小时内见到可以面试的候选人。</span></li>'],
@@ -124,8 +124,6 @@ const TEXT = [
   ['>AI and employment evidence</a> <span class="pick-desc">— what the studies on AI and jobs actually measure</span>', '>AI 与就业证据</a> <span class="pick-desc">— 关于 AI 和工作的研究，到底测量了什么</span>'],
   ['<span class="meta">Q&amp;A</span>', '<span class="meta">问答</span>'],
   ['>Answers about AI hiring and work</a> <span class="pick-desc">— short answers with primary sources and dates</span>', '>AI 招聘与工作问答</a> <span class="pick-desc">— 简短回答，附原始出处和日期</span>'],
-  ['<h3 class="md-h3 posts-head">Latest</h3>', '<h3 class="md-h3 posts-head">最新</h3>'],
-  ['aria-label="Latest articles"', 'aria-label="最新文章"'],
   ['>All writing on genedai.me →</a>', '>在 genedai.me 查看全部文章 →</a>'],
 
   // ── Connect
@@ -139,7 +137,7 @@ const TEXT = [
   ['<div class="connect-links">\n        <a href="https://x.com/genedai"', '<div class="connect-links">\n        <a href="https://www.zhihu.com/people/digidai" target="_blank" rel="me noopener">知乎</a>\n        <span class="sep" aria-hidden="true">·</span>\n        <a href="https://web.okjike.com/u/633AAA79-CA7E-42E6-ACEA-6833F255F6E6" target="_blank" rel="me noopener">即刻</a>\n        <span class="sep" aria-hidden="true">·</span>\n        <a href="https://www.xiaohongshu.com/user/profile/53db4339b4c4d61da5f00b34" target="_blank" rel="me noopener">小红书</a>\n        <span class="sep" aria-hidden="true">·</span>\n        <a href="https://x.com/genedai"'],
 
   // ── Footer
-  ['<p>genedai.md &middot; California &middot; Building with intent</p>', '<p>genedai.md &middot; 美国加州 &middot; 用心构建</p>'],
+  ['<p>genedai.md &middot; California &middot; &copy; Gene Dai</p>', '<p>genedai.md &middot; 美国加州 &middot; &copy; 戴金乘</p>'],
 ];
 
 // Chinese typography: CJK fallbacks after the Latin faces, and no faux italics.
@@ -153,6 +151,7 @@ const ZH_CSS = `
     body { line-break: strict; }
     .viewpoint p, .lead em { font-style: normal; }
     .h1-en { color: var(--text-tertiary); font-weight: 300; }
+    .hero-meta .hm-label { margin-right: 8px; }
   </style>`;
 
 // Dates: the hero spells them out; list dates (monospace) and project activity stay compact.
@@ -160,14 +159,27 @@ const HERO_DATE = /(<time datetime="(\d{4})-(\d{2})-(\d{2})">)[^<]*(<\/time>)/g;
 const LIST_DATE = /(<time class="meta" datetime="(\d{4})-(\d{2})-(\d{2})">)[^<]*(<\/time>)/g;
 const ACTIVE = /active · (<time datetime="(\d{4})-(\d{2})-\d{2}">)[^<]*(<\/time>)/g;
 
+// The latest-articles list is English-only, so the Chinese page leaves it (and its JSON-LD) out
+// and keeps the "Start here" picks plus the link to genedai.me.
+const LATEST = /\n      <h3 class="md-h3 posts-head">Latest<\/h3>\n      <ul class="md-list posts" aria-label="Latest articles">[\s\S]*?<\/ul>/;
+const LD_WRITING = /\n  <!-- Schema.org JSON-LD: latest writing[^>]*-->\n  <script type="application\/ld\+json" id="ld-writing">[\s\S]*?<\/script>\n/;
+// Chinese needs no space between Chinese characters, even across inline tags.
+const CJK = '\\u3000-\\u303f\\u3400-\\u9fff\\uff00-\\uffef';
+const CJK_SPACE = new RegExp(`(?<=[${CJK}])((?:<\\/(?:span|a)>)*) ((?:<(?:span|a)\\b[^>]*>)*)(?=[${CJK}])`, 'g');
+
 export function buildZh(src) {
   let out = src;
+  for (const [re, what] of [[LATEST, 'latest-articles list'], [LD_WRITING, 'ld-writing JSON-LD']]) {
+    if (!re.test(out)) throw new Error(`build-zh: ${what} not found in index.html`);
+    out = out.replace(re, '');
+  }
   for (const [en, zh] of TEXT) {
     if (!out.includes(en)) throw new Error(`build-zh: English text not found in index.html (update scripts/build-zh.mjs):\n  ${en.slice(0, 160)}`);
     out = out.split(en).join(zh);
   }
   out = out.replace(ACTIVE, (_, open, y, m, close) => `活跃 · ${open}${y}.${m}${close}`);
   out = out.replace(LIST_DATE, (_, open, y, m, d, close) => `${open}${y}.${m}.${d}${close}`);
+  out = out.replace(CJK_SPACE, '$1$2');
   out = out.replace(HERO_DATE, (all, open, y, m, d, close) => all.includes('.') ? all : `${open}${y} 年 ${+m} 月 ${+d} 日${close}`);
   if (!out.includes('  </style>')) throw new Error('build-zh: </style> not found');
   out = out.replace('\n  </style>', ZH_CSS);

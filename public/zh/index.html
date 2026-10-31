@@ -132,93 +132,6 @@
   }
   </script>
 
-  <!-- Schema.org JSON-LD: latest writing (refreshed by scripts/update-writing.mjs) -->
-  <script type="application/ld+json" id="ld-writing">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Latest writing by Gene Dai",
-    "url": "https://genedai.me",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "BlogPosting",
-          "headline": "OpenAI and Google Plan One AI Training Opt-Out While Search Stays Open",
-          "url": "https://genedai.me/2026/10/31/shared-ai-training-opt-out-publishers-search/",
-          "datePublished": "2026-10-31",
-          "author": {
-            "@type": "Person",
-            "name": "Gene Dai",
-            "url": "https://genedai.md/"
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "BlogPosting",
-          "headline": "Banks Pay a 13% Premium as AI Talent Spreads Beyond Tech",
-          "url": "https://genedai.me/2026/10/30/ai-talent-bank-premium-flexible-hiring/",
-          "datePublished": "2026-10-30",
-          "author": {
-            "@type": "Person",
-            "name": "Gene Dai",
-            "url": "https://genedai.md/"
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "BlogPosting",
-          "headline": "Alexander Embiricos and the Three-Minute Warning From Dots",
-          "url": "https://genedai.me/2026/10/30/alexander-embiricos-dots-three-minute-warning/",
-          "datePublished": "2026-10-30",
-          "author": {
-            "@type": "Person",
-            "name": "Gene Dai",
-            "url": "https://genedai.md/"
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "item": {
-          "@type": "BlogPosting",
-          "headline": "Finn Puklowski Puts Rival AI Chips on the Balance Sheet",
-          "url": "https://genedai.me/2026/10/29/finn-puklowski-alternative-chips-balance-sheet/",
-          "datePublished": "2026-10-29",
-          "author": {
-            "@type": "Person",
-            "name": "Gene Dai",
-            "url": "https://genedai.md/"
-          }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 5,
-        "item": {
-          "@type": "BlogPosting",
-          "headline": "Uber Opens ChatGPT Work to 30,000 After a 10% Cut",
-          "url": "https://genedai.me/2026/10/29/uber-chatgpt-work-rollout-workforce-cut/",
-          "datePublished": "2026-10-29",
-          "author": {
-            "@type": "Person",
-            "name": "Gene Dai",
-            "url": "https://genedai.md/"
-          }
-        }
-      }
-    ]
-  }
-  </script>
-
   <!-- GEO: LLM discoverability -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly content" />
   <link rel="alternate" type="text/markdown" href="/genedai.md" title="This page as Markdown" />
@@ -616,6 +529,8 @@
       color: var(--text-tertiary); font-size: 18px; cursor: pointer;
     }
     .zh-hint button:hover { color: var(--text-primary); background: var(--surface-300); }
+    /* No one-word last lines. */
+    p, li { text-wrap: pretty; }
     /* ── Print: one-page CV ─────────────────────────── */
     @media print {
       @page { margin: 11mm 14mm; }
@@ -678,6 +593,7 @@
     body { line-break: strict; }
     .viewpoint p, .lead em { font-style: normal; }
     .h1-en { color: var(--text-tertiary); font-weight: 300; }
+    .hero-meta .hm-label { margin-right: 8px; }
   </style>
 </head>
 <body>
@@ -709,12 +625,12 @@
     <!-- ── Hero ───────────────────────────────────── -->
     <section class="hero" aria-label="介绍">
       <div class="hero-top">
-        <p class="hero-meta"><span class="hm-label">现在</span> 在 Metix AI 和开源项目里，打造招聘工具和 AI 智能体<br>美国加州 · 更新于 <time datetime="2026-10-31">2026 年 10 月 31 日</time></p>
+        <p class="hero-meta"><span class="hm-label">现在</span>在 Metix AI 做招聘工具和 AI 智能体，也做开源<br>美国加州 · 更新于 <time datetime="2026-10-31">2026 年 10 月 31 日</time></p>
         <img class="avatar" src="/avatar.jpg" width="72" height="72" alt="戴金乘 Gene Dai" />
       </div>
       <h1 class="md-h1">戴金乘 <span class="h1-en">Gene Dai</span></h1>
       <!--email_off--><p class="print-contact">hi@genedai.me · genedai.md · linkedin.com/in/genedai · 美国加州</p><!--/email_off-->
-      <p class="lead">我做招聘产品。曾在 <span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS直聘</span> 和 <span class="ent" data-ent="liepin" tabindex="0" role="button" aria-haspopup="dialog">猎聘</span> 负责求职者、企业和猎头三端产品，现在联合创办 AI 原生招聘平台 <a href="https://metix.ai" target="_blank" rel="noopener" data-ent="metix">Metix AI</a>。</p>
+      <p class="lead">我做招聘产品。曾在 <span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS直聘</span>和<span class="ent" data-ent="liepin" tabindex="0" role="button" aria-haspopup="dialog">猎聘</span>负责求职者、企业和猎头三端产品，现在联合创办 AI 原生招聘平台 <a href="https://metix.ai" target="_blank" rel="noopener" data-ent="metix">Metix AI</a>。</p>
       <div class="hero-badges">
         <span class="badge-group"><span class="badge">用户增长</span>
         <span class="badge">平台产品</span>
@@ -725,7 +641,7 @@
     <!-- ── About ──────────────────────────────────── -->
     <section class="section" id="about">
       <h2 class="md-h2">简介</h2>
-      <p>戴金乘（Gene Dai），产品人，AI 招聘平台 Metix AI 联合创始人兼首席产品官，Metix AI 曾获 <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">Product Hunt 当日第一</a>。此前在中国领先的移动招聘平台 BOSS直聘（BZ/2076.HK）、猎聘（6100.HK）、作业帮和值得买科技（300785.SZ）担任产品负责人，覆盖招聘、教育和电商。他在 Medium、Substack 和个人博客上写 AI 与 HRTech，并在 GitHub 维护 160 多个开源项目。</p>
+      <p>戴金乘（Gene Dai），产品人，AI 招聘平台 Metix AI 联合创始人兼首席产品官，Metix AI 曾获 <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">Product Hunt 当日第一</a>。此前在 BOSS直聘（BZ/2076.HK，中国领先的移动招聘平台）、猎聘（6100.HK）、作业帮和值得买科技（300785.SZ）担任产品负责人，覆盖招聘、教育和电商。他在 Medium、Substack 和个人博客上写 AI 与 HRTech，并在 GitHub 维护 160 多个开源项目。</p>
       <figure class="viewpoint">
         <figcaption>我怎么看产品</figcaption>
         <blockquote><p>对话是前所未有的强反馈的交互模式，而在完成任务、追求效率的过程中，目的和目标流程体验就变得极其重要。</p></blockquote>
@@ -841,16 +757,6 @@
         <li><span class="meta">研究</span> <a href="https://genedai.me/research/ai-employment/" target="_blank" rel="noopener">AI 与就业证据</a> <span class="pick-desc">— 关于 AI 和工作的研究，到底测量了什么</span></li>
         <li><span class="meta">问答</span> <a href="https://genedai.me/answers/" target="_blank" rel="noopener">AI 招聘与工作问答</a> <span class="pick-desc">— 简短回答，附原始出处和日期</span></li>
       </ul>
-      <h3 class="md-h3 posts-head">最新</h3>
-      <ul class="md-list posts" aria-label="最新文章">
-        <!-- writing:start -->
-        <li><time class="meta" datetime="2026-10-31">2026.10.31</time> <a href="https://genedai.me/2026/10/31/shared-ai-training-opt-out-publishers-search/" target="_blank" rel="noopener">OpenAI and Google Plan One AI Training Opt-Out While Search Stays Open</a></li>
-        <li><time class="meta" datetime="2026-10-30">2026.10.30</time> <a href="https://genedai.me/2026/10/30/ai-talent-bank-premium-flexible-hiring/" target="_blank" rel="noopener">Banks Pay a 13% Premium as AI Talent Spreads Beyond Tech</a></li>
-        <li><time class="meta" datetime="2026-10-30">2026.10.30</time> <a href="https://genedai.me/2026/10/30/alexander-embiricos-dots-three-minute-warning/" target="_blank" rel="noopener">Alexander Embiricos and the Three-Minute Warning From Dots</a></li>
-        <li><time class="meta" datetime="2026-10-29">2026.10.29</time> <a href="https://genedai.me/2026/10/29/finn-puklowski-alternative-chips-balance-sheet/" target="_blank" rel="noopener">Finn Puklowski Puts Rival AI Chips on the Balance Sheet</a></li>
-        <li><time class="meta" datetime="2026-10-29">2026.10.29</time> <a href="https://genedai.me/2026/10/29/uber-chatgpt-work-rollout-workforce-cut/" target="_blank" rel="noopener">Uber Opens ChatGPT Work to 30,000 After a 10% Cut</a></li>
-        <!-- writing:end -->
-      </ul>
       <p class="more"><a href="https://genedai.me" target="_blank" rel="noopener">在 genedai.me 查看全部文章 →</a></p>
     </section>
 
@@ -890,7 +796,7 @@
   <footer role="contentinfo">
     <div class="doc">
       <hr class="md-hr" style="margin-bottom: 24px;">
-      <p>genedai.md &middot; 美国加州 &middot; 用心构建</p>
+      <p>genedai.md &middot; 美国加州 &middot; &copy; 戴金乘</p>
     </div>
   </footer>
 
