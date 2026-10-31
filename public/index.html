@@ -337,10 +337,6 @@
       transition: all 0.15s;
     }
     .badge:hover { background: var(--surface-400); color: var(--text-primary); }
-    .badge-accent {
-      background: var(--dark); color: var(--cream);
-    }
-    .badge-accent:hover { background: var(--dark-hover); color: var(--cream); }
     /* Focus areas are labels, not links: no fill, so they don't read as buttons. */
     .badge-group { display: inline-flex; gap: 8px; white-space: nowrap; }
     .hero-badges span.badge { background: none; padding: 5px 2px; color: var(--text-tertiary); }
@@ -454,11 +450,6 @@
       font-family: var(--font-mono); font-size: 12px;
       color: var(--text-tertiary);
     }
-    .cursor-blink::after {
-      content: '|'; animation: blink 1s step-end infinite;
-      color: var(--accent); margin-left: 2px;
-    }
-    @keyframes blink { 50% { opacity: 0; } }
 
     /* ── Horizontal rule (markdown ---) ─────────────── */
     .md-hr {
@@ -505,6 +496,7 @@
     .posts a { color: var(--text-primary); }
     .posts a:hover { color: var(--accent); }
     .section > p.more { font-family: var(--font-mono); font-size: 13px; margin-bottom: 28px; }
+    .section > p.more:last-child { margin-bottom: 0; }
 
     /* ── Project activity ──────────────────────────── */
     .activity { display: block; margin-top: 2px; font-family: var(--font-mono); font-size: 11px; color: var(--text-tertiary); }
@@ -613,7 +605,7 @@
       a, .md-link .link-title { color: #000; }
       .connect-links { line-height: 1.6; font-size: 9pt; }
       .connect-links a::after { color: #555; font-weight: 400; }
-      .md-h1::before, .md-h2::before, .md-h3::before, .git-log::before, .current-tag, .hero-badges .badge:not(.badge-accent) { display: none !important; }
+      .md-h1::before, .md-h2::before, .md-h3::before, .git-log::before, .current-tag, .hero-badges { display: none !important; }
       .md-list li::before { content: '–'; top: 3pt; color: #555; }
       .git-log .meta { display: inline; }
       .git-log .meta::before { content: " · "; }
@@ -673,7 +665,6 @@
       <h1 class="md-h1">Gene Dai</h1>
       <p class="lead">I build hiring products. I led products for candidates, employers, and headhunters at <span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS Zhipin</span> and <span class="ent" data-ent="liepin" tabindex="0" role="button" aria-haspopup="dialog">Liepin</span>, and now co-found <a href="https://metix.ai" target="_blank" rel="noopener" data-ent="metix">Metix AI</a>, an <em>AI-native hiring platform</em>.</p>
       <div class="hero-badges">
-        <a href="https://metix.ai" class="badge badge-accent" target="_blank" rel="noopener">Co-Founder &amp; CPO @ Metix AI</a>
         <span class="badge-group"><span class="badge">User Growth</span>
         <span class="badge">Platform Products</span>
         <span class="badge">AI Hiring</span></span>
@@ -685,7 +676,7 @@
       <h2 class="md-h2">About</h2>
       <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI hiring platform that reached <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">#1 on Product Hunt</a>. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>
       <ul class="md-list">
-        <li><span class="title">AI-Native Hiring</span> <span class="desc">— Building Metix: define a role and meet interview-ready candidates within 24 hours.</span></li>
+        <li><span class="title">AI Hiring</span> <span class="desc">— Building Metix: define a role and meet interview-ready candidates within 24 hours.</span></li>
         <li><span class="title">Growth &amp; Platforms</span> <span class="desc">— User growth, community, and platform products for consumer apps in recruiting, education, and e-commerce.</span></li>
         <li><span class="title">Domain Expertise</span> <span class="desc">— Built products for all three sides of hiring (candidates, employers, and headhunters) at Kanzhun, BOSS Zhipin, and Liepin.</span></li>
         <li><span class="title">Builder &amp; Writer</span> <span class="desc">— Writing on AI, HRTech, and the people shaping the industry.</span></li>
@@ -814,10 +805,10 @@
       <ul class="md-list asks">
         <li><span class="title">Hiring?</span> <span class="desc">— Try <a href="https://metix.ai" target="_blank" rel="noopener">Metix AI</a>: define the role and meet interview-ready candidates.</span></li>
         <li><span class="title">Building or backing HR tech?</span> <span class="desc">— Email <a href="mailto:hi@genedai.me">hi@genedai.me</a>. Founders, operators, and investors in AI hiring are welcome.</span></li>
-        <li><span class="title">Researching AI and work?</span> <span class="desc">— Start with the <a href="https://genedai.me/research/" target="_blank" rel="noopener">evidence registers</a> on genedai.me.</span></li>
+        <li><span class="title">Researching AI and work?</span> <span class="desc">— Start with the <a href="https://genedai.me/research/" target="_blank" rel="noopener">research pages</a> on genedai.me.</span></li>
       </ul>
       <div class="connect-links">
-        <a href="https://x.com/genedai" target="_blank" rel="me noopener">@genedai</a>
+        <a href="https://x.com/genedai" target="_blank" rel="me noopener">X</a>
         <span class="sep" aria-hidden="true">·</span>
         <a href="https://github.com/Digidai" target="_blank" rel="me noopener">GitHub</a>
         <span class="sep" aria-hidden="true">·</span>
@@ -837,7 +828,7 @@
   <footer role="contentinfo">
     <div class="doc">
       <hr class="md-hr" style="margin-bottom: 24px;">
-      <p><span class="cursor-blink">genedai.md</span> &middot; California &middot; Building with intent</p>
+      <p>genedai.md &middot; California &middot; Building with intent</p>
     </div>
   </footer>
 
