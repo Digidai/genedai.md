@@ -441,6 +441,11 @@
       line-height: 2.2;
     }
     .connect-links .sep { color: var(--text-tertiary); margin: 0 8px; }
+    /* Narrow screens: wrap whole links with a gap, so no dot dangles at a line end. */
+    @media (max-width: 600px) {
+      .connect-links { display: flex; flex-wrap: wrap; column-gap: 14px; line-height: 2.2; }
+      .connect-links .sep { display: none; }
+    }
     .connect-links a { color: var(--accent); font-weight: 500; }
 
     /* ── Footer ─────────────────────────────────────── */
