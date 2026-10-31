@@ -239,7 +239,6 @@
       --accent-hover: light-dark(#9e3400, #ffa574);
       --accent-line: light-dark(rgba(189, 63, 0, 0.35), rgba(255, 138, 76, 0.35));
       --success: light-dark(#17704f, #5ccf9f);
-      --sha: light-dark(#7d5800, #e2b04a);
       --text-primary: light-dark(#26251e, #ecebe5);
       --text-secondary: light-dark(rgba(38, 37, 30, 0.75), rgba(236, 235, 229, 0.72));
       --text-tertiary: light-dark(rgba(38, 37, 30, 0.68), rgba(236, 235, 229, 0.58));
@@ -498,12 +497,9 @@
     .frontmatter .fm-key { color: var(--success); }
 
     /* ── Journey as git log ────────────────────────── */
-    .cmd { font-family: var(--font-mono) !important; font-size: 13px !important; color: var(--text-tertiary) !important; margin: -12px 0 12px !important; }
     .git-log { position: relative; }
     .git-log::before { content: ''; position: absolute; left: 4px; top: 22px; bottom: 22px; border-left: 1px solid var(--accent-line); }
     .git-log li::before { content: '*'; color: var(--accent); background: var(--cream); line-height: 1.2; }
-    .git-log .sha { font-family: var(--font-mono); font-size: 13px; color: var(--sha); margin-right: 4px; }
-    .git-log .ref { font-family: var(--font-mono); font-size: 13px; color: var(--success); margin-right: 4px; font-variant-ligatures: none; }
 
     /* ── Avatar ────────────────────────────────────── */
     .hero-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
@@ -611,7 +607,7 @@
       :root { color-scheme: light !important; }
       .hero-top { display: none !important; }
       body { background: #fff; color: #000; font-size: 10pt; line-height: 1.45; }
-      header, footer, .palette, .source-view, .asks, .cmd, .topics, .ent-hint, #writing, .activity, .link-tag, .frontmatter { display: none !important; }
+      header, footer, .palette, .source-view, .asks, .topics, .ent-hint, #writing, .activity, .link-tag, .frontmatter { display: none !important; }
       article[hidden] { display: block !important; }
       .doc { max-width: none; padding: 0; }
       .hero { padding: 0 0 8pt; }
@@ -628,7 +624,7 @@
       a, .md-link .link-title { color: #000; }
       .connect-links { line-height: 1.6; font-size: 9pt; }
       .connect-links a::after { color: #555; font-weight: 400; }
-      .md-h1::before, .md-h2::before, .md-h3::before, .git-log::before, .sha, .ref, .current-tag, .bracket, .hero-badges .badge:not(.badge-accent) { display: none !important; }
+      .md-h1::before, .md-h2::before, .md-h3::before, .git-log::before, .current-tag, .bracket, .hero-badges .badge:not(.badge-accent) { display: none !important; }
       .md-list li::before { content: '–'; top: 3pt; color: #555; }
       .git-log .meta { display: inline; }
       .git-log .meta::before { content: " · "; }
@@ -646,7 +642,7 @@
       #journey .md-list .desc::before { content: ' — '; }
       .print-short { font-size: 0; }
       .print-short::after { content: attr(data-short); font-size: 8.5pt; }
-      #journey > p:not(.cmd), #connect > p { display: none; }
+      #journey > p, #connect > p { display: none; }
       .section > p, .md-list .desc, .md-link .link-desc, .md-list .meta { color: #222; }
       .connect-links a, .md-link .link-url { color: #000; }
       .connect-links a { display: inline-block; white-space: nowrap; margin-right: 10pt; }
@@ -718,45 +714,44 @@
       <h2 class="md-h2">Journey</h2>
       <p>From Beijing to California.</p>
       <p class="ent-hint"><span class="hint-hover">Hover a company to see what it does.</span><span class="hint-tap">Tap a company to see what it does.</span></p>
-      <p class="cmd" aria-hidden="true">$ git log --oneline career</p>
       <ul class="md-list git-log">
         <li>
-          <span class="sha">a681319</span> <span class="ref">(HEAD -&gt; main)</span> <span class="title">Co-Founder &amp; CPO</span><span class="current-tag">current</span><br>
+          <span class="title">Co-Founder &amp; CPO</span><span class="current-tag">current</span><br>
           <span class="desc"><span class="ent" data-ent="metix" tabindex="0" role="button" aria-haspopup="dialog">Metix AI</span> — AI-native hiring platform</span>
           <span class="meta">2025 – Present</span>
         </li>
         <li>
-          <span class="sha">fdff90b</span> <span class="title">Head of Product Management</span><br>
+          <span class="title">Head of Product Management</span><br>
           <span class="desc"><span class="ent" data-ent="zuoyebang" tabindex="0" role="button" aria-haspopup="dialog">Zuoyebang</span> — China's largest K12 online education platform</span>
           <span class="meta">2024 – 2025</span>
         </li>
         <li>
-          <span class="sha">5af5ac6</span> <span class="title">Head of Product</span><br>
+          <span class="title">Head of Product</span><br>
           <span class="desc"><span class="ent" data-ent="liepin" tabindex="0" role="button" aria-haspopup="dialog">Liepin</span> (6100.HK) — Executive recruitment platform</span>
           <span class="meta">2022 – 2024</span>
         </li>
         <li>
-          <span class="sha">a693f9c</span> <span class="title">Product Director</span><br>
+          <span class="title">Product Director</span><br>
           <span class="desc"><span class="ent" data-ent="zhidemai" tabindex="0" role="button" aria-haspopup="dialog">Zhidemai Tech</span> (300785.SZ) — Consumer content &amp; commerce platform</span>
           <span class="meta">2021 – 2022</span>
         </li>
         <li>
-          <span class="sha">e97d858</span> <span class="title">Head of Product, incl. <span class="ent" data-ent="kanzhun" tabindex="0" role="button" aria-haspopup="dialog">Kanzhun.com</span></span><br>
+          <span class="title">Head of Product, incl. <span class="ent" data-ent="kanzhun" tabindex="0" role="button" aria-haspopup="dialog">Kanzhun.com</span></span><br>
           <span class="desc"><span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS Zhipin</span> (BZ/2076.HK) — <span class="print-short" data-short="Mobile recruiting platform">China's leading mobile recruiting platform</span></span>
           <span class="meta">2018 – 2020</span>
         </li>
         <li>
-          <span class="sha">72ff87a</span> <span class="title">Senior Product Manager</span><br>
+          <span class="title">Senior Product Manager</span><br>
           <span class="desc"><span class="ent" data-ent="dora" tabindex="0" role="button" aria-haspopup="dialog">Dora Tech</span> — Sequoia Capital China backed</span>
           <span class="meta">2017 – 2018</span>
         </li>
         <li>
-          <span class="sha">6b8eb59</span> <span class="title">Co-founder &amp; Chief Product Officer</span><br>
+          <span class="title">Co-founder &amp; Chief Product Officer</span><br>
           <span class="desc"><span class="ent" data-ent="feel" tabindex="0" role="button" aria-haspopup="dialog">Feel</span> — Health &amp; fitness app (ZhenFund backed)</span>
           <span class="meta">2014 – 2017</span>
         </li>
         <li>
-          <span class="sha">060c6c3</span> <span class="ref">(root)</span> <span class="title"><span class="ent" data-ent="beihang" tabindex="0" role="button" aria-haspopup="dialog">Beihang University</span></span><br>
+          <span class="title"><span class="ent" data-ent="beihang" tabindex="0" role="button" aria-haspopup="dialog">Beihang University</span></span><br>
           <span class="desc">Computer Software Engineering</span>
           <span class="meta">2013 · Education</span>
         </li>
