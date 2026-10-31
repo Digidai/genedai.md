@@ -9,14 +9,14 @@ updated: 2026-10-30
 
 # Gene Dai
 
-Product builder. Led products at BOSS Zhipin, Liepin, and Zuoyebang. Now co-founding [Metix AI](https://metix.ai), an **AI-native hiring platform**.
+I build hiring products. I led products for candidates, employers, and headhunters at BOSS Zhipin and Liepin, and now co-found [Metix AI](https://metix.ai), an **AI-native hiring platform**.
 
 ## About
 
-Gene Dai is a product builder and Co-Founder & CPO of Metix AI, an AI-native hiring platform that reached #1 on Product Hunt. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.
+Gene Dai is a product builder and Co-Founder & CPO of Metix AI, an AI-native hiring platform that reached [#1 on Product Hunt](https://www.producthunt.com/products/openjobs-ai). He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.
 
 - **AI-Native Hiring**: Building Metix, an AI-native hiring platform: define a role and meet interview-ready candidates within 24 hours.
-- **Product Velocity**: Led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech. Deep experience in user growth, community, and platform products.
+- **Growth & Platforms**: User growth, community, and platform products for consumer apps in recruiting, education, and e-commerce.
 - **Domain Expertise**: Built products for all three sides of hiring (candidates, employers, and headhunters) at Kanzhun, BOSS Zhipin, and Liepin.
 - **Builder & Writer**: Writing on AI, HRTech, and the people shaping the industry.
 
@@ -47,6 +47,12 @@ From Beijing to California.
 
 Deep dives into AI leaders, HRTech platforms, and the forces reshaping how companies find talent.
 
+Start here:
+
+- Research: [AI hiring procurement evidence](https://genedai.me/research/ai-hiring/): vendor claims, audit scope, and the questions buyers should still ask
+- Research: [AI and employment evidence](https://genedai.me/research/ai-employment/): what the studies on AI and jobs actually measure
+- Answers: [Answers about AI hiring and work](https://genedai.me/answers/): short answers with primary sources and dates
+
 Latest:
 
 <!-- writing:start -->
@@ -65,7 +71,9 @@ Read on:
 
 ## Connect
 
-Whether it's about AI hiring, product building, or just a good conversation.
+- **Hiring?** Try [Metix AI](https://metix.ai): define the role and meet interview-ready candidates.
+- **Building or backing HR tech?** Email [hi@genedai.me](mailto:hi@genedai.me). Founders, operators, and investors in AI hiring are welcome.
+- **Researching AI and work?** Start with the [evidence registers](https://genedai.me/research/) on genedai.me.
 
 - [X / Twitter](https://x.com/genedai)
 - [GitHub](https://github.com/Digidai)

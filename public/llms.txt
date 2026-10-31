@@ -22,6 +22,12 @@ Based in California. Studied Computer Software Engineering at Beihang University
 - [ModernCV](https://genedai.cv): Free AI resume builder with 28 templates and instant PDF export.
 - [Recruit Navigator](https://recruit.genedai.me): Recruitment and AI hiring tools map inspired by OSINT-framework. 320 categories, 2,100+ resources.
 
+## Start here
+
+- [AI hiring procurement evidence](https://genedai.me/research/ai-hiring/): Source-linked register of AI hiring product claims, audit scope, and unanswered buyer questions.
+- [AI and employment evidence](https://genedai.me/research/ai-employment/): Source-linked records on AI, work, and employment, keeping exposure, productivity, and employment data separate.
+- [Answers about AI hiring and work](https://genedai.me/answers/): Short answers with primary sources, dates, and limitations.
+
 ## Latest writing
 
 <!-- writing:start -->

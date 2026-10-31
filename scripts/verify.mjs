@@ -123,7 +123,7 @@ for (const [where, d] of Object.entries(dates)) {
 // 12. Same project list (by URL, same order) in index.html, llms.txt, and genedai.md
 const projectUrls = (txt) => (txt.split(/^## Projects$/m)[1] ?? '').split(/^## /m)[0]
   .match(/\]\((https?:\/\/[^)]+)\)/g)?.map((m) => m.slice(2, -1)) ?? [];
-const pageProjects = [...html.matchAll(/<a href="([^"]+)" class="md-link"/g)].map((m) => m[1]);
+const pageProjects = [...html.matchAll(/<a href="([^"]+)" class="md-link[ "]/g)].map((m) => m[1]);
 for (const [name, txt] of [['llms.txt', readPub('llms.txt')], ['genedai.md', md]]) {
   if (projectUrls(txt).join() !== pageProjects.join())
     fail(`${name} projects differ from index.html: ${projectUrls(txt).join(', ')}`);

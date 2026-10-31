@@ -414,6 +414,8 @@
       transition: all 0.15s;
     }
     .md-link:last-child { border-bottom: none; }
+    .md-link.featured { padding: 16px 0 22px; }
+    .md-link.featured .link-title { font-size: 17px; }
     .md-link:hover { color: var(--accent); }
     .md-link .bracket { font-family: var(--font-mono); color: var(--text-tertiary); font-size: 14px; }
     .md-link .link-title { color: var(--accent); font-weight: 500; }
@@ -510,6 +512,11 @@
     /* ── Latest writing ────────────────────────────── */
     .posts { margin-bottom: 12px; }
     .posts .meta { margin-right: 10px; }
+    .posts-head { font-size: 15px; font-weight: 500; margin: 20px 0 6px; }
+    .posts-head::before { font-size: 12px; }
+    .pick-desc { font-family: var(--font-serif); font-size: 14px; color: var(--text-secondary); }
+    .asks { margin-bottom: 20px; }
+    #about > p a, .asks a, .pick-desc a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
     .posts a { color: var(--text-primary); }
     .posts a:hover { color: var(--accent); }
     .section > p.more { font-family: var(--font-mono); font-size: 13px; margin-bottom: 28px; }
@@ -604,7 +611,7 @@
       :root { color-scheme: light !important; }
       .hero-top { display: none !important; }
       body { background: #fff; color: #000; font-size: 10pt; line-height: 1.45; }
-      header, footer, .palette, .source-view, .cmd, .topics, .ent-hint, #writing, .activity, .link-tag, .frontmatter { display: none !important; }
+      header, footer, .palette, .source-view, .asks, .cmd, .topics, .ent-hint, #writing, .activity, .link-tag, .frontmatter { display: none !important; }
       article[hidden] { display: block !important; }
       .doc { max-width: none; padding: 0; }
       .hero { padding: 0 0 8pt; }
@@ -685,7 +692,7 @@
         <img class="avatar" src="/avatar.jpg" width="72" height="72" alt="Gene Dai" />
       </div>
       <h1 class="md-h1">Gene Dai</h1>
-      <p class="lead">Product builder. Led products at <span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS Zhipin</span>, <span class="ent" data-ent="liepin" tabindex="0" role="button" aria-haspopup="dialog">Liepin</span>, and <span class="ent" data-ent="zuoyebang" tabindex="0" role="button" aria-haspopup="dialog">Zuoyebang</span>. Now co-founding <a href="https://metix.ai" target="_blank" rel="noopener" data-ent="metix">Metix AI</a> — an <em>AI-native hiring platform</em>.</p>
+      <p class="lead">I build hiring products. I led products for candidates, employers, and headhunters at <span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS Zhipin</span> and <span class="ent" data-ent="liepin" tabindex="0" role="button" aria-haspopup="dialog">Liepin</span>, and now co-found <a href="https://metix.ai" target="_blank" rel="noopener" data-ent="metix">Metix AI</a>, an <em>AI-native hiring platform</em>.</p>
       <div class="hero-badges">
         <a href="https://metix.ai" class="badge badge-accent" target="_blank" rel="noopener">Co-Founder &amp; CPO @ Metix AI</a>
         <span class="badge-group"><span class="badge">User Growth</span>
@@ -697,10 +704,10 @@
     <!-- ── About ──────────────────────────────────── -->
     <section class="section" id="about">
       <h2 class="md-h2">About</h2>
-      <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI-native hiring platform that reached #1 on Product Hunt. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>
+      <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI-native hiring platform that reached <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">#1 on Product Hunt</a>. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>
       <ul class="md-list">
         <li><span class="title">AI-Native Hiring</span> <span class="desc">— Building Metix, an AI-native hiring platform: define a role and meet interview-ready candidates within 24 hours.</span></li>
-        <li><span class="title">Product Velocity</span> <span class="desc">— Led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech. Deep experience in user growth, community, and platform products.</span></li>
+        <li><span class="title">Growth &amp; Platforms</span> <span class="desc">— User growth, community, and platform products for consumer apps in recruiting, education, and e-commerce.</span></li>
         <li><span class="title">Domain Expertise</span> <span class="desc">— Built products for all three sides of hiring (candidates, employers, and headhunters) at Kanzhun, BOSS Zhipin, and Liepin.</span></li>
         <li><span class="title">Builder &amp; Writer</span> <span class="desc">— Writing on AI, HRTech, and the people shaping the industry.</span></li>
       </ul>
@@ -762,7 +769,7 @@
       <p>Products, tools, and resources — mostly at the intersection of AI and hiring.</p>
       <p class="ent-hint"><span class="hint-hover">Hover a project for a quick look; click to visit.</span><span class="hint-tap">Tap a project for a quick look; tap again to visit.</span></p>
       <div class="md-links">
-        <a href="https://metix.ai" class="md-link" target="_blank" rel="noopener" data-ent="metix">
+        <a href="https://metix.ai" class="md-link featured" target="_blank" rel="noopener" data-ent="metix">
           <span class="bracket">[</span><span class="link-title">Metix</span><span class="bracket">]</span><span class="link-url">(metix.ai)</span>
           <span class="link-desc">AI-native hiring platform. Define the role and meet interview-ready candidates: Metix AI reports 95% of roles get a first interview scheduled within 24 hours. <span class="activity">in production · since 2025</span></span>
           <span class="link-tag">AI Hiring</span>
@@ -804,6 +811,13 @@
     <section class="section" id="writing">
       <h2 class="md-h2">Writing</h2>
       <p>Deep dives into AI leaders, HRTech platforms, and the forces reshaping how companies find talent.</p>
+      <h3 class="md-h3 posts-head">Start here</h3>
+      <ul class="md-list posts start-here" aria-label="Start here">
+        <li><span class="meta">research</span> <a href="https://genedai.me/research/ai-hiring/" target="_blank" rel="noopener">AI hiring procurement evidence</a> <span class="pick-desc">— vendor claims, audit scope, and the questions buyers should still ask</span></li>
+        <li><span class="meta">research</span> <a href="https://genedai.me/research/ai-employment/" target="_blank" rel="noopener">AI and employment evidence</a> <span class="pick-desc">— what the studies on AI and jobs actually measure</span></li>
+        <li><span class="meta">answers</span> <a href="https://genedai.me/answers/" target="_blank" rel="noopener">Answers about AI hiring and work</a> <span class="pick-desc">— short answers with primary sources and dates</span></li>
+      </ul>
+      <h3 class="md-h3 posts-head">Latest</h3>
       <ul class="md-list posts" aria-label="Latest articles">
         <!-- writing:start -->
         <li><time class="meta" datetime="2026-10-30">2026-10-30</time> <a href="https://genedai.me/2026/10/30/ai-talent-bank-premium-flexible-hiring/" target="_blank" rel="noopener">Banks Pay a 13% Premium as AI Talent Spreads Beyond Tech</a></li>
@@ -829,7 +843,11 @@
     <!-- ── Connect ────────────────────────────────── -->
     <section class="section" id="connect">
       <h2 class="md-h2">Connect</h2>
-      <p>Whether it's about AI hiring, product building, or just a good conversation.</p>
+      <ul class="md-list asks">
+        <li><span class="title">Hiring?</span> <span class="desc">— Try <a href="https://metix.ai" target="_blank" rel="noopener">Metix AI</a>: define the role and meet interview-ready candidates.</span></li>
+        <li><span class="title">Building or backing HR tech?</span> <span class="desc">— Email <a href="mailto:hi@genedai.me">hi@genedai.me</a>. Founders, operators, and investors in AI hiring are welcome.</span></li>
+        <li><span class="title">Researching AI and work?</span> <span class="desc">— Start with the <a href="https://genedai.me/research/" target="_blank" rel="noopener">evidence registers</a> on genedai.me.</span></li>
+      </ul>
       <div class="connect-links">
         <span class="bracket">[</span><a href="https://x.com/genedai" target="_blank" rel="me noopener">@genedai</a><span class="bracket">]</span><span class="bracket">(x.com)</span>
         &nbsp;&nbsp;
