@@ -116,7 +116,7 @@ const TEXT = [
 
   // ── Writing
   ['<h2 class="md-h2">Writing</h2>', '<h2 class="md-h2">文章</h2>'],
-  ['<p>Deep dives into AI leaders, HRTech platforms, and the forces reshaping how companies find talent.</p>', '<p>深度写作：AI 领袖、HRTech 平台，以及正在改变企业招人方式的力量。文章以英文为主。</p>'],
+  ['<p>Deep dives into AI leaders, HRTech platforms, and the forces reshaping how companies find talent.</p>', '<p>深度写作：AI 领袖、HRTech 平台，以及正在改变企业招人方式的力量。</p>'],
   ['<h3 class="md-h3 posts-head">Start here</h3>', '<h3 class="md-h3 posts-head">从这里开始</h3>'],
   ['aria-label="Start here"', 'aria-label="从这里开始"'],
   ['<span class="meta">Research</span>', '<span class="meta">研究</span>'],
