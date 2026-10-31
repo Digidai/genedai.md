@@ -183,6 +183,14 @@ for (const page of ['index.html', '404.html']) {
   if (!html.includes('hreflang="zh-CN" href="https://genedai.md/zh/"')) fail('index.html missing hreflang link to /zh/');
 }
 
+// 20. The CV PDFs were printed from the current page text (scripts/build-cv.sh)
+{
+  const { fingerprints } = await import('./cv-source.mjs');
+  let recorded = '';
+  try { recorded = readFileSync(resolve(ROOT, 'scripts', 'cv-source.txt'), 'utf8'); } catch {}
+  if (recorded !== fingerprints()) fail('CV PDFs are stale: page text changed since the last scripts/build-cv.sh run');
+}
+
 // Report
 if (warns.length) {
   console.warn('Warnings:');

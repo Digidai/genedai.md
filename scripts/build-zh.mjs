@@ -154,6 +154,8 @@ const ZH_CSS = `
     .hero-meta .hm-label { margin-right: 8px; }
     /* Keep the company description on one line rather than leaving two characters behind. */
     .print-short { white-space: nowrap; }
+    /* Short Chinese links such as 英文版 stay whole. */
+    .desc a { white-space: nowrap; }
   </style>`;
 
 // Dates: the hero spells them out; list dates (monospace) and project activity stay compact.
