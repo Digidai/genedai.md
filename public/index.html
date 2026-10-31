@@ -430,6 +430,12 @@
       margin-left: auto; white-space: nowrap;
     }
 
+    /* ── Viewpoint quote in About ───────────────────── */
+    .viewpoint { margin: 4px 0 28px; padding: 2px 0 2px 18px; border-left: 2px solid var(--accent); }
+    .viewpoint figcaption { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); margin-bottom: 6px; }
+    .viewpoint blockquote { margin: 0; }
+    .viewpoint p { font-family: var(--font-serif); font-style: italic; font-size: 17px; line-height: 1.65; color: var(--text-primary); margin: 0; }
+
     /* ── Hover-card hint ───────────────────────────── */
     .ent-hint { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); margin-top: -4px; }
     .hint-tap { display: none; }
@@ -593,7 +599,7 @@
       :root { color-scheme: light !important; }
       .hero-top { display: none !important; }
       body { background: #fff; color: #000; font-size: 10pt; line-height: 1.45; }
-      header, footer, .palette, .source-view, .asks, .ent-hint, #writing, .activity, .link-tag, .hero-meta { display: none !important; }
+      header, footer, .palette, .source-view, .asks, .ent-hint, #writing, .activity, .link-tag, .hero-meta, .viewpoint { display: none !important; }
       article[hidden] { display: block !important; }
       .doc { max-width: none; padding: 0; }
       .hero { padding: 0 0 8pt; }
@@ -680,6 +686,10 @@
     <section class="section" id="about">
       <h2 class="md-h2">About</h2>
       <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI hiring platform that reached <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">#1 on Product Hunt</a>. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>
+      <figure class="viewpoint">
+        <figcaption>How I think about products</figcaption>
+        <blockquote><p>Conversation is an interaction model with stronger feedback than anything before it. So when the work is getting a task done efficiently, two things become critical: the purpose, and the experience of the flow toward the goal.</p></blockquote>
+      </figure>
       <ul class="md-list">
         <li><span class="title">AI Hiring</span> <span class="desc">— Building Metix: define a role and meet interview-ready candidates within 24 hours.</span></li>
         <li><span class="title">Growth &amp; Platforms</span> <span class="desc">— User growth, community, and platform products for consumer apps in recruiting, education, and e-commerce.</span></li>

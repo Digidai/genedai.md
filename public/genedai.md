@@ -15,6 +15,10 @@ I build hiring products. I led products for candidates, employers, and headhunte
 
 Gene Dai is a product builder and Co-Founder & CPO of Metix AI, an AI-native hiring platform that reached [#1 on Product Hunt](https://www.producthunt.com/products/openjobs-ai). He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.
 
+**How I think about products**
+
+> Conversation is an interaction model with stronger feedback than anything before it. So when the work is getting a task done efficiently, two things become critical: the purpose, and the experience of the flow toward the goal.
+
 - **AI Hiring**: Building Metix, an AI-native hiring platform: define a role and meet interview-ready candidates within 24 hours.
 - **Growth & Platforms**: User growth, community, and platform products for consumer apps in recruiting, education, and e-commerce.
 - **Domain Expertise**: Built products for all three sides of hiring (candidates, employers, and headhunters) at Kanzhun, BOSS Zhipin, and Liepin.
