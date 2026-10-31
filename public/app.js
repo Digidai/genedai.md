@@ -217,7 +217,7 @@
     if (cards === true) return;
     // On touch screens the first tap on a linked name opens its card instead of leaving the page.
     if (e.type === 'click' && !el.matches('[role="button"]') && matchMedia('(hover: none)').matches) e.preventDefault();
-    (cards ||= import('/cards.js?v=4dd1dd0016')).then((m) => { m.start(el, e.type); cards = true; });
+    (cards ||= import('/cards.js?v=217df89336')).then((m) => { m.start(el, e.type); cards = true; });
   };
   ['pointerover', 'focusin', 'click'].forEach((t) => d.addEventListener(t, wake, { passive: t !== 'click' }));
 

@@ -57,7 +57,7 @@ export default {
   },
   raltic: {
     name: "Raltic", meta: "Private beta", kind: "Project",
-    desc: "Agent workflow rooms for product teams: brief an agent, inspect the proof, approve the decision, keep the outcome searchable.",
+    desc: "A shared workspace where product teams hand tasks to AI agents, review the results, and approve decisions.",
     links: [["raltic.com", "https://raltic.com"]],
     hint: "Agent workflow",
   },
@@ -69,13 +69,13 @@ export default {
   },
   hireai: {
     name: "HireAI Directory", meta: "249 products", kind: "Project",
-    desc: "HR AI products across five technology eras, from 1990s ATS to agentic platforms, with analysis pages and checklists.",
+    desc: "HR AI products across five technology eras, from 1990s applicant-tracking systems to AI agents, with analysis pages and checklists.",
     links: [["hireai.genedai.me", "https://hireai.genedai.me"], ["GitHub", "https://github.com/Digidai/HireAI"]],
     hint: "Five eras",
   },
   website2markdown: {
-    name: "Website2Markdown", meta: "Cloudflare Workers", kind: "Project",
-    desc: "URL-to-Markdown converter with 16 platform adapters, a 5-layer fallback, and streaming, batch, extract and crawl APIs.",
+    name: "Website2Markdown", meta: "Web to text", kind: "Project",
+    desc: "Turns any web page into clean text that AI tools can read. Free, with an API for developers.",
     links: [["md.genedai.me", "https://md.genedai.me"], ["GitHub", "https://github.com/Digidai/website2markdown"]],
     hint: "Page to Markdown",
   },
@@ -87,7 +87,7 @@ export default {
   },
   recruit: {
     name: "Recruit Navigator", meta: "2,100+ resources", kind: "Project",
-    desc: "Map of recruitment and AI hiring tools in 320 categories, inspired by the OSINT Framework.",
+    desc: "A map of recruiting and AI hiring tools in 320 categories.",
     links: [["recruit.genedai.me", "https://recruit.genedai.me"], ["GitHub", "https://github.com/Digidai/recruit-ai-framework"]],
     hint: "Chart table",
   },

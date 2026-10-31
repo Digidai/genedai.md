@@ -214,7 +214,7 @@
   <!-- GEO: LLM discoverability -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly content" />
   <link rel="alternate" type="text/markdown" href="/genedai.md" title="This page as Markdown" />
-  <script src="/app.js?v=f9ac21d4f2" defer></script>
+  <script src="/app.js?v=23c813b1cb" defer></script>
 
   <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
@@ -416,11 +416,10 @@
     .md-link.featured { padding: 16px 0 22px; }
     .md-link.featured .link-title { font-size: 17px; }
     .md-link:hover { color: var(--accent); }
-    .md-link .bracket { font-family: var(--font-mono); color: var(--text-tertiary); font-size: 14px; }
     .md-link .link-title { color: var(--accent); font-weight: 500; }
     .md-link .link-url {
       font-family: var(--font-mono); font-size: 12px;
-      color: var(--text-tertiary); margin-left: 2px;
+      color: var(--text-tertiary); margin-left: 8px;
     }
     .md-link .link-desc {
       font-family: var(--font-serif); font-size: 14px;
@@ -454,7 +453,7 @@
       font-family: var(--font-mono); font-size: 14px;
       line-height: 2.2;
     }
-    .connect-links .bracket { color: var(--text-tertiary); }
+    .connect-links .sep { color: var(--text-tertiary); margin: 0 8px; }
     .connect-links a { color: var(--accent); font-weight: 500; }
 
     /* ── Footer ─────────────────────────────────────── */
@@ -488,13 +487,12 @@
     }
     .nav-btn:hover, .nav-btn[aria-pressed="true"] { color: var(--text-primary); background: var(--surface-300); }
 
-    /* ── Frontmatter ───────────────────────────────── */
-    .frontmatter {
-      font-family: var(--font-mono); font-size: 13px; line-height: 1.7;
-      color: var(--text-secondary); margin-bottom: 28px; white-space: pre-wrap;
+    /* ── Hero meta ───────────────────────────────── */
+    .hero-meta {
+      font-size: 14px; line-height: 1.7;
+      color: var(--text-secondary); margin: 0 0 28px;
     }
-    .frontmatter .fm-fence { color: var(--text-tertiary); }
-    .frontmatter .fm-key { color: var(--success); }
+    .hero-meta .hm-label { color: var(--accent); font-weight: 600; margin-right: 4px; }
 
     /* ── Journey as git log ────────────────────────── */
     .git-log { position: relative; }
@@ -607,7 +605,7 @@
       :root { color-scheme: light !important; }
       .hero-top { display: none !important; }
       body { background: #fff; color: #000; font-size: 10pt; line-height: 1.45; }
-      header, footer, .palette, .source-view, .asks, .topics, .ent-hint, #writing, .activity, .link-tag, .frontmatter { display: none !important; }
+      header, footer, .palette, .source-view, .asks, .topics, .ent-hint, #writing, .activity, .link-tag, .hero-meta { display: none !important; }
       article[hidden] { display: block !important; }
       .doc { max-width: none; padding: 0; }
       .hero { padding: 0 0 8pt; }
@@ -624,7 +622,7 @@
       a, .md-link .link-title { color: #000; }
       .connect-links { line-height: 1.6; font-size: 9pt; }
       .connect-links a::after { color: #555; font-weight: 400; }
-      .md-h1::before, .md-h2::before, .md-h3::before, .git-log::before, .current-tag, .bracket, .hero-badges .badge:not(.badge-accent) { display: none !important; }
+      .md-h1::before, .md-h2::before, .md-h3::before, .git-log::before, .current-tag, .hero-badges .badge:not(.badge-accent) { display: none !important; }
       .md-list li::before { content: '–'; top: 3pt; color: #555; }
       .git-log .meta { display: inline; }
       .git-log .meta::before { content: " · "; }
@@ -665,8 +663,7 @@
       <li><a href="#connect">connect</a></li>
     </ul>
     <div class="nav-end">
-      <button type="button" class="nav-btn js-only hide-mobile" data-action="source" aria-pressed="false">source</button>
-      <button type="button" class="nav-btn js-only" data-action="palette" aria-label="Open command menu"><span class="hide-mobile">⌘K</span><span class="show-mobile">menu</span></button>
+      <button type="button" class="nav-btn js-only" data-action="palette" aria-label="Search and commands" title="Search (⌘K / Ctrl K)"><span class="hide-mobile">Search</span><span class="show-mobile">menu</span></button>
       <button type="button" class="nav-btn js-only" data-action="theme" aria-label="Toggle dark mode">◐</button>
       <!--email_off--><a class="nav-mail" href="mailto:hi@genedai.me">hi@genedai.me</a><!--/email_off-->
     </div>
@@ -679,12 +676,7 @@
     <!-- ── Hero ───────────────────────────────────── -->
     <section class="hero" aria-label="Introduction">
       <div class="hero-top">
-        <pre class="frontmatter" aria-label="Profile metadata"><span class="fm-fence">---</span>
-<span class="fm-key">role</span>: Co-Founder &amp; CPO @ Metix AI
-<span class="fm-key">location</span>: California
-<span class="fm-key">now</span>: Building HR tools and AI agents for hiring, at Metix AI and in the open
-<span class="fm-key">updated</span>: <time datetime="2026-10-31">2026-10-31</time>
-<span class="fm-fence">---</span></pre>
+        <p class="hero-meta"><span class="hm-label">Now</span> Building HR tools and AI agents for hiring, at Metix AI and in the open<br>California · Updated <time datetime="2026-10-31">2026-10-31</time></p>
         <img class="avatar" src="/avatar.jpg" width="72" height="72" alt="Gene Dai" />
       </div>
       <h1 class="md-h1">Gene Dai</h1>
@@ -700,9 +692,9 @@
     <!-- ── About ──────────────────────────────────── -->
     <section class="section" id="about">
       <h2 class="md-h2">About</h2>
-      <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI-native hiring platform that reached <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">#1 on Product Hunt</a>. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>
+      <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI hiring platform that reached <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">#1 on Product Hunt</a>. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>
       <ul class="md-list">
-        <li><span class="title">AI-Native Hiring</span> <span class="desc">— Building Metix, an AI-native hiring platform: define a role and meet interview-ready candidates within 24 hours.</span></li>
+        <li><span class="title">AI-Native Hiring</span> <span class="desc">— Building Metix: define a role and meet interview-ready candidates within 24 hours.</span></li>
         <li><span class="title">Growth &amp; Platforms</span> <span class="desc">— User growth, community, and platform products for consumer apps in recruiting, education, and e-commerce.</span></li>
         <li><span class="title">Domain Expertise</span> <span class="desc">— Built products for all three sides of hiring (candidates, employers, and headhunters) at Kanzhun, BOSS Zhipin, and Liepin.</span></li>
         <li><span class="title">Builder &amp; Writer</span> <span class="desc">— Writing on AI, HRTech, and the people shaping the industry.</span></li>
@@ -717,7 +709,7 @@
       <ul class="md-list git-log">
         <li>
           <span class="title">Co-Founder &amp; CPO</span><span class="current-tag">current</span><br>
-          <span class="desc"><span class="ent" data-ent="metix" tabindex="0" role="button" aria-haspopup="dialog">Metix AI</span> — AI-native hiring platform</span>
+          <span class="desc"><span class="ent" data-ent="metix" tabindex="0" role="button" aria-haspopup="dialog">Metix AI</span> — AI hiring platform</span>
           <span class="meta">2025 – Present</span>
         </li>
         <li>
@@ -765,38 +757,38 @@
       <p class="ent-hint"><span class="hint-hover">Hover a project for a quick look; click to visit.</span><span class="hint-tap">Tap a project for a quick look; tap again to visit.</span></p>
       <div class="md-links">
         <a href="https://metix.ai" class="md-link featured" target="_blank" rel="noopener" data-ent="metix">
-          <span class="bracket">[</span><span class="link-title">Metix</span><span class="bracket">]</span><span class="link-url">(metix.ai)</span>
-          <span class="link-desc">AI-native hiring platform. Define the role and meet interview-ready candidates: Metix AI reports 95% of roles get a first interview scheduled within 24 hours. <span class="activity">in production · since 2025</span></span>
+          <span class="link-title">Metix</span><span class="link-url">metix.ai</span>
+          <span class="link-desc">AI hiring platform. Define the role and meet interview-ready candidates: Metix AI reports 95% of roles get a first interview scheduled within 24 hours. <span class="activity">in production · since 2025</span></span>
           <span class="link-tag">AI Hiring</span>
         </a>
         <a href="https://raltic.com" class="md-link" target="_blank" rel="noopener" data-ent="raltic">
-          <span class="bracket">[</span><span class="link-title">Raltic</span><span class="bracket">]</span><span class="link-url">(raltic.com)</span>
-          <span class="link-desc">Agent workflow rooms for product teams. Brief a cloud or local agent, inspect the proof, approve the decision, keep the outcome searchable. Private beta. <span class="activity" data-repo="Digidai/raltic">updated 2026-09-13</span></span>
+          <span class="link-title">Raltic</span><span class="link-url">raltic.com</span>
+          <span class="link-desc">A shared workspace where product teams hand tasks to AI agents, review the results, and approve decisions. Private beta. <span class="activity" data-repo="Digidai/raltic">updated 2026-09-13</span></span>
           <span class="link-tag">AI Agents</span>
         </a>
         <a href="https://venturedex.co" class="md-link" target="_blank" rel="noopener" data-ent="venturedex">
-          <span class="bracket">[</span><span class="link-title">VentureDex</span><span class="bracket">]</span><span class="link-url">(venturedex.co)</span>
+          <span class="link-title">VentureDex</span><span class="link-url">venturedex.co</span>
           <span class="link-desc">Startup research on products, funding, and investors. 400+ company profiles across AI agents, developer tools, healthcare, and more. <span class="activity">live · weekly digest</span></span>
           <span class="link-tag">Research</span>
         </a>
         <a href="https://hireai.genedai.me" class="md-link" target="_blank" rel="noopener" data-ent="hireai">
-          <span class="bracket">[</span><span class="link-title">HireAI Directory</span><span class="bracket">]</span><span class="link-url">(hireai.genedai.me)</span>
-          <span class="link-desc">249 HR AI products across five technology eras, from 1990s ATS to 2024+ agentic platforms, with analysis pages and evaluation checklists. <span class="activity" data-repo="Digidai/HireAI">updated 2026-10-02</span></span>
+          <span class="link-title">HireAI Directory</span><span class="link-url">hireai.genedai.me</span>
+          <span class="link-desc">249 HR AI products across five technology eras, from 1990s applicant-tracking systems to today’s AI agents, with analysis pages and evaluation checklists. <span class="activity" data-repo="Digidai/HireAI">updated 2026-10-02</span></span>
           <span class="link-tag">Directory</span>
         </a>
         <a href="https://md.genedai.me" class="md-link" target="_blank" rel="noopener" data-ent="website2markdown">
-          <span class="bracket">[</span><span class="link-title">Website2Markdown</span><span class="bracket">]</span><span class="link-url">(md.genedai.me)</span>
-          <span class="link-desc">URL-to-Markdown converter on Cloudflare Workers. 16 platform adapters, 5-layer fallback, plus streaming, batch, extract, and deep-crawl APIs. <span class="activity" data-repo="Digidai/website2markdown">updated 2026-10-01</span></span>
+          <span class="link-title">Website2Markdown</span><span class="link-url">md.genedai.me</span>
+          <span class="link-desc">Turns any web page into clean text that AI tools can read. Free, with an API for developers. <span class="activity" data-repo="Digidai/website2markdown">updated 2026-10-01</span></span>
           <span class="link-tag">Dev Tool</span>
         </a>
         <a href="https://genedai.cv" class="md-link" target="_blank" rel="noopener" data-ent="moderncv">
-          <span class="bracket">[</span><span class="link-title">ModernCV</span><span class="bracket">]</span><span class="link-url">(genedai.cv)</span>
+          <span class="link-title">ModernCV</span><span class="link-url">genedai.cv</span>
           <span class="link-desc">Free AI resume builder with 28 templates and instant PDF export. <span class="activity" data-repo="Digidai/modern-ai-resume-builder">updated 2026-10-31</span></span>
           <span class="link-tag">Resume</span>
         </a>
         <a href="https://recruit.genedai.me" class="md-link" target="_blank" rel="noopener" data-ent="recruit">
-          <span class="bracket">[</span><span class="link-title">Recruit Navigator</span><span class="bracket">]</span><span class="link-url">(recruit.genedai.me)</span>
-          <span class="link-desc">Recruitment and AI hiring tools map. 320 categories, 2,100+ resources. OSINT-framework-inspired. <span class="activity" data-repo="Digidai/recruit-ai-framework">updated 2026-10-26</span></span>
+          <span class="link-title">Recruit Navigator</span><span class="link-url">recruit.genedai.me</span>
+          <span class="link-desc">A map of recruiting and AI hiring tools: 320 categories, 2,100+ resources. <span class="activity" data-repo="Digidai/recruit-ai-framework">updated 2026-10-26</span></span>
           <span class="link-tag">Directory</span>
         </a>
       </div>
@@ -844,17 +836,17 @@
         <li><span class="title">Researching AI and work?</span> <span class="desc">— Start with the <a href="https://genedai.me/research/" target="_blank" rel="noopener">evidence registers</a> on genedai.me.</span></li>
       </ul>
       <div class="connect-links">
-        <span class="bracket">[</span><a href="https://x.com/genedai" target="_blank" rel="me noopener">@genedai</a><span class="bracket">]</span><span class="bracket">(x.com)</span>
-        &nbsp;&nbsp;
-        <span class="bracket">[</span><a href="https://github.com/Digidai" target="_blank" rel="me noopener">GitHub</a><span class="bracket">]</span><span class="bracket">(Digidai)</span>
-        &nbsp;&nbsp;
-        <span class="bracket">[</span><a href="https://linkedin.com/in/genedai" target="_blank" rel="me noopener">LinkedIn</a><span class="bracket">]</span><span class="bracket">(genedai)</span>
-        <br>
-        <span class="bracket">[</span><a href="https://genedai.medium.com" target="_blank" rel="me noopener">Medium</a><span class="bracket">]</span><span class="bracket">(genedai)</span>
-        &nbsp;&nbsp;
-        <span class="bracket">[</span><a href="https://genedai.substack.com" target="_blank" rel="me noopener">Substack</a><span class="bracket">]</span><span class="bracket">(genedai)</span>
-        &nbsp;&nbsp;
-        <span class="bracket">[</span><a href="https://genedai.me" target="_blank" rel="me noopener">Blog</a><span class="bracket">]</span><span class="bracket">(genedai.me)</span>
+        <a href="https://x.com/genedai" target="_blank" rel="me noopener">@genedai</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://github.com/Digidai" target="_blank" rel="me noopener">GitHub</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://linkedin.com/in/genedai" target="_blank" rel="me noopener">LinkedIn</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://genedai.medium.com" target="_blank" rel="me noopener">Medium</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://genedai.substack.com" target="_blank" rel="me noopener">Substack</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://genedai.me" target="_blank" rel="me noopener">Blog</a>
       </div>
     </section>
 
