@@ -116,6 +116,7 @@
     ...[...d.querySelectorAll('.connect-links a')].map((a) => ({
       label: `Open ${text(a)}`, hint: new URL(a.href).hostname, run: () => open(a.href),
     })),
+    { label: 'Download CV (PDF)', hint: '/gene-dai-cv.pdf', keywords: 'resume cv pdf download', run: () => { location.href = '/gene-dai-cv.pdf'; } },
     { label: 'Copy email address', hint: 'hi@genedai.me', keywords: 'contact mail',
       run: () => navigator.clipboard?.writeText('hi@genedai.me').then(() => flash('Copied hi@genedai.me')) },
     { label: 'Send an email', hint: 'mailto', keywords: 'contact', run: () => { location.href = 'mailto:hi@genedai.me'; } },

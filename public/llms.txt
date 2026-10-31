@@ -10,6 +10,7 @@ Product viewpoint, in his words: "Conversation is an interaction model with stro
 
 - [Personal homepage](https://genedai.md/): Hub for projects, writing, and contact.
 - [Homepage as Markdown](https://genedai.md/genedai.md): The full homepage as a single Markdown file with YAML frontmatter. Also served at /llms-full.txt and /index.md.
+- [CV (PDF)](https://genedai.md/gene-dai-cv.pdf): One-page CV generated from the homepage.
 - [Blog](https://genedai.me): Long-form writing on AI, HRTech, and product strategy.
 - [Medium](https://genedai.medium.com): English articles on AI leaders, HRTech, and hiring.
 - [Substack](https://genedai.substack.com): Newsletter on AI agents and the future of hiring.

@@ -10,9 +10,9 @@
   <link rel="canonical" href="https://genedai.md/" />
 
   <!-- Favicon & Icons -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=2" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#f2f1ed" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#1a1915" media="(prefers-color-scheme: dark)" />
@@ -214,7 +214,7 @@
   <!-- GEO: LLM discoverability -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly content" />
   <link rel="alternate" type="text/markdown" href="/genedai.md" title="This page as Markdown" />
-  <script src="/app.js?v=23c813b1cb" defer></script>
+  <script src="/app.js?v=d4e91e1cb2" defer></script>
 
   <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
@@ -481,6 +481,7 @@
     .nav-btn:hover, .nav-btn[aria-pressed="true"] { color: var(--text-primary); background: var(--surface-300); }
 
     /* ── Hero meta ───────────────────────────────── */
+    .print-contact { display: none; }
     .hero-meta {
       font-size: 14px; line-height: 1.7;
       color: var(--text-secondary); margin: 0 0 28px;
@@ -629,9 +630,15 @@
       .section h2 { font-size: 11.5pt; margin-bottom: 1pt; }
       .md-list li, .md-link { padding-top: 1.5pt; padding-bottom: 1.5pt; font-size: 9pt; border-bottom: none; }
       .md-list .desc, .md-link .link-desc, .md-list .meta, .md-link .link-url { font-size: 8.5pt; line-height: 1.35; }
-      .md-link .link-desc { margin: 0 0 0 8pt; flex: 1; flex-basis: auto; order: 0; }
+      .md-link .link-desc { margin: 0 0 0 8pt; flex: 1 1 0; min-width: 0; order: 0; }
+      .md-link { flex-wrap: nowrap; }
+      .md-link .link-title, .md-link .link-url { white-space: nowrap; }
+      .md-link.featured { padding: 1.5pt 0; }
+      .md-link.featured .link-title { font-size: 9pt; }
       #journey .md-list li br { display: none; }
       #journey .md-list .desc::before { content: ' — '; }
+      .print-contact { display: block; font-size: 9pt; color: #333; margin: 0 0 4pt; }
+      .connect-links .sep { display: none; }
       .print-short { font-size: 0; }
       .print-short::after { content: attr(data-short); font-size: 8.5pt; }
       #journey > p, #connect > p { display: none; }
@@ -674,6 +681,7 @@
         <img class="avatar" src="/avatar.jpg" width="72" height="72" alt="Gene Dai" />
       </div>
       <h1 class="md-h1">Gene Dai</h1>
+      <!--email_off--><p class="print-contact">hi@genedai.me · genedai.md · linkedin.com/in/genedai · California</p><!--/email_off-->
       <p class="lead">I build hiring products. I led products for candidates, employers, and headhunters at <span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS Zhipin</span> and <span class="ent" data-ent="liepin" tabindex="0" role="button" aria-haspopup="dialog">Liepin</span>, and now co-found <a href="https://metix.ai" target="_blank" rel="noopener" data-ent="metix">Metix AI</a>, an <em>AI-native hiring platform</em>.</p>
       <div class="hero-badges">
         <span class="badge-group"><span class="badge">User Growth</span>
@@ -818,6 +826,7 @@
     <section class="section" id="connect">
       <h2 class="md-h2">Connect</h2>
       <ul class="md-list asks">
+        <li><span class="title">Need a CV?</span> <span class="desc">— <a href="/gene-dai-cv.pdf" download="Gene-Dai-CV.pdf">Download a one-page CV (PDF)</a>.</span></li>
         <li><span class="title">Hiring?</span> <span class="desc">— Try <a href="https://metix.ai" target="_blank" rel="noopener">Metix AI</a>: define the role and meet interview-ready candidates.</span></li>
         <li><span class="title">Building or backing HR tech?</span> <span class="desc">— Email <a href="mailto:hi@genedai.me">hi@genedai.me</a>. Founders, operators, and investors in AI hiring are welcome.</span></li>
         <li><span class="title">Researching AI and work?</span> <span class="desc">— Start with the <a href="https://genedai.me/research/" target="_blank" rel="noopener">research pages</a> on genedai.me.</span></li>

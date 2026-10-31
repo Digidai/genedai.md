@@ -75,6 +75,7 @@ Read on:
 
 ## Connect
 
+- **Need a CV?** [Download a one-page CV (PDF)](https://genedai.md/gene-dai-cv.pdf).
 - **Hiring?** Try [Metix AI](https://metix.ai): define the role and meet interview-ready candidates.
 - **Building or backing HR tech?** Email [hi@genedai.me](mailto:hi@genedai.me). Founders, operators, and investors in AI hiring are welcome.
 - **Researching AI and work?** Start with the [research pages](https://genedai.me/research/) on genedai.me.
