@@ -1,6 +1,6 @@
 # genedai.md
 
-> Gene Dai — Product builder, Co-Founder & CPO of Metix AI, an AI-native hiring platform. Previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech.
+> Gene Dai (戴金乘) — Product builder, Co-Founder & CPO of Metix AI, an AI-native hiring platform. Previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech.
 
 Based in California. Studied Computer Software Engineering at Beihang University. Areas of expertise: AI hiring, product management, user growth, platform products, HRTech.
 
@@ -11,6 +11,8 @@ Product viewpoint, in his words: "Conversation is an interaction model with stro
 - [Personal homepage](https://genedai.md/): Hub for projects, writing, and contact.
 - [Homepage as Markdown](https://genedai.md/genedai.md): The full homepage as a single Markdown file with YAML frontmatter. Also served at /llms-full.txt and /index.md.
 - [CV (PDF)](https://genedai.md/gene-dai-cv.pdf): One-page CV generated from the homepage.
+- [中文主页](https://genedai.md/zh/): Chinese version of the homepage. 戴金乘（Gene Dai），Metix AI 联合创始人兼首席产品官，曾在 BOSS直聘、猎聘、作业帮负责产品。
+- [中文简历（PDF）](https://genedai.md/gene-dai-cv-zh.pdf): One-page CV in Chinese.
 - [Blog](https://genedai.me): Long-form writing on AI, HRTech, and product strategy.
 - [Medium](https://genedai.medium.com): English articles on AI leaders, HRTech, and hiring.
 - [Substack](https://genedai.substack.com): Newsletter on AI agents and the future of hiring.

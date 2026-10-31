@@ -1,4 +1,4 @@
-// Text for each hover card. Keys match data-ent="…" in public/index.html and a figure in figs/.
+// Text for each hover card; `zh` holds the Chinese page's text (public/zh/). Keys match data-ent="…" in public/index.html and a figure in figs/.
 // Only link official sites that resolve; leave links empty when unsure.
 export default {
   metix: {
@@ -6,89 +6,104 @@ export default {
     desc: "AI-native hiring platform. Define the role and meet interview-ready candidates within 24 hours; pay only for the ones worth meeting.",
     links: [["metix.ai", "https://metix.ai"]],
     hint: "Brief to interview",
+    zh: {"name": "Metix AI", "meta": "2025 – 至今", "desc": "AI 原生招聘平台。定义岗位，24 小时内见到可以面试的候选人；只为值得见的人付费。", "hint": "从需求到面试"},
   },
   bosszhipin: {
     name: "BOSS Zhipin", meta: "BZ · 2076.HK", kind: "Company",
     desc: "China's leading mobile recruiting platform, built on job seekers chatting directly with the hiring boss.",
     links: [["zhipin.com", "https://www.zhipin.com"]],
     hint: "Direct chat",
+    zh: {"name": "BOSS直聘", "meta": "BZ · 2076.HK", "desc": "中国领先的移动招聘平台，核心是求职者直接和招聘的老板聊。", "hint": "直聊"},
   },
   kanzhun: {
     name: "Kanzhun.com", meta: "Kanzhun Ltd", kind: "Product",
     desc: "Company reviews, salaries and interview reports from employees: the original product of Kanzhun, the company behind BOSS Zhipin.",
     links: [["kanzhun.com", "https://www.kanzhun.com"]],
     hint: "Reviews & salaries",
+    zh: {"name": "看准网", "meta": "看准科技", "desc": "员工发布的公司点评、薪资和面试经验；BOSS直聘母公司看准科技最早的产品。", "hint": "点评与薪资"},
   },
   liepin: {
     name: "Liepin", meta: "6100.HK", kind: "Company",
     desc: "Recruitment platform for mid-to-senior professionals, connecting companies, headhunters and candidates.",
     links: [["liepin.com", "https://www.liepin.com"]],
     hint: "Headhunter's scope",
+    zh: {"name": "猎聘", "meta": "6100.HK", "desc": "面向中高端人才的招聘平台，连接企业、猎头和候选人。", "hint": "猎头视角"},
   },
   zuoyebang: {
     name: "Zuoyebang", meta: "K12 education", kind: "Company",
     desc: "China's largest K12 online education platform: photograph a homework question and get a step-by-step solution.",
     links: [["zuoyebang.com", "https://www.zuoyebang.com"]],
     hint: "Photo search",
+    zh: {"name": "作业帮", "meta": "K12 教育", "desc": "中国最大的 K12 在线教育平台：拍下作业题，得到分步讲解。", "hint": "拍照搜题"},
   },
   zhidemai: {
     name: "Zhidemai Tech", meta: "300785.SZ", kind: "Company",
     desc: "Runs SMZDM (什么值得买, “what's worth buying”), a consumer content and shopping-deals community.",
     links: [["smzdm.com", "https://www.smzdm.com"]],
     hint: "Worth-it votes",
+    zh: {"name": "值得买科技", "meta": "300785.SZ", "desc": "运营「什么值得买」，一个消费内容和优惠好价社区。", "hint": "值不值投票"},
   },
   dora: {
     name: "Dora Tech", meta: "Sequoia Capital China backed", kind: "Company",
     desc: "Shared self-service printers: send a document from your phone and pick up the print at a nearby machine. Gene was Senior Product Manager.",
     links: [],
     hint: "Shared printer",
+    zh: {"name": "多拉打印", "meta": "红杉中国投资", "desc": "自助共享打印：手机发送文件，到附近的打印机取件。戴金乘曾任高级产品经理 / 产品负责人。", "hint": "共享打印机"},
   },
   feel: {
     name: "Feel", meta: "ZhenFund backed", kind: "Company",
     desc: "Health and fitness app Gene co-founded and ran as Chief Product Officer.",
     links: [],
     hint: "Habit check-in",
+    zh: {"name": "Feel", "meta": "真格基金投资", "desc": "健身运动 App，戴金乘是公司合伙人，担任产品负责人。", "hint": "打卡习惯"},
   },
   beihang: {
     name: "Beihang University", meta: "Beijing", kind: "Education",
     desc: "Beijing University of Aeronautics and Astronautics. Gene studied Computer Software Engineering.",
     links: [["buaa.edu.cn", "https://www.buaa.edu.cn"]],
     hint: "Thrust stand",
+    zh: {"name": "北京航空航天大学", "meta": "北京", "desc": "北京航空航天大学（北航）。戴金乘在这里攻读移动云计算硕士。", "hint": "推力试车台"},
   },
   raltic: {
     name: "Raltic", meta: "Private beta", kind: "Project",
     desc: "A shared workspace where product teams hand tasks to AI agents, review the results, and approve decisions.",
     links: [["raltic.com", "https://raltic.com"]],
     hint: "Agent workflow",
+    zh: {"name": "Raltic", "meta": "内测中", "desc": "产品团队的协作空间：把任务交给 AI 智能体，审阅结果，审批决策。", "hint": "智能体工作流"},
   },
   venturedex: {
     name: "VentureDex", meta: "400+ profiles", kind: "Project",
     desc: "Startup research on products, funding and investors, across AI agents, developer tools, healthcare and more.",
     links: [["venturedex.co", "https://venturedex.co"]],
     hint: "Funding index",
+    zh: {"name": "VentureDex", "meta": "400+ 公司档案", "desc": "创业公司研究：产品、融资和投资人，覆盖 AI 智能体、开发者工具、医疗健康等领域。", "hint": "融资索引"},
   },
   hireai: {
     name: "HireAI Directory", meta: "249 products", kind: "Project",
     desc: "HR AI products across five technology eras, from 1990s applicant-tracking systems to AI agents, with analysis pages and checklists.",
     links: [["hireai.genedai.me", "https://hireai.genedai.me"], ["GitHub", "https://github.com/Digidai/HireAI"]],
     hint: "Five eras",
+    zh: {"name": "HireAI Directory", "meta": "249 款产品", "desc": "横跨五个技术时代的 HR AI 产品，从 1990 年代的招聘管理系统到 AI 智能体，附分析页面和清单。", "hint": "五个时代"},
   },
   website2markdown: {
     name: "Website2Markdown", meta: "Web to text", kind: "Project",
     desc: "Turns any web page into clean text that AI tools can read. Free, with an API for developers.",
     links: [["md.genedai.me", "https://md.genedai.me"], ["GitHub", "https://github.com/Digidai/website2markdown"]],
     hint: "Page to Markdown",
+    zh: {"name": "Website2Markdown", "meta": "网页转文本", "desc": "把任何网页转成 AI 工具能读的干净文本。免费，并为开发者提供 API。", "hint": "网页转 Markdown"},
   },
   moderncv: {
     name: "ModernCV", meta: "28 templates", kind: "Project",
     desc: "Free AI resume builder with instant PDF export.",
     links: [["genedai.cv", "https://genedai.cv"], ["GitHub", "https://github.com/Digidai/modern-ai-resume-builder"]],
     hint: "Template press",
+    zh: {"name": "ModernCV", "meta": "28 套模板", "desc": "免费的 AI 简历生成器，一键导出 PDF。", "hint": "模板印刷机"},
   },
   recruit: {
     name: "Recruit Navigator", meta: "2,100+ resources", kind: "Project",
     desc: "A map of recruiting and AI hiring tools in 320 categories.",
     links: [["recruit.genedai.me", "https://recruit.genedai.me"], ["GitHub", "https://github.com/Digidai/recruit-ai-framework"]],
     hint: "Chart table",
+    zh: {"name": "Recruit Navigator", "meta": "2,100+ 资源", "desc": "招聘和 AI 招聘工具地图，共 320 个分类。", "hint": "海图桌"},
   },
 };

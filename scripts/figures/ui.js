@@ -21,8 +21,12 @@ const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, 
 const FIGS = {};
 const fetchFig = (id) => (FIGS[id] ||= fetch(`/figs/${id}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null));
 
+// The Chinese page (lang="zh-CN") shows each card's `zh` text.
+const ZH = document.documentElement.lang.startsWith('zh');
+const KIND_ZH = { Company: '公司', Product: '产品', Education: '教育', Project: '项目' };
+
 function render(id) {
-  const e = ENTS[id];
+  const e = ZH ? { ...ENTS[id], ...ENTS[id].zh, kind: KIND_ZH[ENTS[id].kind], fig: ENTS[id].fig.replace('Fig', '图') } : ENTS[id];
   const links = (e.links || []).map(([text, href]) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(text)} <span aria-hidden="true">↗</span></a>`).join('');
   card.innerHTML =
     `<div class="ent-plate"><span class="ent-corner" data-c="fig">${esc(e.fig)}</span><span class="ent-corner" data-c="kind">${esc(e.kind)}</span><div class="ent-stage"></div><span class="ent-corner" data-c="hint">${esc(e.hint)}</span></div>` +

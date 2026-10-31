@@ -8,6 +8,9 @@
   <meta name="author" content="Gene Dai" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
   <link rel="canonical" href="https://genedai.md/" />
+  <link rel="alternate" hreflang="en" href="https://genedai.md/" />
+  <link rel="alternate" hreflang="zh-CN" href="https://genedai.md/zh/" />
+  <link rel="alternate" hreflang="x-default" href="https://genedai.md/" />
 
   <!-- Favicon & Icons -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
@@ -72,6 +75,7 @@
     "mainEntity": {
       "@type": "Person",
       "name": "Gene Dai",
+      "alternateName": "戴金乘",
       "url": "https://genedai.md/",
       "description": "Gene Dai is a product builder and Co-Founder & CPO of Metix AI, an AI-native hiring platform that reached #1 on Product Hunt. He previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech across recruiting, education, and e-commerce.",
       "jobTitle": "Co-Founder & CPO",
@@ -214,7 +218,7 @@
   <!-- GEO: LLM discoverability -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly content" />
   <link rel="alternate" type="text/markdown" href="/genedai.md" title="This page as Markdown" />
-  <script src="/app.js?v=d4e91e1cb2" defer></script>
+  <script src="/app.js?v=bef26c4b81" defer></script>
 
   <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
@@ -279,13 +283,13 @@
     .nav-links { display: flex; gap: 20px; list-style: none; }
     .nav-links a { color: var(--text-secondary); font-family: var(--font-sans); font-size: 14px; }
     .nav-links a:hover { color: var(--accent); }
-    .nav-end a {
+    .nav-end .nav-mail {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 6px 14px; font-size: 12px; font-weight: 500;
       border-radius: 6px; background: var(--dark); color: var(--cream);
       font-family: var(--font-mono); transition: background 0.15s;
     }
-    .nav-end a:hover { background: var(--dark-hover); color: var(--cream); }
+    .nav-end .nav-mail:hover { background: var(--dark-hover); color: var(--cream); }
 
     /* ── Document container ─────────────────────────── */
     .doc {
@@ -478,6 +482,7 @@
       color: var(--text-secondary); background: transparent; cursor: pointer;
       border: 1px solid var(--border-medium); border-radius: 6px; transition: all 0.15s;
     }
+    .nav-lang { display: inline-flex; align-items: center; text-decoration: none; }
     .nav-btn:hover, .nav-btn[aria-pressed="true"] { color: var(--text-primary); background: var(--surface-300); }
 
     /* ── Hero meta ───────────────────────────────── */
@@ -664,6 +669,7 @@
       <li><a href="#connect">Connect</a></li>
     </ul>
     <div class="nav-end">
+      <a class="nav-btn nav-lang" href="/zh/" hreflang="zh-CN" lang="zh-CN" title="中文版">中文</a>
       <button type="button" class="nav-btn js-only" data-action="palette" title="Search and commands (⌘K / Ctrl K)"><span class="hide-mobile">Search</span><span class="show-mobile">menu</span></button>
       <button type="button" class="nav-btn js-only" data-action="theme" aria-label="Toggle dark mode">◐</button>
       <!--email_off--><a class="nav-mail" href="mailto:hi@genedai.me">hi@genedai.me</a><!--/email_off-->

@@ -1,9 +1,11 @@
 ---
 name: Gene Dai
+name_zh: 戴金乘
 role: Co-Founder & CPO @ Metix AI
 location: California
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
+zh: https://genedai.md/zh/
 updated: 2026-10-31
 ---
 

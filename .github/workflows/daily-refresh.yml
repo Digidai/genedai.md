@@ -28,6 +28,8 @@ jobs:
       - name: Bump modified dates
         if: steps.diff.outputs.changed == 'true'
         run: node scripts/bump-modified.mjs
+      - name: Rebuild the Chinese page from index.html
+        run: node scripts/build-zh.mjs
       - name: Run verify
         run: node scripts/verify.mjs
       - name: Commit and push

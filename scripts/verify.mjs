@@ -29,6 +29,7 @@ const required = [
   'favicon.svg', 'favicon-32.png', 'apple-touch-icon.png',
   'icon-192.png', 'icon-512.png', 'og-image.png',
   'genedai.md', 'app.js', 'avatar.jpg', 'cards.js', 'gene-dai-cv.pdf',
+  'zh/index.html', 'gene-dai-cv-zh.pdf',
 ];
 for (const f of required) {
   if (!exists(resolve(PUB, f))) fail(`public/${f} missing`);
@@ -114,7 +115,7 @@ const modified = html.match(/"dateModified": "(\d{4}-\d{2}-\d{2})/)?.[1];
 const dates = {
   'index.html frontmatter': html.match(/<time datetime="(\d{4}-\d{2}-\d{2})"/)?.[1],
   'genedai.md frontmatter': md.match(/^---\n[\s\S]*?^updated: (\d{4}-\d{2}-\d{2})$[\s\S]*?^---$/m)?.[1],
-  'sitemap.xml lastmod': sitemap.match(/<lastmod>(\d{4}-\d{2}-\d{2})/)?.[1],
+  ...Object.fromEntries([...sitemap.matchAll(/<loc>([^<]+)<\/loc>\s*<lastmod>(\d{4}-\d{2}-\d{2})/g)].map(([, loc, d]) => [`sitemap.xml lastmod for ${loc}`, d])),
 };
 for (const [where, d] of Object.entries(dates)) {
   if (d !== modified) fail(`${where} is ${d}, but JSON-LD dateModified is ${modified}`);
@@ -170,6 +171,16 @@ const shortHash = (f) => createHash('sha256').update(readFileSync(resolve(PUB, f
 if (!readPub('app.js').includes(`/cards.js?v=${shortHash('cards.js')}'`)) fail('app.js imports a stale cards.js stamp (run node scripts/stamp-assets.mjs)');
 for (const page of ['index.html', '404.html']) {
   if (!readPub(page).includes(`/app.js?v=${shortHash('app.js')}"`)) fail(`${page} loads a stale app.js stamp (run node scripts/stamp-assets.mjs)`);
+}
+
+// 19. The Chinese page is generated from index.html (scripts/build-zh.mjs) and up to date
+{
+  const { buildZh } = await import('./build-zh.mjs');
+  let want = null;
+  try { want = buildZh(html); } catch (e) { fail(e.message); }
+  if (want !== null && readPub('zh/index.html') !== want) fail('public/zh/index.html is stale (run node scripts/build-zh.mjs)');
+  if (!/<loc>https:\/\/genedai\.md\/zh\/<\/loc>/.test(sitemap)) fail('sitemap.xml missing /zh/ <loc>');
+  if (!html.includes('hreflang="zh-CN" href="https://genedai.md/zh/"')) fail('index.html missing hreflang link to /zh/');
 }
 
 // Report

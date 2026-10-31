@@ -13,7 +13,7 @@ const PUB = resolve(import.meta.dirname, '..', 'public');
 const keyFile = readdirSync(PUB).find((f) => /^[0-9a-f]{32}\.txt$/.test(f));
 if (!keyFile) throw new Error('IndexNow key file public/<32 hex>.txt missing');
 const key = keyFile.slice(0, -4);
-const urls = ['/', '/genedai.md', '/llms.txt'].map((p) => `https://${HOST}${p}`);
+const urls = ['/', '/zh/', '/genedai.md', '/llms.txt'].map((p) => `https://${HOST}${p}`);
 
 // Wait for Cloudflare Pages to publish this commit's llms.txt (up to ~5 minutes).
 const expected = readFileSync(resolve(PUB, 'llms.txt'), 'utf8');

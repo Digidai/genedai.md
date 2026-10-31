@@ -11,6 +11,9 @@
   );
 
   const article = d.querySelector('article.doc');
+  // The Chinese page (/zh/) has lang="zh-CN"; t() picks its wording.
+  const zh = d.documentElement.lang.startsWith('zh');
+  const t = (en, cn) => (zh ? cn : en);
   const sourceButtons = d.querySelectorAll('[data-action="source"]');
 
   // ── Theme ──────────────────────────────────────────
@@ -100,43 +103,44 @@
 
   const commands = [
     ...[...d.querySelectorAll('section[id]')].map((s) => ({
-      label: `Go to ${text(s.querySelector('h2'))}`, hint: `#${s.id}`, run: () => goTo(s.id),
+      label: t(`Go to ${text(s.querySelector('h2'))}`, `前往「${text(s.querySelector('h2'))}」`), hint: `#${s.id}`, run: () => goTo(s.id),
     })),
     ...[...d.querySelectorAll('.md-link')].map((a) => ({
-      label: `Open ${text(a.querySelector('.link-title'))}`,
+      label: t(`Open ${text(a.querySelector('.link-title'))}`, `打开 ${text(a.querySelector('.link-title'))}`),
       hint: new URL(a.href).hostname,
       keywords: text(a.querySelector('.link-desc')),
       run: () => open(a.href),
     })),
     ...[...d.querySelectorAll('#journey [data-ent]')].map((el) => ({
-      label: `Show ${text(el)}`, hint: 'journey',
+      label: t(`Show ${text(el)}`, `查看 ${text(el)}`), hint: t('journey', '经历'),
       keywords: text(el.closest('li')),
       run: () => { el.scrollIntoView({ block: 'center' }); el.focus({ preventScroll: true }); el.click(); },
     })),
     ...[...d.querySelectorAll('.connect-links a')].map((a) => ({
-      label: `Open ${text(a)}`, hint: new URL(a.href).hostname, run: () => open(a.href),
+      label: t(`Open ${text(a)}`, `打开 ${text(a)}`), hint: new URL(a.href).hostname, run: () => open(a.href),
     })),
-    { label: 'Download CV (PDF)', hint: '/gene-dai-cv.pdf', keywords: 'resume cv pdf download', run: () => { location.href = '/gene-dai-cv.pdf'; } },
-    { label: 'Copy email address', hint: 'hi@genedai.me', keywords: 'contact mail',
-      run: () => navigator.clipboard?.writeText('hi@genedai.me').then(() => flash('Copied hi@genedai.me')) },
-    { label: 'Send an email', hint: 'mailto', keywords: 'contact', run: () => { location.href = 'mailto:hi@genedai.me'; } },
-    { label: 'Go to homepage', hint: '/', keywords: 'home cd', run: () => { location.href = '/'; } },
-    { label: 'Toggle dark mode', hint: 'theme', keywords: 'light dark color', run: toggleTheme },
-    ...(article ? [{ label: 'Toggle Markdown source view', hint: '?view=source', keywords: 'raw md code', run: () => setSource(!sourceOn()) }] : []),
-    { label: 'Open raw genedai.md', hint: '/genedai.md', keywords: 'markdown download', run: () => open('/genedai.md') },
-    { label: 'Open llms.txt', hint: '/llms.txt', keywords: 'ai agents llm', run: () => open('/llms.txt') },
+    { label: t('Download CV (PDF)', '下载简历（PDF）'), hint: t('/gene-dai-cv.pdf', '/gene-dai-cv-zh.pdf'), keywords: 'resume cv pdf download 简历', run: () => { location.href = t('/gene-dai-cv.pdf', '/gene-dai-cv-zh.pdf'); } },
+    { label: t('Copy email address', '复制邮箱地址'), hint: 'hi@genedai.me', keywords: 'contact mail 邮件', stay: true,
+      run: () => navigator.clipboard?.writeText('hi@genedai.me').then(() => flash(t('Copied hi@genedai.me', '已复制 hi@genedai.me'))) },
+    { label: t('Send an email', '发送邮件'), hint: 'mailto', keywords: 'contact 联系', run: () => { location.href = 'mailto:hi@genedai.me'; } },
+    { label: t('中文版', 'English version'), hint: t('/zh/', '/'), keywords: 'language chinese english zh en 语言', run: () => { location.href = t('/zh/', '/'); } },
+    { label: t('Go to homepage', '回到首页'), hint: t('/', '/zh/'), keywords: 'home cd 首页', run: () => { location.href = t('/', '/zh/'); } },
+    { label: t('Toggle dark mode', '切换深色模式'), hint: 'theme', keywords: 'light dark color 主题', run: toggleTheme },
+    ...(article && !zh ? [{ label: 'Toggle Markdown source view', hint: '?view=source', keywords: 'raw md code', run: () => setSource(!sourceOn()) }] : []),
+    { label: t('Open raw genedai.md', '打开 genedai.md（英文 Markdown）'), hint: '/genedai.md', keywords: 'markdown download', run: () => open('/genedai.md') },
+    { label: t('Open llms.txt', '打开 llms.txt'), hint: '/llms.txt', keywords: 'ai agents llm', run: () => open('/llms.txt') },
     ...(article ? [] : [{ label: 'Go to Projects', hint: '/#projects', run: () => { location.href = '/#projects'; } }]),
-    ...(article ? [{ label: 'Print as one-page CV', hint: '⌘P', keywords: 'resume pdf', run: () => { if (sourceOn()) setSource(false); setTimeout(() => window.print(), 50); } }] : []),
+    ...(article ? [{ label: t('Print as one-page CV', '打印一页简历'), hint: '⌘P', keywords: 'resume pdf 简历 打印', run: () => { if (sourceOn()) setSource(false); setTimeout(() => window.print(), 50); } }] : []),
   ];
 
   const dialog = d.createElement('dialog');
   dialog.className = 'palette';
-  dialog.setAttribute('aria-label', 'Command menu');
+  dialog.setAttribute('aria-label', t('Command menu', '命令菜单'));
   dialog.innerHTML = `
-    <input type="text" placeholder="Type a command or search…" aria-label="Search commands"
+    <input type="text" placeholder="${t('Type a command or search…', '输入命令或搜索…')}" aria-label="${t('Search commands', '搜索命令')}"
       role="combobox" aria-expanded="true" aria-controls="palette-list" autocomplete="off" spellcheck="false">
     <ul id="palette-list" role="listbox"></ul>
-    <div class="foot" aria-live="polite">${matchMedia('(hover: none)').matches ? 'Tap a command to run it' : '↑↓ navigate · ↵ run · esc close'}</div>`;
+    <div class="foot" aria-live="polite">${matchMedia('(hover: none)').matches ? t('Tap a command to run it', '点一下即可执行') : t('↑↓ navigate · ↵ run · esc close', '↑↓ 选择 · ↵ 执行 · esc 关闭')}</div>`;
   d.body.append(dialog);
   const input = dialog.querySelector('input');
   const list = dialog.querySelector('ul');
@@ -168,7 +172,7 @@
     active = Math.min(active, Math.max(shown.length - 1, 0));
     list.innerHTML = shown.length
       ? shown.map((c, i) => `<li id="cmd-${i}" role="option" aria-selected="${i === active}"><span>${esc(c.label)}</span><span class="hint">${esc(c.hint)}</span></li>`).join('')
-      : '<li class="empty" role="option" aria-disabled="true">No matching command</li>';
+      : `<li class="empty" role="option" aria-disabled="true">${t('No matching command', '没有匹配的命令')}</li>`;
     input.setAttribute('aria-activedescendant', shown.length ? `cmd-${active}` : '');
     list.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'nearest' });
   }
@@ -176,7 +180,7 @@
   function run(i) {
     const cmd = shown[i];
     if (!cmd) return;
-    if (!cmd.label.startsWith('Copy')) dialog.close();
+    if (!cmd.stay) dialog.close();
     cmd.run();
   }
 
@@ -218,7 +222,7 @@
     if (cards === true) return;
     // On touch screens the first tap on a linked name opens its card instead of leaving the page.
     if (e.type === 'click' && !el.matches('[role="button"]') && matchMedia('(hover: none)').matches) e.preventDefault();
-    (cards ||= import('/cards.js?v=217df89336')).then((m) => { m.start(el, e.type); cards = true; });
+    (cards ||= import('/cards.js?v=b0e70eac8c')).then((m) => { m.start(el, e.type); cards = true; });
   };
   ['pointerover', 'focusin', 'click'].forEach((t) => d.addEventListener(t, wake, { passive: t !== 'click' }));
 
