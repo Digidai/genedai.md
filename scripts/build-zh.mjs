@@ -23,6 +23,9 @@ const TEXT = [
   ['<meta property="og:description" content="Co-Founder &amp; CPO of Metix AI, an AI-native hiring platform. Previously led products at BOSS Zhipin, Liepin, and Zuoyebang." />', '<meta property="og:description" content="AI 原生招聘平台 Metix AI 联合创始人兼首席产品官，曾在 BOSS直聘、猎聘、作业帮负责产品。" />'],
   ['<meta property="og:url" content="https://genedai.md/" />', '<meta property="og:url" content="https://genedai.md/zh/" />'],
   ['<meta property="og:locale" content="en_US" />', '<meta property="og:locale" content="zh_CN" />\n  <meta property="og:locale:alternate" content="en_US" />'],
+  ['https://genedai.md/og-image.png?v=2', 'https://genedai.md/og-image-zh.png?v=1'],
+  ['<meta property="og:image:alt" content="Gene Dai — Co-Founder &amp; CPO, Metix AI. Previously BOSS Zhipin, Liepin, Zuoyebang." />', '<meta property="og:image:alt" content="戴金乘 Gene Dai，Metix AI 联合创始人兼首席产品官，曾任职 BOSS直聘、猎聘、作业帮。" />'],
+  ['<meta name="twitter:image:alt" content="Gene Dai — Product Builder" />', '<meta name="twitter:image:alt" content="戴金乘 Gene Dai — 招聘产品人" />'],
   ['<meta name="twitter:title" content="Gene Dai — Product Builder" />', '<meta name="twitter:title" content="戴金乘 Gene Dai — 招聘产品人" />'],
   ['<meta name="twitter:description" content="Co-Founder &amp; CPO of Metix AI, an AI-native hiring platform." />', '<meta name="twitter:description" content="AI 原生招聘平台 Metix AI 联合创始人兼首席产品官。" />'],
   ['    "url": "https://genedai.md/",\n    "name": "Gene Dai — Product Builder",\n    "description": "Personal homepage of Gene Dai, Co-Founder & CPO of Metix AI.",', '    "url": "https://genedai.md/zh/",\n    "name": "戴金乘 Gene Dai — 招聘产品人",\n    "description": "戴金乘（Gene Dai）的个人主页，Metix AI 联合创始人兼首席产品官。",'],
@@ -132,6 +135,8 @@ const TEXT = [
   ['<li><span class="title">Building or backing HR tech?</span> <span class="desc">— Email <a href="mailto:hi@genedai.me">hi@genedai.me</a>. Founders, operators, and investors in AI hiring are welcome.</span></li>', '<li><span class="title">在做或在投 HR 科技？</span> <span class="desc">— 发邮件到 <a href="mailto:hi@genedai.me">hi@genedai.me</a>。欢迎 AI 招聘领域的创业者、从业者和投资人。</span></li>'],
   ['<li><span class="title">Researching AI and work?</span> <span class="desc">— Start with the <a href="https://genedai.me/research/" target="_blank" rel="noopener">research pages</a> on genedai.me.</span></li>', '<li><span class="title">在研究 AI 与工作？</span> <span class="desc">— 可以从 genedai.me 的<a href="https://genedai.me/research/" target="_blank" rel="noopener">研究页面</a>开始。</span></li>'],
   ['rel="me noopener">Blog</a>', 'rel="me noopener">博客</a>'],
+  // Chinese visitors get their own channels first.
+  ['<div class="connect-links">\n        <a href="https://x.com/genedai"', '<div class="connect-links">\n        <a href="https://www.zhihu.com/people/digidai" target="_blank" rel="me noopener">知乎</a>\n        <span class="sep" aria-hidden="true">·</span>\n        <a href="https://web.okjike.com/u/633AAA79-CA7E-42E6-ACEA-6833F255F6E6" target="_blank" rel="me noopener">即刻</a>\n        <span class="sep" aria-hidden="true">·</span>\n        <a href="https://www.xiaohongshu.com/user/profile/53db4339b4c4d61da5f00b34" target="_blank" rel="me noopener">小红书</a>\n        <span class="sep" aria-hidden="true">·</span>\n        <a href="https://x.com/genedai"'],
 
   // ── Footer
   ['<p>genedai.md &middot; California &middot; Building with intent</p>', '<p>genedai.md &middot; 美国加州 &middot; 用心构建</p>'],

@@ -16,6 +16,24 @@
   const t = (en, cn) => (zh ? cn : en);
   const sourceButtons = d.querySelectorAll('[data-action="source"]');
 
+  // ── Chinese-version hint ───────────────────────────
+  // Readers whose browser prefers Chinese get a small note pointing to /zh/.
+  // No redirect; closing it is remembered.
+  try {
+    if (!zh && localStorage.getItem('zh-hint') !== 'off' &&
+        (navigator.languages || [navigator.language]).some((l) => /^zh/i.test(l))) {
+      const bar = d.createElement('aside');
+      bar.className = 'zh-hint';
+      bar.lang = 'zh-CN';
+      bar.setAttribute('aria-label', '中文版提示');
+      bar.innerHTML = '<a href="/zh/" hreflang="zh-CN">本页有中文版 →</a><button type="button" aria-label="关闭">×</button>';
+      const off = () => { try { localStorage.setItem('zh-hint', 'off'); } catch {} bar.remove(); };
+      bar.querySelector('a').addEventListener('click', off);
+      bar.querySelector('button').addEventListener('click', off);
+      d.body.append(bar);
+    }
+  } catch {}
+
   // ── Theme ──────────────────────────────────────────
   // The inline <head> script applies a saved choice before first paint.
   const darkNow = () => d.documentElement.dataset.theme

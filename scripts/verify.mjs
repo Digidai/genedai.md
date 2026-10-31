@@ -27,7 +27,7 @@ const required = [
   'index.html', '404.html', '_headers', '_redirects',
   'robots.txt', 'sitemap.xml', 'llms.txt', 'site.webmanifest',
   'favicon.svg', 'favicon-32.png', 'apple-touch-icon.png',
-  'icon-192.png', 'icon-512.png', 'og-image.png',
+  'icon-192.png', 'icon-512.png', 'og-image.png', 'og-image-zh.png',
   'genedai.md', 'app.js', 'avatar.jpg', 'cards.js', 'gene-dai-cv.pdf',
   'zh/index.html', 'gene-dai-cv-zh.pdf',
 ];

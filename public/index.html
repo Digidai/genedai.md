@@ -107,7 +107,10 @@
         "https://linkedin.com/in/genedai",
         "https://genedai.medium.com",
         "https://genedai.substack.com",
-        "https://genedai.me"
+        "https://genedai.me",
+        "https://www.zhihu.com/people/digidai",
+        "https://web.okjike.com/u/633AAA79-CA7E-42E6-ACEA-6833F255F6E6",
+        "https://www.xiaohongshu.com/user/profile/53db4339b4c4d61da5f00b34"
       ]
     },
     "speakable": {
@@ -218,7 +221,7 @@
   <!-- GEO: LLM discoverability -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly content" />
   <link rel="alternate" type="text/markdown" href="/genedai.md" title="This page as Markdown" />
-  <script src="/app.js?v=bef26c4b81" defer></script>
+  <script src="/app.js?v=236bdcb7be" defer></script>
 
   <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
@@ -599,13 +602,26 @@
     @media (max-width: 480px) {
       .md-link .link-tag { display: none; }
     }
+    /* Fixed, so showing it after load shifts nothing. */
+    .zh-hint {
+      position: fixed; z-index: 40; right: 16px; bottom: 16px;
+      display: flex; align-items: center; gap: 4px;
+      padding: 6px 6px 6px 14px; border-radius: 999px;
+      background: var(--white); border: 1px solid var(--border-medium); box-shadow: var(--shadow-card);
+      font: 14px/1.4 var(--font-sans);
+    }
+    .zh-hint button {
+      width: 32px; height: 32px; border: 0; border-radius: 50%; background: none;
+      color: var(--text-tertiary); font-size: 18px; cursor: pointer;
+    }
+    .zh-hint button:hover { color: var(--text-primary); background: var(--surface-300); }
     /* ── Print: one-page CV ─────────────────────────── */
     @media print {
       @page { margin: 11mm 14mm; }
       :root { color-scheme: light !important; }
       .hero-top { display: none !important; }
       body { background: #fff; color: #000; font-size: 10pt; line-height: 1.45; }
-      header, footer, .palette, .source-view, .asks, .ent-hint, #writing, .activity, .link-tag, .hero-meta, .viewpoint { display: none !important; }
+      header, footer, .zh-hint, .palette, .source-view, .asks, .ent-hint, #writing, .activity, .link-tag, .hero-meta, .viewpoint { display: none !important; }
       article[hidden] { display: block !important; }
       .doc { max-width: none; padding: 0; }
       .hero { padding: 0 0 8pt; }

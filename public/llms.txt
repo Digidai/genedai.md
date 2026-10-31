@@ -16,6 +16,7 @@ Product viewpoint, in his words: "Conversation is an interaction model with stro
 - [Blog](https://genedai.me): Long-form writing on AI, HRTech, and product strategy.
 - [Medium](https://genedai.medium.com): English articles on AI leaders, HRTech, and hiring.
 - [Substack](https://genedai.substack.com): Newsletter on AI agents and the future of hiring.
+- Chinese channels: [Zhihu 知乎](https://www.zhihu.com/people/digidai), [Jike 即刻](https://web.okjike.com/u/633AAA79-CA7E-42E6-ACEA-6833F255F6E6), [Xiaohongshu 小红书](https://www.xiaohongshu.com/user/profile/53db4339b4c4d61da5f00b34).
 
 ## Projects
 
