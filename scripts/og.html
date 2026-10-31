@@ -18,37 +18,25 @@
     background: #f2f1ed; color: #26251e; font-family: 'Inter', sans-serif;
     padding: 64px 80px; display: flex; flex-direction: column; position: relative;
   }
-  .bar {
-    position: absolute; top: 0; left: 0; right: 0; height: 52px;
-    border-bottom: 1px solid rgba(38,37,30,0.1);
-    display: flex; align-items: center; padding: 0 80px;
-    font: 18px 'JetBrains Mono', monospace; color: rgba(38,37,30,0.68);
-  }
-  .bar b { color: #26251e; font-weight: 500; }
-  .top { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 44px; }
-  pre { font: 21px/1.65 'JetBrains Mono', monospace; color: rgba(38,37,30,0.75); }
-  .k { color: #17704f; }
-  .f { color: rgba(38,37,30,0.5); }
+  .top { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 8px; }
+  .meta { font-size: 24px; line-height: 1.6; color: rgba(38,37,30,0.72); }
+  .meta strong { display: block; font-weight: 600; color: #26251e; font-size: 26px; }
   img { width: 132px; height: 132px; border-radius: 50%; border: 1px solid rgba(38,37,30,0.2); }
-  h1 { font-size: 88px; font-weight: 400; letter-spacing: -2.5px; margin-top: 26px; line-height: 1; }
-  h1 span { font: 400 64px 'JetBrains Mono', monospace; color: rgba(38,37,30,0.35); margin-right: 22px; vertical-align: 6px; }
-  p { font: 28px/1.4 'Source Serif 4', serif; color: rgba(38,37,30,0.75); margin-top: 22px; }
-  .foot { position: absolute; left: 80px; right: 80px; bottom: 52px; display: flex; justify-content: space-between; font: 19px 'JetBrains Mono', monospace; color: rgba(38,37,30,0.68); border-top: 1px solid rgba(38,37,30,0.1); padding-top: 22px; }
+  h1 { font-size: 92px; font-weight: 400; letter-spacing: -2.5px; margin-top: 34px; line-height: 1; }
+  h1 span { font: 400 64px 'JetBrains Mono', monospace; color: rgba(38,37,30,0.35); margin-right: 22px; vertical-align: 8px; }
+  p { font: 30px/1.4 'Source Serif 4', serif; color: rgba(38,37,30,0.78); margin-top: 24px; max-width: 980px; }
   p b { font-weight: 400; color: #bd3f00; border-bottom: 2px solid #bd3f00; }
+  .foot { position: absolute; left: 80px; right: 80px; bottom: 52px; display: flex; justify-content: space-between; font-size: 22px; color: rgba(38,37,30,0.68); border-top: 1px solid rgba(38,37,30,0.1); padding-top: 22px; }
+  .foot b { font-weight: 600; color: #26251e; }
 </style>
 </head>
 <body>
-  <div class="bar">~/<b>genedai.md</b></div>
   <div class="top">
-    <pre><span class="f">---</span>
-<span class="k">role</span>: Co-Founder &amp; CPO @ Metix AI
-<span class="k">prev</span>: BOSS Zhipin · Liepin · Zuoyebang
-<span class="k">location</span>: California
-<span class="f">---</span></pre>
+    <div class="meta"><strong>Co-Founder &amp; CPO, Metix AI</strong>Previously BOSS Zhipin · Liepin · Zuoyebang<br>California</div>
     <img src="../public/avatar.jpg" alt="">
   </div>
   <h1><span>#</span>Gene Dai</h1>
-  <p>Product builder, co-founding <b>Metix AI</b>, an AI-native hiring platform.</p>
-  <div class="foot"><span>AI hiring · product · HRTech</span><span>x.com/genedai · hi@genedai.me</span></div>
+  <p>I build hiring products. Now co-founding <b>Metix AI</b>, an AI-native hiring platform.</p>
+  <div class="foot"><b>genedai.md</b><span>hi@genedai.me</span></div>
 </body>
 </html>
