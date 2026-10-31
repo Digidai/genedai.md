@@ -28,8 +28,8 @@ From Beijing to California.
 - **Head of Product Management**, Zuoyebang (2024 – 2025): China's largest K12 online education platform
 - **Head of Product**, Liepin (6100.HK) (2022 – 2024): Executive recruitment platform
 - **Product Director**, Zhidemai Tech (300785.SZ) (2021 – 2022): Consumer content & commerce platform
-- **Head of Product, incl. Kanzhun.com**, BOSS Zhipin (BZ/2076.HK) (2018 – 2020): China's leading mobile recruiting platform
-- **Senior Product Manager**, Dora Tech (2017 – 2018): Sequoia Capital China backed
+- **Head of Product (also led Kanzhun.com)**, BOSS Zhipin (BZ/2076.HK) (2018 – 2020): China's leading mobile recruiting platform
+- **Senior Product Manager**, Dora Tech (2017 – 2018): Self-service shared printing (Sequoia Capital China backed)
 - **Co-founder & Chief Product Officer**, Feel (2014 – 2017): Health & fitness app (ZhenFund backed)
 - **Beihang University** (2013): Computer Software Engineering
 

@@ -91,7 +91,7 @@
         { "@type": "EmployeeRole", "roleName": "Head of Product Management", "startDate": "2024", "endDate": "2025", "alumniOf": { "@type": "Organization", "name": "Zuoyebang", "url": "https://www.zuoyebang.com" } },
         { "@type": "EmployeeRole", "roleName": "Head of Product", "startDate": "2022", "endDate": "2024", "alumniOf": { "@type": "Organization", "name": "Liepin", "url": "https://www.liepin.com" } },
         { "@type": "EmployeeRole", "roleName": "Product Director", "startDate": "2021", "endDate": "2022", "alumniOf": { "@type": "Organization", "name": "Zhidemai Tech", "url": "https://www.smzdm.com" } },
-        { "@type": "EmployeeRole", "roleName": "Head of Product, incl. Kanzhun.com", "startDate": "2018", "endDate": "2020", "alumniOf": { "@type": "Organization", "name": "BOSS Zhipin", "url": "https://www.zhipin.com" } },
+        { "@type": "EmployeeRole", "roleName": "Head of Product (also led Kanzhun.com)", "startDate": "2018", "endDate": "2020", "alumniOf": { "@type": "Organization", "name": "BOSS Zhipin", "url": "https://www.zhipin.com" } },
         { "@type": "EmployeeRole", "roleName": "Senior Product Manager", "startDate": "2017", "endDate": "2018", "alumniOf": { "@type": "Organization", "name": "Dora Tech" } },
         { "@type": "EmployeeRole", "roleName": "Co-founder & Chief Product Officer", "startDate": "2014", "endDate": "2017", "alumniOf": { "@type": "Organization", "name": "Feel" } },
         { "@type": "Role", "startDate": "2013", "alumniOf": { "@type": "CollegeOrUniversity", "name": "Beihang University", "url": "https://www.buaa.edu.cn" } }
@@ -274,10 +274,10 @@
       border-bottom: 1px solid var(--border-default);
       font-family: var(--font-mono); font-size: 13px;
     }
-    .nav-path { color: var(--text-tertiary); }
-    .nav-path .file { color: var(--text-primary); font-weight: 500; }
+    .nav-path { color: var(--text-primary); font-family: var(--font-sans); font-size: 15px; font-weight: 600; }
+    .git-log .also { font-weight: 400; color: var(--text-secondary); }
     .nav-links { display: flex; gap: 20px; list-style: none; }
-    .nav-links a { color: var(--text-secondary); font-family: var(--font-mono); font-size: 12px; }
+    .nav-links a { color: var(--text-secondary); font-family: var(--font-sans); font-size: 14px; }
     .nav-links a:hover { color: var(--accent); }
     .nav-end a {
       display: inline-flex; align-items: center; gap: 6px;
@@ -433,15 +433,6 @@
       text-transform: uppercase; letter-spacing: 0.5px;
       margin-left: auto; white-space: nowrap;
     }
-
-    /* ── Topics: plain text, not buttons ────────────── */
-    .topics {
-      font-family: var(--font-mono); font-size: 12px; line-height: 1.9;
-      color: var(--text-secondary); margin: 0;
-    }
-    .topics-label { color: var(--text-tertiary); margin-right: 6px; }
-    .topic { white-space: nowrap; }
-    .topic:not(:last-child)::after { content: "·"; margin: 0 2px 0 8px; color: var(--text-tertiary); }
 
     /* ── Hover-card hint ───────────────────────────── */
     .ent-hint { font-family: var(--font-mono); font-size: 12px; color: var(--text-tertiary); margin-top: -4px; }
@@ -605,7 +596,7 @@
       :root { color-scheme: light !important; }
       .hero-top { display: none !important; }
       body { background: #fff; color: #000; font-size: 10pt; line-height: 1.45; }
-      header, footer, .palette, .source-view, .asks, .topics, .ent-hint, #writing, .activity, .link-tag, .hero-meta { display: none !important; }
+      header, footer, .palette, .source-view, .asks, .ent-hint, #writing, .activity, .link-tag, .hero-meta { display: none !important; }
       article[hidden] { display: block !important; }
       .doc { max-width: none; padding: 0; }
       .hero { padding: 0 0 8pt; }
@@ -654,13 +645,13 @@
 
   <header role="banner">
   <nav aria-label="Main navigation">
-    <div class="nav-path">~/<span class="file">genedai.md</span></div>
+    <a class="nav-path" href="/">Gene Dai</a>
     <ul class="nav-links">
-      <li><a href="#about">about</a></li>
-      <li><a href="#journey">journey</a></li>
-      <li><a href="#projects">projects</a></li>
-      <li><a href="#writing">writing</a></li>
-      <li><a href="#connect">connect</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#writing">Writing</a></li>
+      <li><a href="#connect">Connect</a></li>
     </ul>
     <div class="nav-end">
       <button type="button" class="nav-btn js-only" data-action="palette" aria-label="Search and commands" title="Search (⌘K / Ctrl K)"><span class="hide-mobile">Search</span><span class="show-mobile">menu</span></button>
@@ -676,7 +667,7 @@
     <!-- ── Hero ───────────────────────────────────── -->
     <section class="hero" aria-label="Introduction">
       <div class="hero-top">
-        <p class="hero-meta"><span class="hm-label">Now</span> Building HR tools and AI agents for hiring, at Metix AI and in the open<br>California · Updated <time datetime="2026-10-31">2026-10-31</time></p>
+        <p class="hero-meta"><span class="hm-label">Now</span> Building HR tools and AI agents for hiring, at Metix AI and in the open<br>California · Updated <time datetime="2026-10-31">Oct 31, 2026</time></p>
         <img class="avatar" src="/avatar.jpg" width="72" height="72" alt="Gene Dai" />
       </div>
       <h1 class="md-h1">Gene Dai</h1>
@@ -728,13 +719,13 @@
           <span class="meta">2021 – 2022</span>
         </li>
         <li>
-          <span class="title">Head of Product, incl. <span class="ent" data-ent="kanzhun" tabindex="0" role="button" aria-haspopup="dialog">Kanzhun.com</span></span><br>
+          <span class="title">Head of Product <span class="also">(also led <span class="ent" data-ent="kanzhun" tabindex="0" role="button" aria-haspopup="dialog">Kanzhun.com</span>)</span></span><br>
           <span class="desc"><span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS Zhipin</span> (BZ/2076.HK) — <span class="print-short" data-short="Mobile recruiting platform">China's leading mobile recruiting platform</span></span>
           <span class="meta">2018 – 2020</span>
         </li>
         <li>
           <span class="title">Senior Product Manager</span><br>
-          <span class="desc"><span class="ent" data-ent="dora" tabindex="0" role="button" aria-haspopup="dialog">Dora Tech</span> — Sequoia Capital China backed</span>
+          <span class="desc"><span class="ent" data-ent="dora" tabindex="0" role="button" aria-haspopup="dialog">Dora Tech</span> — Self-service shared printing (Sequoia Capital China backed)</span>
           <span class="meta">2017 – 2018</span>
         </li>
         <li>
@@ -763,7 +754,7 @@
         </a>
         <a href="https://raltic.com" class="md-link" target="_blank" rel="noopener" data-ent="raltic">
           <span class="link-title">Raltic</span><span class="link-url">raltic.com</span>
-          <span class="link-desc">A shared workspace where product teams hand tasks to AI agents, review the results, and approve decisions. Private beta. <span class="activity" data-repo="Digidai/raltic">updated 2026-09-13</span></span>
+          <span class="link-desc">A shared workspace where product teams hand tasks to AI agents, review the results, and approve decisions. Private beta. <span class="activity" data-repo="Digidai/raltic">active · <time datetime="2026-09-13">Sep 2026</time></span></span>
           <span class="link-tag">AI Agents</span>
         </a>
         <a href="https://venturedex.co" class="md-link" target="_blank" rel="noopener" data-ent="venturedex">
@@ -773,22 +764,22 @@
         </a>
         <a href="https://hireai.genedai.me" class="md-link" target="_blank" rel="noopener" data-ent="hireai">
           <span class="link-title">HireAI Directory</span><span class="link-url">hireai.genedai.me</span>
-          <span class="link-desc">249 HR AI products across five technology eras, from 1990s applicant-tracking systems to today’s AI agents, with analysis pages and evaluation checklists. <span class="activity" data-repo="Digidai/HireAI">updated 2026-10-02</span></span>
+          <span class="link-desc">249 HR AI products across five technology eras, from 1990s applicant-tracking systems to today’s AI agents, with analysis pages and evaluation checklists. <span class="activity" data-repo="Digidai/HireAI">active · <time datetime="2026-10-02">Oct 2026</time></span></span>
           <span class="link-tag">Directory</span>
         </a>
         <a href="https://md.genedai.me" class="md-link" target="_blank" rel="noopener" data-ent="website2markdown">
           <span class="link-title">Website2Markdown</span><span class="link-url">md.genedai.me</span>
-          <span class="link-desc">Turns any web page into clean text that AI tools can read. Free, with an API for developers. <span class="activity" data-repo="Digidai/website2markdown">updated 2026-10-01</span></span>
+          <span class="link-desc">Turns any web page into clean text that AI tools can read. Free, with an API for developers. <span class="activity" data-repo="Digidai/website2markdown">active · <time datetime="2026-10-01">Oct 2026</time></span></span>
           <span class="link-tag">Dev Tool</span>
         </a>
         <a href="https://genedai.cv" class="md-link" target="_blank" rel="noopener" data-ent="moderncv">
           <span class="link-title">ModernCV</span><span class="link-url">genedai.cv</span>
-          <span class="link-desc">Free AI resume builder with 28 templates and instant PDF export. <span class="activity" data-repo="Digidai/modern-ai-resume-builder">updated 2026-10-31</span></span>
+          <span class="link-desc">Free AI resume builder with 28 templates and instant PDF export. <span class="activity" data-repo="Digidai/modern-ai-resume-builder">active · <time datetime="2026-10-31">Oct 2026</time></span></span>
           <span class="link-tag">Resume</span>
         </a>
         <a href="https://recruit.genedai.me" class="md-link" target="_blank" rel="noopener" data-ent="recruit">
           <span class="link-title">Recruit Navigator</span><span class="link-url">recruit.genedai.me</span>
-          <span class="link-desc">A map of recruiting and AI hiring tools: 320 categories, 2,100+ resources. <span class="activity" data-repo="Digidai/recruit-ai-framework">updated 2026-10-26</span></span>
+          <span class="link-desc">A map of recruiting and AI hiring tools: 320 categories, 2,100+ resources. <span class="activity" data-repo="Digidai/recruit-ai-framework">active · <time datetime="2026-10-26">Oct 2026</time></span></span>
           <span class="link-tag">Directory</span>
         </a>
       </div>
@@ -800,31 +791,21 @@
       <p>Deep dives into AI leaders, HRTech platforms, and the forces reshaping how companies find talent.</p>
       <h3 class="md-h3 posts-head">Start here</h3>
       <ul class="md-list posts start-here" aria-label="Start here">
-        <li><span class="meta">research</span> <a href="https://genedai.me/research/ai-hiring/" target="_blank" rel="noopener">AI hiring procurement evidence</a> <span class="pick-desc">— vendor claims, audit scope, and the questions buyers should still ask</span></li>
-        <li><span class="meta">research</span> <a href="https://genedai.me/research/ai-employment/" target="_blank" rel="noopener">AI and employment evidence</a> <span class="pick-desc">— what the studies on AI and jobs actually measure</span></li>
-        <li><span class="meta">answers</span> <a href="https://genedai.me/answers/" target="_blank" rel="noopener">Answers about AI hiring and work</a> <span class="pick-desc">— short answers with primary sources and dates</span></li>
+        <li><span class="meta">Research</span> <a href="https://genedai.me/research/ai-hiring/" target="_blank" rel="noopener">AI hiring procurement evidence</a> <span class="pick-desc">— vendor claims, audit scope, and the questions buyers should still ask</span></li>
+        <li><span class="meta">Research</span> <a href="https://genedai.me/research/ai-employment/" target="_blank" rel="noopener">AI and employment evidence</a> <span class="pick-desc">— what the studies on AI and jobs actually measure</span></li>
+        <li><span class="meta">Q&amp;A</span> <a href="https://genedai.me/answers/" target="_blank" rel="noopener">Answers about AI hiring and work</a> <span class="pick-desc">— short answers with primary sources and dates</span></li>
       </ul>
       <h3 class="md-h3 posts-head">Latest</h3>
       <ul class="md-list posts" aria-label="Latest articles">
         <!-- writing:start -->
-        <li><time class="meta" datetime="2026-10-31">2026-10-31</time> <a href="https://genedai.me/2026/10/31/shared-ai-training-opt-out-publishers-search/" target="_blank" rel="noopener">OpenAI and Google Plan One AI Training Opt-Out While Search Stays Open</a></li>
-        <li><time class="meta" datetime="2026-10-30">2026-10-30</time> <a href="https://genedai.me/2026/10/30/ai-talent-bank-premium-flexible-hiring/" target="_blank" rel="noopener">Banks Pay a 13% Premium as AI Talent Spreads Beyond Tech</a></li>
-        <li><time class="meta" datetime="2026-10-30">2026-10-30</time> <a href="https://genedai.me/2026/10/30/alexander-embiricos-dots-three-minute-warning/" target="_blank" rel="noopener">Alexander Embiricos and the Three-Minute Warning From Dots</a></li>
-        <li><time class="meta" datetime="2026-10-29">2026-10-29</time> <a href="https://genedai.me/2026/10/29/finn-puklowski-alternative-chips-balance-sheet/" target="_blank" rel="noopener">Finn Puklowski Puts Rival AI Chips on the Balance Sheet</a></li>
-        <li><time class="meta" datetime="2026-10-29">2026-10-29</time> <a href="https://genedai.me/2026/10/29/uber-chatgpt-work-rollout-workforce-cut/" target="_blank" rel="noopener">Uber Opens ChatGPT Work to 30,000 After a 10% Cut</a></li>
+        <li><time class="meta" datetime="2026-10-31">Oct 31, 2026</time> <a href="https://genedai.me/2026/10/31/shared-ai-training-opt-out-publishers-search/" target="_blank" rel="noopener">OpenAI and Google Plan One AI Training Opt-Out While Search Stays Open</a></li>
+        <li><time class="meta" datetime="2026-10-30">Oct 30, 2026</time> <a href="https://genedai.me/2026/10/30/ai-talent-bank-premium-flexible-hiring/" target="_blank" rel="noopener">Banks Pay a 13% Premium as AI Talent Spreads Beyond Tech</a></li>
+        <li><time class="meta" datetime="2026-10-30">Oct 30, 2026</time> <a href="https://genedai.me/2026/10/30/alexander-embiricos-dots-three-minute-warning/" target="_blank" rel="noopener">Alexander Embiricos and the Three-Minute Warning From Dots</a></li>
+        <li><time class="meta" datetime="2026-10-29">Oct 29, 2026</time> <a href="https://genedai.me/2026/10/29/finn-puklowski-alternative-chips-balance-sheet/" target="_blank" rel="noopener">Finn Puklowski Puts Rival AI Chips on the Balance Sheet</a></li>
+        <li><time class="meta" datetime="2026-10-29">Oct 29, 2026</time> <a href="https://genedai.me/2026/10/29/uber-chatgpt-work-rollout-workforce-cut/" target="_blank" rel="noopener">Uber Opens ChatGPT Work to 30,000 After a 10% Cut</a></li>
         <!-- writing:end -->
       </ul>
       <p class="more"><a href="https://genedai.me" target="_blank" rel="noopener">All writing on genedai.me →</a></p>
-      <p class="topics"><span class="topics-label">Topics:</span>
-        <span class="topic">AI Leader Profiles</span>
-        <span class="topic">HRTech Deep Dives</span>
-        <span class="topic">Hiring AI</span>
-        <span class="topic">Company Analysis</span>
-        <span class="topic">Industry Trends</span>
-        <span class="topic">Product Strategy</span>
-        <span class="topic">AI Agents</span>
-        <span class="topic">Skills-Based Hiring</span>
-      </p>
     </section>
 
     <!-- ── Connect ────────────────────────────────── -->

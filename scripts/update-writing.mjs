@@ -19,6 +19,8 @@ const unxml = (s) => s
   .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"')
   .replace(/&apos;/g, "'").replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(n))
   .replace(/&amp;/g, '&');
+const fmt = (d) =>
+  new Date(`${d}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 const html = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 const posts = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].slice(0, COUNT).map(([, e]) => ({
@@ -67,7 +69,7 @@ const ld = {
 }
 
 block('index.html', () => posts.map((p) =>
-  `        <li><time class="meta" datetime="${p.date}">${p.date}</time> <a href="${html(p.url)}" target="_blank" rel="noopener">${html(p.title)}</a></li>`
+  `        <li><time class="meta" datetime="${p.date}">${fmt(p.date)}</time> <a href="${html(p.url)}" target="_blank" rel="noopener">${html(p.title)}</a></li>`
 ).join('\n'));
 block('llms.txt', () => posts.map((p) =>
   `- [${p.title.replace(/([[\]])/g, '\\$1')}](${p.url}): ${p.date}`

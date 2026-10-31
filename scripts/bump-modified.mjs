@@ -9,12 +9,14 @@ import { resolve } from 'node:path';
 
 const day = process.argv[2] ?? new Date().toISOString().slice(0, 10);
 if (!/^\d{4}-\d{2}-\d{2}$/.test(day)) throw new Error(`bad date: ${day}`);
+const fmt = (d) =>
+  new Date(`${d}T00:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 const PUB = resolve(import.meta.dirname, '..', 'public');
 
 const edits = {
   'index.html': [
     [/("dateModified": ")\d{4}-\d{2}-\d{2}/, `$1${day}`],
-    [/(<time datetime=")\d{4}-\d{2}-\d{2}(">)\d{4}-\d{2}-\d{2}/, `$1${day}$2${day}`],
+    [/(<time datetime=")\d{4}-\d{2}-\d{2}(">)[^<]*/, `$1${day}$2${fmt(day)}`],
   ],
   'genedai.md': [[/^(updated: )\d{4}-\d{2}-\d{2}$/m, `$1${day}`]],
   'sitemap.xml': [[/(<lastmod>)\d{4}-\d{2}-\d{2}/, `$1${day}`]],
