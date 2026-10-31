@@ -231,8 +231,9 @@
 
   // ── Hover cards ────────────────────────────────────
   // Names marked data-ent open a card with an animated isometric figure. The card
-  // code (cards.js) and each figure (/figs/<id>.json) load only when first needed.
+  // code (cards.js) loads when the page is idle; each figure (/figs/<id>.json) loads when first needed.
   let cards = null;
+  const loadCards = () => (cards ||= import('/cards.js?v=af23b87ef5'));
   const wake = (e) => {
     const el = e.target.closest?.('[data-ent]');
     if (!el || (e.type === 'pointerover' && e.pointerType !== 'mouse')) return;
@@ -240,9 +241,12 @@
     if (cards === true) return;
     // On touch screens the first tap on a linked name opens its card instead of leaving the page.
     if (e.type === 'click' && !el.matches('[role="button"]') && matchMedia('(hover: none)').matches) e.preventDefault();
-    (cards ||= import('/cards.js?v=b0e70eac8c')).then((m) => { m.start(el, e.type); cards = true; });
+    loadCards().then((m) => { m.start(el, e.type); cards = true; });
   };
   ['pointerover', 'focusin', 'click'].forEach((t) => d.addEventListener(t, wake, { passive: t !== 'click' }));
+  // Load the card code once the page is idle, so the first card opens without waiting for it.
+  // Once loaded it listens itself; an event that arrives mid-load still goes through start() above.
+  (window.requestIdleCallback || setTimeout)(() => { if (cards !== true) loadCards().then(() => { cards = true; }); });
 
   d.querySelectorAll('[data-action="palette"]').forEach((b) => b.addEventListener('click', openPalette));
   d.addEventListener('keydown', (e) => {

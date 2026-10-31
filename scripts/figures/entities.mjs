@@ -80,10 +80,10 @@ export default {
   },
   hireai: {
     name: "HireAI Directory", meta: "249 products", kind: "Project",
-    desc: "HR AI products across five technology eras, from 1990s applicant-tracking systems to AI agents, with analysis pages and checklists.",
+    desc: "HR AI products from 1990s applicant-tracking systems to today’s AI agents, with analysis pages and checklists.",
     links: [["hireai.genedai.me", "https://hireai.genedai.me"], ["GitHub", "https://github.com/Digidai/HireAI"]],
-    hint: "Five eras",
-    zh: {"name": "HireAI Directory", "meta": "249 款产品", "desc": "横跨五个技术时代的 HR AI 产品，从 1990 年代的招聘管理系统到 AI 智能体，附分析页面和清单。", "hint": "五个时代"},
+    hint: "1990s to AI agents",
+    zh: {"name": "HireAI Directory", "meta": "249 款产品", "desc": "HR AI 产品，从 1990 年代的招聘管理系统到今天的 AI 智能体，附分析页面和清单。", "hint": "1990 年代到 AI 智能体"},
   },
   website2markdown: {
     name: "Website2Markdown", meta: "Web to text", kind: "Project",

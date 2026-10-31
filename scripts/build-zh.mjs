@@ -60,7 +60,7 @@ const TEXT = [
 
   // ── About
   ['<h2 class="md-h2">About</h2>', '<h2 class="md-h2">简介</h2>'],
-  ['<p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, an AI hiring platform that reached <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">#1 on Product Hunt</a>. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China\'s leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>', '<p>戴金乘（Gene Dai），产品人，AI 招聘平台 Metix AI 联合创始人兼首席产品官，Metix AI 曾获 <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">Product Hunt 当日第一</a>。此前在 BOSS直聘（BZ/2076.HK，中国领先的移动招聘平台）、猎聘（6100.HK）、作业帮和值得买科技（300785.SZ）担任产品负责人，覆盖招聘、教育和电商。他在 Medium、Substack 和个人博客上写 AI 与 HRTech，并在 GitHub 维护 160 多个开源项目。</p>'],
+  ['<p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, which reached <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">#1 on Product Hunt</a>. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China\'s leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>', '<p>戴金乘（Gene Dai），产品人，AI 招聘平台 Metix AI 联合创始人兼首席产品官，Metix AI 曾获 <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">Product Hunt 当日第一</a>。此前在 BOSS直聘（BZ/2076.HK，中国领先的移动招聘平台）、猎聘（6100.HK）、作业帮和值得买科技（300785.SZ）担任产品负责人，覆盖招聘、教育和电商。他在 Medium、Substack 和个人博客上写 AI 与 HRTech，并在 GitHub 维护 160 多个开源项目。</p>'],
   ['<figcaption>How I think about products</figcaption>', '<figcaption>我怎么看产品</figcaption>'],
   ['<blockquote><p>Conversation is an interaction model with stronger feedback than anything before it. So when the work is getting a task done efficiently, two things become critical: the purpose, and the experience of the flow toward the goal.</p></blockquote>', '<blockquote><p>对话是前所未有的强反馈的交互模式，而在完成任务、追求效率的过程中，目的和目标流程体验就变得极其重要。</p></blockquote>'],
   ['<li><span class="title">AI Hiring</span> <span class="desc">— Building Metix: define a role and meet interview-ready candidates within 24 hours.</span></li>', '<li><span class="title">AI 招聘</span> <span class="desc">— 打造 Metix：定义岗位，24 小时内见到可以面试的候选人。</span></li>'],
@@ -106,7 +106,7 @@ const TEXT = [
   ['<span class="link-tag">AI Agents</span>', '<span class="link-tag">AI 智能体</span>'],
   ['Startup research on products, funding, and investors. 400+ company profiles across AI agents, developer tools, healthcare, and more. <span class="activity">live · weekly digest</span>', '创业公司研究：产品、融资和投资人。收录 400 多家公司，覆盖 AI 智能体、开发者工具、医疗健康等领域。<span class="activity">运营中 · 每周简报</span>'],
   ['<span class="link-tag">Research</span>', '<span class="link-tag">研究</span>'],
-  ['249 HR AI products across five technology eras, from 1990s applicant-tracking systems to today’s AI agents, with analysis pages and evaluation checklists. ', '收录 249 款 HR AI 产品，横跨五个技术时代，从 1990 年代的招聘管理系统到今天的 AI 智能体，附分析页面和评估清单。'],
+  ['249 HR AI products, from 1990s applicant-tracking systems to today’s AI agents, with analysis pages and evaluation checklists. ', '收录 249 款 HR AI 产品，从 1990 年代的招聘管理系统到今天的 AI 智能体，附分析页面和评估清单。'],
   ['<span class="link-tag">Directory</span>', '<span class="link-tag">目录</span>'],
   ['Turns any web page into clean text that AI tools can read. Free, with an API for developers. ', '把任何网页转成 AI 工具能读的干净文本。免费，并为开发者提供 API。'],
   ['<span class="link-tag">Dev Tool</span>', '<span class="link-tag">开发工具</span>'],
@@ -152,6 +152,8 @@ const ZH_CSS = `
     .viewpoint p, .lead em { font-style: normal; }
     .h1-en { color: var(--text-tertiary); font-weight: 300; }
     .hero-meta .hm-label { margin-right: 8px; }
+    /* Keep the company description on one line rather than leaving two characters behind. */
+    .print-short { white-space: nowrap; }
   </style>`;
 
 // Dates: the hero spells them out; list dates (monospace) and project activity stay compact.

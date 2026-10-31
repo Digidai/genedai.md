@@ -44,7 +44,7 @@ From Beijing to California.
 - [Metix](https://metix.ai): AI-native hiring platform. Define the role and meet interview-ready candidates: Metix AI reports 95% of roles get a first interview scheduled within 24 hours.
 - [Raltic](https://raltic.com): Agent workflow rooms for product teams. Brief a cloud or local agent, inspect the proof, approve the decision, keep the outcome searchable. Private beta.
 - [VentureDex](https://venturedex.co): Startup research on products, funding, and investors. 400+ company profiles across AI agents, developer tools, healthcare, and more.
-- [HireAI Directory](https://hireai.genedai.me): 249 HR AI products across five technology eras, from 1990s ATS to 2024+ agentic platforms, with analysis pages and evaluation checklists.
+- [HireAI Directory](https://hireai.genedai.me): 249 HR AI products, from 1990s ATS to 2024+ agentic platforms, with analysis pages and evaluation checklists.
 - [Website2Markdown](https://md.genedai.me): URL-to-Markdown converter on Cloudflare Workers. 16 platform adapters, 5-layer fallback, plus streaming, batch, extract, and deep-crawl APIs.
 - [ModernCV](https://genedai.cv): Free AI resume builder with 28 templates and instant PDF export.
 - [Recruit Navigator](https://recruit.genedai.me): Recruitment and AI hiring tools map. 320 categories, 2,100+ resources. OSINT-framework-inspired.
