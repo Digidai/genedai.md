@@ -618,6 +618,8 @@
     .zh-hint button:hover { color: var(--text-primary); background: var(--surface-300); }
     /* No one-word last lines. */
     p, li { text-wrap: pretty; }
+    /* Keeps hyphenated words such as e-commerce on one line. */
+    .nowrap { white-space: nowrap; }
     /* ── Print: one-page CV ─────────────────────────── */
     @media print {
       @page { margin: 11mm 14mm; }
@@ -718,14 +720,14 @@
     <!-- ── About ──────────────────────────────────── -->
     <section class="section" id="about">
       <h2 class="md-h2">About</h2>
-      <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, which reached <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">#1 on Product Hunt</a>. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and e-commerce. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>
+      <p>Gene Dai is a product builder and Co-Founder &amp; CPO of Metix AI, which reached <a href="https://www.producthunt.com/products/openjobs-ai" target="_blank" rel="noopener">#1 on Product Hunt</a>. He previously held senior product leadership roles at BOSS Zhipin (BZ/2076.HK), China's leading mobile recruiting platform, Liepin (6100.HK), Zuoyebang, and Zhidemai Tech (300785.SZ), spanning recruiting, education, and <span class="nowrap">e-commerce</span>. He writes on AI and HRTech across Medium, Substack, and his personal blog, and maintains 160+ open-source repositories on GitHub.</p>
       <figure class="viewpoint">
         <figcaption>How I think about products</figcaption>
         <blockquote><p>Conversation is an interaction model with stronger feedback than anything before it. So when the work is getting a task done efficiently, two things become critical: the purpose, and the experience of the flow toward the goal.</p></blockquote>
       </figure>
       <ul class="md-list">
         <li><span class="title">AI Hiring</span> <span class="desc">— Building Metix: define a role and meet interview-ready candidates within 24 hours.</span></li>
-        <li><span class="title">Growth &amp; Platforms</span> <span class="desc">— User growth, community, and platform products for consumer apps in recruiting, education, and e-commerce.</span></li>
+        <li><span class="title">Growth &amp; Platforms</span> <span class="desc">— User growth, community, and platform products for consumer apps in recruiting, education, and <span class="nowrap">e-commerce</span>.</span></li>
         <li><span class="title">Domain Expertise</span> <span class="desc">— Built products for all three sides of hiring (candidates, employers, and headhunters) at Kanzhun, BOSS Zhipin, and Liepin.</span></li>
         <li><span class="title">Builder &amp; Writer</span> <span class="desc">— Writing on AI, HRTech, and the people shaping the industry.</span></li>
       </ul>
@@ -734,7 +736,7 @@
     <!-- ── Journey ────────────────────────────────── -->
     <section class="section" id="journey">
       <h2 class="md-h2">Journey</h2>
-      <p>From Beijing to California: over a decade building hiring, education, and e-commerce products.</p>
+      <p>From Beijing to California: over a decade building hiring, education, and <span class="nowrap">e-commerce</span> products.</p>
       <p class="ent-hint"><span class="hint-hover">Hover a company to see what it does.</span><span class="hint-tap">Tap a company to see what it does.</span></p>
       <ul class="md-list git-log">
         <li>

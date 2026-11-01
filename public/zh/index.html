@@ -533,6 +533,8 @@
     .zh-hint button:hover { color: var(--text-primary); background: var(--surface-300); }
     /* No one-word last lines. */
     p, li { text-wrap: pretty; }
+    /* Keeps hyphenated words such as e-commerce on one line. */
+    .nowrap { white-space: nowrap; }
     /* ── Print: one-page CV ─────────────────────────── */
     @media print {
       @page { margin: 11mm 14mm; }
