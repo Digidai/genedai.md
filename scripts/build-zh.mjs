@@ -75,7 +75,7 @@ const TEXT = [
 
   // ── Journey
   ['<h2 class="md-h2">Journey</h2>', '<h2 class="md-h2">经历</h2>'],
-  ['<p>From Beijing to California.</p>', '<p>从北京到加州，十多年做招聘、教育和电商产品。</p>'],
+  ['<p>From Beijing to California: over a decade building hiring, education, and e-commerce products.</p>', '<p>从北京到加州，十多年做招聘、教育和电商产品。</p>'],
   ['<span class="hint-hover">Hover a company to see what it does.</span><span class="hint-tap">Tap a company to see what it does.</span>', '<span class="hint-hover">鼠标悬停在公司名上，查看公司简介。</span><span class="hint-tap">点一下公司名，查看公司简介。</span>'],
   ['<span class="title">Co-Founder &amp; CPO</span><span class="current-tag">current</span>', '<span class="title">联合创始人 / 首席产品官（CPO）</span><span class="current-tag">在职</span>'],
   ['Metix AI</span> — AI hiring platform</span>', 'Metix AI</span> — AI 招聘平台</span>'],
