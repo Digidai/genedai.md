@@ -345,10 +345,16 @@
     }
     .badge:hover { background: var(--surface-400); color: var(--text-primary); }
     /* Focus areas are labels, not links: no fill, so they don't read as buttons. */
-    .badge-group { display: inline-flex; gap: 8px; white-space: nowrap; }
+    /* Wraps on very narrow screens (320px) instead of overflowing; each label stays whole. */
+    .badge-group { display: inline-flex; flex-wrap: wrap; gap: 0 8px; }
+    .badge-group .badge { white-space: nowrap; }
     .hero-badges span.badge { background: none; padding: 5px 2px; color: var(--text-tertiary); }
     .hero-badges span.badge:hover { background: none; color: var(--text-tertiary); }
     .hero-badges span.badge + span.badge::before { content: "·"; margin-right: 6px; }
+    @media (max-width: 360px) {
+      .badge-group { gap: 0 14px; }
+      .hero-badges span.badge + span.badge::before { content: none; }
+    }
 
     /* ── Sections ───────────────────────────────────── */
     .section {
