@@ -30,6 +30,11 @@ const TEXT = [
   ['<meta name="twitter:description" content="Co-Founder &amp; CPO of Metix AI, an AI-native hiring platform." />', '<meta name="twitter:description" content="AI 原生招聘平台 Metix AI 联合创始人兼首席产品官。" />'],
   ['    "url": "https://genedai.md/",\n    "name": "Gene Dai — Product Builder",\n    "description": "Personal homepage of Gene Dai, Co-Founder & CPO of Metix AI.",', '    "url": "https://genedai.md/zh/",\n    "name": "戴金乘 Gene Dai — 招聘产品人",\n    "description": "戴金乘（Gene Dai）的个人主页，Metix AI 联合创始人兼首席产品官。",'],
   ['"inLanguage": "en-US"', '"inLanguage": "zh-CN"'],
+  // Organization and WebSite JSON-LD, so crawlers of /zh/ read Chinese descriptions.
+  ['"description": "Metix is an AI-native hiring platform. You define the role; Metix brings you interview-ready candidates within 24 hours, and you only pay for the ones worth meeting.",',
+   '"description": "Metix 是 AI 原生招聘平台：定义岗位，24 小时内见到可以面试的候选人，只为值得见的人付费。",'],
+  ['"description": "Gene Dai — Product Builder, Co-Founder & CPO of Metix AI"\n',
+   '"description": "戴金乘 Gene Dai，招聘产品人，Metix AI 联合创始人兼首席产品官",\n    "inLanguage": "zh-CN"\n'],
   ['"description": "Gene Dai is a product builder and Co-Founder & CPO of Metix AI, an AI-native hiring platform that reached #1 on Product Hunt. He previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech across recruiting, education, and e-commerce."', '"description": "戴金乘（Gene Dai），产品人，AI 原生招聘平台 Metix AI 联合创始人兼首席产品官，Metix AI 曾获 Product Hunt 当日第一。此前在 BOSS直聘、猎聘、作业帮和值得买科技负责产品，覆盖招聘、教育和电商。"'],
 
   // ── Header
@@ -70,8 +75,8 @@ const TEXT = [
 
   // ── Journey
   ['<h2 class="md-h2">Journey</h2>', '<h2 class="md-h2">经历</h2>'],
-  ['<p>From Beijing to California.</p>', '<p>从北京到加州。</p>'],
-  ['<span class="hint-hover">Hover a company to see what it does.</span><span class="hint-tap">Tap a company to see what it does.</span>', '<span class="hint-hover">鼠标悬停在公司名上，可以看到它做什么。</span><span class="hint-tap">点一下公司名，可以看到它做什么。</span>'],
+  ['<p>From Beijing to California.</p>', '<p>从北京到加州，十多年做招聘、教育和电商产品。</p>'],
+  ['<span class="hint-hover">Hover a company to see what it does.</span><span class="hint-tap">Tap a company to see what it does.</span>', '<span class="hint-hover">鼠标悬停在公司名上，查看公司简介。</span><span class="hint-tap">点一下公司名，查看公司简介。</span>'],
   ['<span class="title">Co-Founder &amp; CPO</span><span class="current-tag">current</span>', '<span class="title">联合创始人 / 首席产品官（CPO）</span><span class="current-tag">在职</span>'],
   ['Metix AI</span> — AI hiring platform</span>', 'Metix AI</span> — AI 招聘平台</span>'],
   ['<span class="meta">2025 – Present</span>', '<span class="meta">2025 – 至今</span>'],
@@ -99,7 +104,7 @@ const TEXT = [
   // ── Projects
   ['<h2 class="md-h2">Projects</h2>', '<h2 class="md-h2">项目</h2>'],
   ['<p>Products, tools, and resources — mostly at the intersection of AI and hiring.</p>', '<p>产品、工具和资料，大多和 AI 与招聘有关。</p>'],
-  ['<span class="hint-hover">Hover a project for a quick look; click to visit.</span><span class="hint-tap">Tap a project for a quick look; tap again to visit.</span>', '<span class="hint-hover">鼠标悬停可以快速预览，点击访问。</span><span class="hint-tap">点一下快速预览，再点一下访问。</span>'],
+  ['<span class="hint-hover">Hover a project for a quick look; click to visit.</span><span class="hint-tap">Tap a project for a quick look; tap again to visit.</span>', '<span class="hint-hover">鼠标悬停预览，点击打开。</span><span class="hint-tap">点一下快速预览，再点一下访问。</span>'],
   ['AI hiring platform. Define the role and meet interview-ready candidates: Metix AI reports 95% of roles get a first interview scheduled within 24 hours. <span class="activity">in production · since 2025</span>', 'AI 招聘平台。定义岗位，就能见到可以面试的候选人：据 Metix AI 统计，95% 的岗位在 24 小时内约上第一场面试。<span class="activity">已上线 · 2025 年起</span>'],
   ['<span class="link-tag">AI Hiring</span>', '<span class="link-tag">AI 招聘</span>'],
   ['A shared workspace where product teams hand tasks to AI agents, review the results, and approve decisions. Private beta. ', '产品团队的协作空间：把任务交给 AI 智能体，审阅结果，审批决策。内测中。'],
@@ -128,7 +133,7 @@ const TEXT = [
 
   // ── Connect
   ['<h2 class="md-h2">Connect</h2>', '<h2 class="md-h2">联系</h2>'],
-  ['<li><span class="title">Need a CV?</span> <span class="desc">— <a href="/gene-dai-cv.pdf" download="Gene-Dai-CV.pdf">Download a one-page CV (PDF)</a>.</span></li>', '<li><span class="title">需要简历？</span> <span class="desc">— <a href="/gene-dai-cv-zh.pdf" download="Gene-Dai-CV-zh.pdf">下载一页中文简历（PDF）</a>，也有<a href="/gene-dai-cv.pdf" download="Gene-Dai-CV.pdf" hreflang="en">英文版</a>。</span></li>'],
+  ['<li><span class="title">Need a CV?</span> <span class="desc">— <a href="/gene-dai-cv.pdf" download="Gene-Dai-CV.pdf">Download a one-page CV (PDF)</a>.</span></li>', '<li><span class="title">需要简历？</span> <span class="desc">— <a href="/gene-dai-cv-zh.pdf" download="Gene-Dai-CV-zh.pdf">下载中文简历（PDF，一页）</a>，也有<a href="/gene-dai-cv.pdf" download="Gene-Dai-CV.pdf" hreflang="en">英文版</a>。</span></li>'],
   ['<li><span class="title">Hiring?</span> <span class="desc">— Try <a href="https://metix.ai" target="_blank" rel="noopener">Metix AI</a>: define the role and meet interview-ready candidates.</span></li>', '<li><span class="title">在招人？</span> <span class="desc">— 试试 <a href="https://metix.ai" target="_blank" rel="noopener">Metix AI</a>：定义岗位，见到可以面试的候选人。</span></li>'],
   ['<li><span class="title">Building or backing HR tech?</span> <span class="desc">— Email <a href="mailto:hi@genedai.me">hi@genedai.me</a>. Founders, operators, and investors in AI hiring are welcome.</span></li>', '<li><span class="title">在做或在投 HR 科技？</span> <span class="desc">— 发邮件到 <a href="mailto:hi@genedai.me">hi@genedai.me</a>。欢迎 AI 招聘领域的创业者、从业者和投资人。</span></li>'],
   ['<li><span class="title">Researching AI and work?</span> <span class="desc">— Start with the <a href="https://genedai.me/research/" target="_blank" rel="noopener">research pages</a> on genedai.me.</span></li>', '<li><span class="title">在研究 AI 与工作？</span> <span class="desc">— 可以从 genedai.me 的<a href="https://genedai.me/research/" target="_blank" rel="noopener">研究页面</a>开始。</span></li>'],
