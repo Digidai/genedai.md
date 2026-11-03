@@ -6,7 +6,7 @@ location: California
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
 zh: https://genedai.md/zh/
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Gene Dai
@@ -62,11 +62,11 @@ Start here:
 Latest:
 
 <!-- writing:start -->
+- 2026-11-03 [Workday Sees Prompting Fall While LinkedIn Sees AI Literacy Rise](https://genedai.me/2026/11/03/workday-linkedin-ai-skills-hiring-divergence/)
+- 2026-11-02 [Amritanshu Jain Sells Inference Without Owning the GPUs](https://genedai.me/2026/11/02/amritanshu-jain-simplismart-inference-software/)
 - 2026-11-02 [At Dropbox, a New Copilot Link and 200 Fewer Jobs](https://genedai.me/2026/11/02/dropbox-copilot-integration-200-role-reduction/)
 - 2026-11-01 [Carta Finds First Hires Taking 1.75% of Startup Equity](https://genedai.me/2026/11/01/carta-first-hire-equity-small-teams/)
 - 2026-11-01 [John Ternus Bets Apple's AI on the Device](https://genedai.me/2026/11/01/john-ternus-apple-ai-device-strategy/)
-- 2026-10-31 [Edward Johns Tests the One-Demonstration Robot](https://genedai.me/2026/10/31/edward-johns-one-demonstration-robot-learning/)
-- 2026-10-31 [OpenAI and Google Plan One AI Training Opt-Out While Search Stays Open](https://genedai.me/2026/10/31/shared-ai-training-opt-out-publishers-search/)
 <!-- writing:end -->
 
 Read on:
