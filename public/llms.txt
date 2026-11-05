@@ -37,11 +37,11 @@ Product viewpoint, in his words: "Conversation is an interaction model with stro
 ## Latest writing
 
 <!-- writing:start -->
+- [Volkswagen's 330,000-Worker Copilot Rollout Meets a €31 Billion Cost Plan](https://genedai.me/2026/11/05/volkswagen-copilot-rollout-cost-plan/): 2026-11-05
+- [Casey Winters Puts Expert Advice Through a Privacy Test](https://genedai.me/2026/11/04/casey-winters-superme-expert-network-privacy-test/): 2026-11-04
 - [OpenAI's One-Week Device Puts AI Engineering Through a Factory Test](https://genedai.me/2026/11/04/openai-cad-factory-review-gap/): 2026-11-04
 - [Arjun Karanam Puts Expert Corrections Into the Training Loop](https://genedai.me/2026/11/03/arjun-karanam-trajectory-expert-feedback/): 2026-11-03
 - [Workday Sees Prompting Fall While LinkedIn Sees AI Literacy Rise](https://genedai.me/2026/11/03/workday-linkedin-ai-skills-hiring-divergence/): 2026-11-03
-- [Amritanshu Jain Sells Inference Without Owning the GPUs](https://genedai.me/2026/11/02/amritanshu-jain-simplismart-inference-software/): 2026-11-02
-- [At Dropbox, a New Copilot Link and 200 Fewer Jobs](https://genedai.me/2026/11/02/dropbox-copilot-integration-200-role-reduction/): 2026-11-02
 <!-- writing:end -->
 
 ## Career
