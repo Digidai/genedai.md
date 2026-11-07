@@ -6,7 +6,7 @@ location: California
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
 zh: https://genedai.md/zh/
-updated: 2026-11-06
+updated: 2026-11-07
 ---
 
 # Gene Dai
@@ -62,11 +62,11 @@ Start here:
 Latest:
 
 <!-- writing:start -->
+- 2026-11-07 [Upwork Connects AI Agents to Freelancers, Then Buys Global Employment](https://genedai.me/2026/11/07/upwork-agents-freelancers-workmotion-deal/)
 - 2026-11-06 [Canva Combines Product Teams as 1,271 Workers Face Change](https://genedai.me/2026/11/06/canva-product-teams-1271-workers/)
 - 2026-11-05 [Volkswagen's 330,000-Worker Copilot Rollout Meets a €31 Billion Cost Plan](https://genedai.me/2026/11/05/volkswagen-copilot-rollout-cost-plan/)
 - 2026-11-04 [Casey Winters Puts Expert Advice Through a Privacy Test](https://genedai.me/2026/11/04/casey-winters-superme-expert-network-privacy-test/)
 - 2026-11-04 [OpenAI's One-Week Device Puts AI Engineering Through a Factory Test](https://genedai.me/2026/11/04/openai-cad-factory-review-gap/)
-- 2026-11-03 [Arjun Karanam Puts Expert Corrections Into the Training Loop](https://genedai.me/2026/11/03/arjun-karanam-trajectory-expert-feedback/)
 <!-- writing:end -->
 
 Read on:
