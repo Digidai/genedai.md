@@ -46,10 +46,10 @@ export default function liepin() {
 
   // Scan the columns, then settle over the lit pin.
   const stops = [-40, -27, -14, -1].map((x) => x - X0);
-  const parts = [move("gantry", [1, 0, 0], [[0, stops[0]], [0.16, stops[1]], [0.3, stops[2]], [0.45, stops[3]], [0.8, stops[3]], [0.95, stops[0]]])];
+  const parts = [move("gantry", [1, 0, 0], [[0, stops[0]], [0.16, stops[1]], [0.3, stops[2]], [0.45, stops[3]], [0.88, stops[3]], [0.98, stops[0]]])];
   const svg = figure({
     label: "A pin board on a bench with four rows of candidate pins. A gantry with a magnifier scans across the board column by column and stops over the one taller, lit pin.",
     body: out,
   });
-  return { svg, P, loop: 6.4, still: 0.6, parts };
+  return { svg, P, loop: 6.4, still: 0.6, steps: [[0.88, 0.02], [0.44, 0.6]], parts };
 }

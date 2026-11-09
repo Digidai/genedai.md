@@ -54,5 +54,5 @@ export default function moderncv() {
     fade("sheet", [[0, 1], [0.84, 1], [0.9, 0], [0.93, 0], [0.98, 1]]),
   ];
   const svg = figure({ label: "A small letterpress on a bench beside a tray of four resume templates. One template, with a photo and lines, is picked and outlined; the lit platen comes down on a blank sheet, lifts to show a printed resume layout with a photo circle, a name and sections, and the sheet slides out.", body: out });
-  return { svg, P, loop: 5.2, still: 0.6, parts, through: [["screw", "crosshead"]], hidden: [["screw", "crosshead"]] };
+  return { svg, P, loop: 5.2, still: 0.6, steps: [[0, 0.12], [0.18, 0.38], [0.55, 0.82]], parts, through: [["screw", "crosshead"]], hidden: [["screw", "crosshead"]] };
 }

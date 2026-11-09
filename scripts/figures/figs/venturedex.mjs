@@ -51,5 +51,5 @@ export default function venturedex() {
     ...[0, 1, 2, 3].map((r) => fade(`round${r}`, [[0, 0], [0.4 + r * 0.06, 0], [0.44 + r * 0.06, 1], [0.8, 1], [0.86, 0]])),
   ];
   const svg = figure({ label: "A card-index cabinet on a bench. The lower drawer stands open on rows of company cards, and one lit card rises out of the row; its funding rounds grow on it as bars, round by round, beside a row of investor dots, and it sinks back.", body: out });
-  return { svg, P, loop: 5.4, still: 0.7, parts };
+  return { svg, P, loop: 5.4, still: 0.7, steps: [[0.95, 0.1], [0.2, 0.4], [0.44, 0.7]], parts };
 }

@@ -1,4 +1,4 @@
-// HireAI Directory: five eras. Five display stands of rising height in a row; a lit carriage visits each in turn.
+// HireAI Directory: the five eras of HR technology the directory is organised by (1990s ATS to 2024+ agentic AI). Five display stands of rising height in a row; a lit carriage visits each in turn.
 import * as k from "../kit/iso-kit.mjs";
 import { studio, figure } from "../studio.mjs";
 
@@ -28,5 +28,5 @@ export default function hireai() {
   XS.forEach((x, i) => { track.push([i * 0.19, x - XS[0]], [i * 0.19 + 0.1, x - XS[0]]); });
   const parts = [move("car", [1, 0, 0], track)];
   const svg = figure({ label: "Five display stands of rising height on a bench, one per era of HR technology, each holding more products than the last. A lit carriage on a ruled track stops in front of each era in turn.", body: out });
-  return { svg, P, loop: 7, still: 0.86, parts };
+  return { svg, P, loop: 7, still: 0.86, steps: XS.map((_, i) => [i * 0.19, i * 0.19 + 0.05]), parts };
 }

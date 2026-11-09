@@ -31,5 +31,5 @@ export default function beihang() {
   const track = [[0, 0], [0.15, 0], [0.4, 8], [0.7, 8], [0.9, 0]];
   const parts = [move("sled", [1, 0, 0], track), needle("thrust", { c: [58, 0, 27.2], plane: "z", r0: 1.4, r1: 6.6, track: track.map(([t, v]) => [t, v / 24]) })];
   const svg = figure({ label: "An engine nacelle on a sled riding two rails. When it fires it pushes the sled forward against a spring, and the gauge at the end reads the thrust.", body: out });
-  return { svg, P, loop: 5, still: 0.5, parts };
+  return { svg, P, loop: 5, still: 0.5, steps: [[0.9, 0.05], [0.15, 0.55]], parts };
 }

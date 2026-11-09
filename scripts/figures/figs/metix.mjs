@@ -96,12 +96,14 @@ export default function metix() {
   };
   const fit = (c) => (Math.abs(c - centre(0)) < 1e-6 ? 0.34 : 0.12 + ((c * 7) % 1) * 0.08);
   parts.push(move("probe", [0, 0, 1], keys(PROBE_UP - PROBE_REST, 0)));
-  parts.push(fade("booking", [[0, 1], [0.66, 1], [0.7, 0], [0.93, 0], [0.97, 1]]));
+  // The booked slot clears before the lit candidate reaches the gate and is booked once it arrives.
+  parts.push(fade("booking", [[0, 1], [0.3, 1], [0.34, 0], [0.93, 0], [0.97, 1]]));
   parts.push(needle("needle", { c: [GATE, 0, BAR_Z + 10.2], plane: "z", r0: 1.6, r1: 6.6, track: keys(0, -0.04, fit) }));
 
   const svg = figure({
     label: "A hiring line on a bench: a lit role brief stands on a hopper, and candidate pucks leave it on a belt and pass under a gauge gate, where the probe rises onto each one and the dial reads its fit. The lit candidate reads past the mark, and a new interview slot lights up on the calendar board at the end of the line.",
     body: [...back, ...pucks, probe, ...hopper, rail, ...gate],
   });
-  return { svg, P, loop: 7.2, still: centre(0), parts, through: [["probe.rod", "gate.bar"]] };
+  // Steps a reader can jump between: [phase starts at, pose shown]; labels are in entities.mjs.
+  return { svg, P, loop: 7.2, still: centre(0), steps: [[0, 0.06], [0.36, centre(0)], [0.94, 0.985]], parts, through: [["probe.rod", "gate.bar"]] };
 }

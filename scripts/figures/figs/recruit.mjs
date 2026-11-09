@@ -1,4 +1,5 @@
-// Recruit Navigator: a chart table. A board of category pins joined by routes; a lit puck travels a route from the root.
+// Recruit Navigator: a chart table. A board of category pins joined by routes; a route lights leg by leg from the root
+// to one resource, whose pin then lights.
 import * as k from "../kit/iso-kit.mjs";
 import { studio, figure } from "../studio.mjs";
 
@@ -21,14 +22,15 @@ export default function recruit() {
   // The route to one resource lights up leg by leg, then the resource's pin lights.
   const parts = [];
   pathTo.slice(1).forEach((b, i) => {
-    out.push(moving(`leg${i}`, L(route(pathTo[i], b), { tone: "lit" })));
+    // Heavier than the other routes: lit and hi ink are close in the light theme.
+    out.push(moving(`leg${i}`, L(route(pathTo[i], b), { tone: "lit" }).replace("<path", '<path style="stroke-width:2.4;stroke-linecap:round"')));
     parts.push(fade(`leg${i}`, [[0, 0], [0.08 + i * 0.16, 0], [0.16 + i * 0.16, 1], [0.86, 1], [0.94, 0]]));
   });
   const pins = [[ROOT, 4, 6], ...mids.map((m) => [m, 3, 4]), ...leaves.map((l) => [l, 2.2, 3])].sort((a, b) => s.depth([...a[0], 0]) - s.depth([...b[0], 0]));
   for (const [[x, y], r, h] of pins) out.push(cyl(x, y, r, 3, h, { tone: "hi" }, 24, 0.3));
   const [gx, gy] = pathTo[pathTo.length - 1];
-  out.push(moving("goal", cyl(gx, gy, 2.2, 6, 0.6, { tone: "hi", lit: true, name: "goal" }, 20)));
+  out.push(moving("goal", cyl(gx, gy, 2.2, 6, 3, { tone: "hi", lit: true, name: "goal" }, 20) + L(k.ring(gx, gy, 1.2, 9, P, 16), { tone: "lo" })));
   parts.push(fade("goal", [[0, 0], [0.56, 0], [0.62, 1], [0.86, 1], [0.94, 0]]));
   const svg = figure({ label: "A chart table on a bench: a board of category pins joined by routes branching from one root. A route lights up leg by leg from the root to one resource, whose pin then lights.", body: out });
-  return { svg, P, loop: 6, still: 0.85, parts };
+  return { svg, P, loop: 6, still: 0.85, steps: [[0.94, 0.02], [0.08, 0.36], [0.56, 0.75]], parts };
 }

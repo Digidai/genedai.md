@@ -64,5 +64,5 @@ export default function raltic() {
     label: "An agent workflow line on a bench. A blank brief sits under the agent, whose lens lights as it writes its proof onto the sheet line by line. The sheet slides under the press, the lit stamp marks it approved, and it moves on into the archive, where a lit index tab shows it is filed and searchable.",
     body: out,
   });
-  return { svg, P, loop: 6.4, still: 0.46, parts, through: [["ram.rod", "guide"]] };
+  return { svg, P, loop: 6.4, still: 0.46, steps: [[0, 0.17], [0.23, 0.46], [0.54, 0.9]], parts, through: [["ram.rod", "guide"]] };
 }

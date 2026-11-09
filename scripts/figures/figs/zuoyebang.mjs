@@ -59,5 +59,5 @@ export default function zuoyebang() {
     label: "A document camera on an arm over a homework sheet on a clipboard. The lens flashes, a scan line sweeps the question, and the steps of the solution light up one by one on the screen beside it.",
     body: out,
   });
-  return { svg, P, loop: 6, still: 0.8, parts };
+  return { svg, P, loop: 6, still: 0.8, steps: [[0, 0.03], [0.08, 0.24], [0.42, 0.75]], parts };
 }

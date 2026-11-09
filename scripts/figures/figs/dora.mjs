@@ -1,5 +1,5 @@
-// Dora Tech: a shared self-service printer. A phone sends the job (its screen lights up and the printer's
-// QR panel answers), then the printed sheet slides out onto the output tray.
+// Dora Tech: a shared self-service printer. A phone sends the job (its screen lights up), the phone scans
+// the printer's QR panel to release it (the panel lights), then the printed sheet slides out onto the output tray.
 import * as k from "../kit/iso-kit.mjs";
 import { studio, figure } from "../studio.mjs";
 
@@ -11,6 +11,9 @@ export default function dora() {
   const { P, at, L, D, slab, bench, owned, moving, fade, move } = s;
   const out = [bench(PLATE, { label: { x: 34, y: 24, w: 22, d: 11, r: 1 } })];
   const front = BODY.y + BODY.d;
+  const PANEL = { x: BODY.x + BODY.w - 18, y: front - 15, w: 14, d: 11, r: 1 };
+  const qr = [];
+  for (let r = 0; r < 5; r++) for (let c = 0; c < 5; c++) if ((r * 7 + c * 3 + r * c) % 3 !== 1) qr.push(at([PANEL.x + 2.2 + c * 1.6, PANEL.y + 2.2 + r * 1.6, BH + 2.8]));
 
   out.push(owned("printer", () => {
     const o = [];
@@ -25,11 +28,10 @@ export default function dora() {
     o.push(slab(FEED, BH + 2, 1.2, { tone: "mid", name: "printer.feed" }, 3, 0.3));
     for (let i = 0; i < 3; i++) o.push(slab(k.insetPlan(FEED, 1.6), BH + 3.2 + i * 0.6, 0.6, { tone: "hi", crease: "none", name: "printer.paper" }, 3, 0));
     // QR panel on the lid, at the front right.
-    const PANEL = { x: BODY.x + BODY.w - 18, y: front - 15, w: 14, d: 11, r: 1 };
     o.push(slab(PANEL, BH + 2, 0.8, { tone: "lo", name: "printer.panel" }, 3, 0.2));
-    const qr = [];
-    for (let r = 0; r < 5; r++) for (let c = 0; c < 5; c++) if ((r * 7 + c * 3 + r * c) % 3 !== 1) qr.push(at([PANEL.x + 2.2 + c * 1.6, PANEL.y + 2.2 + r * 1.6, BH + 2.8]));
     o.push(D(qr, { size: 0.42, tone: "mid" }));
+    // It lights when the phone scans it to release the job.
+    o.push(moving("qr", L(k.planOutline(k.insetPlan(PANEL, 0.6), BH + 2.8, P, 3), { tone: "lit" }) + D(qr, { size: 0.5, tone: "lit" })));
     o.push(slab({ x: BODY.x + 6, y: front, w: BODY.w - 12, d: 20, r: 1.2 }, 6, 1.2, { tone: "mid", name: "printer.tray" }, 3, 0.3));
     return o.join("");
   }));
@@ -45,13 +47,14 @@ export default function dora() {
   out.push(moving("screen", slab(k.insetPlan(PHONE, 1.6), 1.6, 0.2, { tone: "hi", lit: true, crease: "none", name: "phone.screen" }, 4, 0)));
 
   const parts = [
-    fade("screen", [[0, 0], [0.04, 1], [0.24, 1], [0.3, 0]]),
+    fade("screen", [[0, 0], [0.04, 1], [0.26, 1], [0.32, 0]]),
+    fade("qr", [[0, 0], [0.18, 0], [0.22, 1], [0.5, 1], [0.56, 0]]),
     fade("sheet", [[0, 0], [0.3, 0], [0.36, 1], [0.9, 1], [0.96, 0]]),
     move("sheet", [0, 1, 0], [[0, 0], [0.3, 0], [0.55, 3], [0.97, 3]]),
   ];
   const svg = figure({
-    label: "A shared self-service printer on a bench, with a phone beside it. The phone's screen lights up as it sends a job, then a printed sheet slides out of the slot onto the output tray.",
+    label: "A shared self-service printer on a bench, with a phone beside it. The phone's screen lights up as it sends a job, the printer's QR panel lights as the phone scans it to release the job, then a printed sheet slides out of the slot onto the output tray.",
     body: out,
   });
-  return { svg, P, loop: 5, still: 0.6, parts };
+  return { svg, P, loop: 5, still: 0.6, steps: [[0, 0.12], [0.18, 0.26], [0.3, 0.7]], parts };
 }

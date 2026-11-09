@@ -31,8 +31,8 @@ export default function zhidemai() {
     cyl(LEN, BY, 1.4, z, 1.8, { tone: "mid", name: "weight.knob" }, 14);
 
   // The beam tips in turns; the pans follow the beam ends.
-  const keys = [0, 0.25, 0.6, 0.8];
-  const tilt = [0, 0.032, 0.032, 0];
+  const keys = [0, 0.04, 0.24, 0.6, 0.8];
+  const tilt = [0, 0, 0.032, 0.032, 0];
   const beamTrack = keys.map((t, i) => [t, tilt[i]]);
   const endTrack = (sign) => keys.map((t, i) => [t, sign * LEN * Math.sin(tilt[i] * Math.PI * 2)]);
 
@@ -80,5 +80,5 @@ export default function zhidemai() {
     label: "A beam balance on a bench. A lit deal sits on the left pan and list-price weights on the right. In front, the community's worth-it votes stack up one by one against a single not-worth-it vote, and as they land the beam tips toward the deal and the pointer swings to read worth it.",
     body: out,
   });
-  return { svg, P, loop: 5.2, still: 0.45, parts, through: [] };
+  return { svg, P, loop: 5.2, still: 0.45, steps: [[0.8, 0.01], [0.02, 0.12], [0.24, 0.45]], parts, through: [] };
 }

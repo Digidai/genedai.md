@@ -40,5 +40,5 @@ export default function website2markdown() {
     fade("md", [[0, 0], [0.45, 0], [0.5, 1], [0.88, 1], [0.95, 0]]),
   ];
   const svg = figure({ label: "A small rolling mill on a bench. A web page with a header, an image and text feeds into the rollers, and a plain Markdown sheet with a heading mark and lines of text comes out the other side.", body: out });
-  return { svg, P, loop: 5, still: 0.7, parts };
+  return { svg, P, loop: 5, still: 0.7, steps: [[0, 0.2], [0.45, 0.75]], parts };
 }

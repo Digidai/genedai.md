@@ -251,7 +251,7 @@
   let cardsLoad = null;
   const setCards = (s) => { root.dataset.cards = s; };
   setCards('idle');
-  const loadCards = () => (cardsLoad ||= (setCards('loading'), import('/cards.js?v=9113cf88a8').then(
+  const loadCards = () => (cardsLoad ||= (setCards('loading'), import('/cards.js?v=2fa96fa7b4').then(
     (m) => { setCards('ready'); return m; },
     (err) => { setCards('failed'); console.warn('Hover cards unavailable:', err); return null; })));
   const wake = (e) => {

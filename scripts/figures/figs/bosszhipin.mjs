@@ -53,5 +53,5 @@ export default function bosszhipin() {
     label: "Two terminals on a bench joined by one rail: the candidate's on the left, the boss's on the right. The candidate's message runs straight to the boss and appears on the boss's chat screen; the boss's reply runs back and appears on the candidate's.",
     body: [bench(PLATE, { label: { x: -86, y: 18, w: 24, d: 11, r: 1 } }), station(-70, "cand"), rail, capsule, station(70, "boss")],
   });
-  return { svg, P, loop: 5.6, still: 0.86, parts };
+  return { svg, P, loop: 5.6, still: 0.86, steps: [[0, 0.2], [0.34, 0.44], [0.5, 0.88]], parts };
 }

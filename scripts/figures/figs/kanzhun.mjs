@@ -68,5 +68,5 @@ export default function kanzhun() {
   });
   // The card genuinely passes through the slot; the clip hides the part inside the box.
   const pass = [["card", "box"], ["card", "lid"], ["card", "slot"]];
-  return { svg, P, loop: 4.8, still: 0.3, parts, through: pass, hidden: pass };
+  return { svg, P, loop: 4.8, still: 0.3, steps: [[0, 0.14], [0.15, 0.4], [0.52, 0.75]], parts, through: pass, hidden: pass };
 }

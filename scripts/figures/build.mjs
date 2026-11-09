@@ -36,6 +36,9 @@ for (const id of Object.keys(ENTS)) {
   useLogo(logoFor(id));
   const fig = build();
   useLogo(null);
+  // Every step is [phase starts at, pose shown], with an English and a Chinese label in entities.mjs.
+  const steps = fig.steps ?? [];
+  if (!steps.length || steps.length !== ENTS[id].steps?.length || steps.length !== ENTS[id].zh.steps?.length) throw new Error(`${id}: ${steps.length} figure steps, but entities.mjs labels ${ENTS[id].steps?.length} (en) and ${ENTS[id].zh.steps?.length} (zh)`);
   const done = finish(fig, { audit: auditing });
   fig.svg = done.svg;
   if (auditing) {
@@ -68,7 +71,7 @@ for (const id of Object.keys(ENTS)) {
     if (count) console.log(A.report(r).split("\n").filter((line) => !/: 0 /.test(line) && !/^\w[^:]*: 0$/.test(line)).join("\n"));
   }
   const P = { origin: fig.P.origin.map((v) => +v.toFixed(3)), scale: +fig.P.scale.toFixed(5), azimuth: fig.P.azimuth, elevation: fig.P.elevation };
-  const json = JSON.stringify({ svg: fig.svg, P, loop: fig.loop, still: fig.still ?? 0, parts: fig.parts });
+  const json = JSON.stringify({ svg: fig.svg, P, loop: fig.loop, still: fig.still ?? 0, steps, parts: fig.parts });
   writeFileSync(resolve(FIG_DIR, `${id}.json`), json);
   figBytes += json.length;
   console.log(`  ${id}: ${(json.length / 1024).toFixed(1)} KB`);
@@ -86,6 +89,10 @@ const CARD_CSS = `
 .ent-corner[data-c="fig"]{top:9px;left:12px}
 .ent-corner[data-c="kind"]{top:9px;right:12px;text-transform:uppercase;letter-spacing:.1em}
 .ent-corner[data-c="hint"]{bottom:8px;left:12px;text-transform:uppercase;letter-spacing:.1em}
+.ent-corner[data-c="step"]{bottom:8px;right:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-secondary)}
+.ent-stage{border-radius:6px;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.ent-stage:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+@media (hover:hover) and (pointer:fine){.ent-card[data-fig="ready"] .ent-stage{cursor:ew-resize}}
 .ent-body{padding:12px 14px 14px}
 .ent-title{font-size:15px;line-height:1.35}
 .ent-title strong{font-weight:600}

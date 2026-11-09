@@ -26,7 +26,21 @@ let current = null;    // the [data-ent] element the open card belongs to
 let pending = 0;       // timer of the scheduled open or close
 let openedAt = 0;      // a tap within 400 ms of opening keeps the card open
 let refocused = null;  // the name Escape returned focus to; that focus doesn't reopen its card
-let fig = null, frame = 0, t0 = 0; // the open card's figure and its animation
+let fig = null, frame = 0;  // the open card's figure and its frame loop
+
+// ── Figure playback ───────────────────────────────────
+// The figure is a loop of poses u (0..1 per loop, kept unwrapped so it can ease across the seam),
+// split into named steps. Its playback is mirrored on #ent-card[data-play]:
+//   tour   it plays by itself, and the readout follows the steps
+//   hand   the reader holds it: the pointer scrubs across it, a click, tap or arrow key steps;
+//          it resumes the tour IDLE ms after the reader's last input once pointer and focus have left
+//   still  reduced motion: no tour; every input jumps straight to its pose
+// #ent-card .ent-stage is a slider: aria-valuenow is the step, aria-valuetext its name.
+const IDLE = 3600, LEAVE = 1200;
+let u = 0, target = 0, posed = NaN, last = 0, resumeAt = 0, stepIdx = -1, labels = [];
+let drag = null, clickX = null, noClick = false;
+const frac = (x) => ((x % 1) + 1) % 1;
+const stage = () => card.querySelector('.ent-stage');
 const schedule = (fn, ms) => { clearTimeout(pending); pending = setTimeout(fn, ms); };
 const cancel = () => clearTimeout(pending);
 // Names with role="button" report whether their card is open.
@@ -46,11 +60,52 @@ const KIND_ZH = { Company: '公司', Product: '产品', Education: '教育', Pro
 
 function render(id) {
   const e = ZH ? { ...ENTS[id], ...ENTS[id].zh, kind: KIND_ZH[ENTS[id].kind], fig: ENTS[id].fig.replace('Fig', '图') } : ENTS[id];
+  labels = e.steps;
   const links = (e.links || []).map(([text, href]) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(text)} <span aria-hidden="true">↗</span></a>`).join('');
   card.innerHTML =
-    `<div class="ent-plate"><span class="ent-corner" data-c="fig">${esc(e.fig)}</span><span class="ent-corner" data-c="kind">${esc(e.kind)}</span><div class="ent-stage"></div><span class="ent-corner" data-c="hint">${esc(e.hint)}</span></div>` +
+    `<div class="ent-plate"><span class="ent-corner" data-c="fig">${esc(e.fig)}</span><span class="ent-corner" data-c="kind">${esc(e.kind)}</span><div class="ent-stage"></div><span class="ent-corner" data-c="hint">${esc(e.hint)}</span><span class="ent-corner" data-c="step" aria-hidden="true"></span></div>` +
     `<div class="ent-body"><p class="ent-title"><strong>${esc(e.name)}</strong>${e.meta ? ` <span>${esc(e.meta)}</span>` : ''}</p><p class="ent-desc">${esc(e.desc)}</p>${links ? `<p class="ent-links">${links}</p>` : ''}</div>`;
   card.setAttribute('aria-label', e.name);
+  card.querySelector('.ent-stage').dataset.label = ZH
+    ? `${e.name}示意图：${e.hint}。在图上移动、点击，或用方向键逐步查看。`
+    : `${e.name} figure: ${e.hint}. Move across it, click it, or use the arrow keys to step through.`;
+}
+
+// The step whose phase began most recently at pose x.
+function stepAt(x) {
+  let best = 0, gap = 2;
+  fig.steps.forEach(([from], i) => { const g = frac(x - from); if (g < gap) { gap = g; best = i; } });
+  return best;
+}
+
+function show() {
+  if (u !== posed) { pose(fig, card, u); posed = u; }
+  const i = stepAt(u);
+  if (i === stepIdx) return;
+  stepIdx = i;
+  card.querySelector('[data-c="step"]').textContent = `${i + 1}/${labels.length} · ${labels[i]}`;
+  const st = stage();
+  st.setAttribute('aria-valuenow', i + 1);
+  st.setAttribute('aria-valuetext', labels[i]);
+}
+
+const play = (mode) => (card.dataset.play = mode);
+// The reader takes over; the tour resumes `ms` after this input (never while it is Infinity).
+function hold(ms) {
+  if (card.dataset.play === 'tour') play('hand');
+  resumeAt = performance.now() + ms;
+  if (!frame && fig) { last = performance.now(); frame = requestAnimationFrame(loop); }
+}
+// Step from the step the reader sees, forward or back along the loop; Home and End take the short way.
+function goStep(to, dir) {
+  const n = fig.steps.length, i = to == null ? (stepAt(u) + dir + n) % n : to, at = fig.steps[i][1];
+  target = dir > 0 ? u + (frac(at - u) || 1) : dir < 0 ? u - (frac(u - at) || 1) : u + frac(at - u + 0.5) - 0.5;
+}
+// The pointer's place across the figure picks the pose: the left edge starts the loop, the right edge ends it.
+function scrubTo(clientX) {
+  const r = stage().getBoundingClientRect();
+  const x = Math.min(1, Math.max(0, (clientX - r.left) / r.width)) * 0.999;
+  target = x + Math.round(u - x);
 }
 
 function place() {
@@ -68,7 +123,15 @@ function place() {
 
 function loop(now) {
   if (!current || !fig) { frame = 0; return; }
-  pose(fig, card, ((now - t0) / 1000) / fig.loop);
+  const dt = Math.min(0.05, (now - last) / 1000);
+  last = now;
+  if (card.dataset.play === 'hand' && now >= resumeAt) play('tour');
+  const mode = card.dataset.play;
+  if (mode === 'tour') u = target = u + dt / fig.loop;
+  else u = mode === 'still' || Math.abs(target - u) < 1e-4 ? target : u + (target - u) * (1 - Math.exp(-dt / 0.14));
+  show();
+  // Settled with no tour to resume: sleep until the next input.
+  if (mode !== 'tour' && u === target && (mode === 'still' || resumeAt === Infinity)) { frame = 0; return; }
   frame = requestAnimationFrame(loop);
 }
 
@@ -92,6 +155,7 @@ function open(el) {
   const over = parseFloat(card.style.top) + card.offsetHeight - (innerHeight - 8);
   if (over > 0 && !finePointer.matches) scrollBy({ top: over, behavior: still.matches ? 'instant' : 'smooth' });
   fig = null;
+  delete card.dataset.play;
   void card.offsetWidth; // commit the hidden state so the fade-in runs
   card.classList.add('on');
   fetchFig(id).then((f) => {
@@ -99,10 +163,18 @@ function open(el) {
     card.dataset.fig = f ? 'ready' : 'missing';
     if (!f) return;
     fig = f;
-    card.querySelector('.ent-stage').innerHTML = f.svg;
-    t0 = performance.now();
-    if (still.matches) pose(f, card, f.still);
-    else if (!frame) frame = requestAnimationFrame(loop);
+    const st = stage();
+    st.innerHTML = f.svg;
+    Object.assign(st, { tabIndex: 0 });
+    st.setAttribute('role', 'slider');
+    st.setAttribute('aria-label', st.dataset.label);
+    st.setAttribute('aria-valuemin', 1);
+    st.setAttribute('aria-valuemax', f.steps.length);
+    u = target = still.matches ? f.still : 0;
+    posed = NaN; stepIdx = -1; drag = null; clickX = null; resumeAt = 0;
+    play(still.matches ? 'still' : 'tour');
+    show();
+    if (!still.matches && !frame) { last = performance.now(); frame = requestAnimationFrame(loop); }
   });
 }
 
@@ -114,6 +186,7 @@ function close() {
   card.dataset.state = 'closed';
   delete card.dataset.for;
   delete card.dataset.fig;
+  delete card.dataset.play;
   card.classList.remove('on');
   card.hidden = true;
   cancelAnimationFrame(frame);
@@ -161,6 +234,55 @@ d.addEventListener('keydown', (e) => {
     if (d.activeElement !== el) { refocused = el; el.focus(); }
   }
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-ent][role="button"]')) { e.preventDefault(); current === e.target ? close() : open(e.target); }
+});
+
+// Figure input. A mouse scrubs by hovering; a finger or pen scrubs by dragging sideways (the stage keeps
+// vertical panning). A click or tap steps forward; the arrow keys, Space, Enter, Home and End step when it has focus.
+card.addEventListener('pointerdown', (e) => {
+  if (fig && e.pointerType !== 'mouse' && e.target.closest('.ent-stage')) drag = { x: e.clientX, id: e.pointerId, on: false };
+});
+card.addEventListener('pointermove', (e) => {
+  if (!fig || !e.target.closest('.ent-stage')) return;
+  if (e.pointerType === 'mouse') {
+    // A small jitter after a click doesn't scrub away from the step it chose.
+    if (clickX != null && Math.abs(e.clientX - clickX) < 8) return;
+    clickX = null;
+    scrubTo(e.clientX);
+    hold(Infinity);
+  } else if (drag && e.pointerId === drag.id) {
+    if (!drag.on && Math.abs(e.clientX - drag.x) > 6) { drag.on = true; stage().setPointerCapture(e.pointerId); }
+    if (drag.on) { scrubTo(e.clientX); hold(Infinity); }
+  }
+});
+const endDrag = (e) => {
+  if (!drag || e.pointerId !== drag.id) return;
+  if (drag.on) { noClick = true; hold(IDLE); }
+  drag = null;
+};
+card.addEventListener('pointerup', endDrag);
+card.addEventListener('pointercancel', endDrag);
+card.addEventListener('pointerout', (e) => {
+  if (!fig || e.pointerType !== 'mouse' || !e.target.closest('.ent-stage') || e.relatedTarget?.closest?.('.ent-stage')) return;
+  if (card.dataset.play === 'hand' && !stage().matches(':focus-visible')) hold(LEAVE);
+});
+card.addEventListener('click', (e) => {
+  if (!fig || !e.target.closest('.ent-stage')) return;
+  if (noClick) { noClick = false; return; }
+  clickX = e.pointerType === 'mouse' ? e.clientX : null;
+  goStep(null, 1);
+  hold(e.pointerType === 'mouse' ? Infinity : IDLE);
+});
+card.addEventListener('keydown', (e) => {
+  if (!fig || !e.target.matches('.ent-stage')) return;
+  const keys = { ArrowRight: [null, 1], ArrowDown: [null, 1], ' ': [null, 1], Enter: [null, 1], ArrowLeft: [null, -1], ArrowUp: [null, -1], Home: [0, 0], End: [fig.steps.length - 1, 0] };
+  if (!keys[e.key]) return;
+  e.preventDefault();
+  goStep(...keys[e.key]);
+  hold(Infinity);
+});
+card.addEventListener('focusin', (e) => { if (fig && e.target.matches('.ent-stage:focus-visible')) hold(Infinity); });
+card.addEventListener('focusout', (e) => {
+  if (fig && e.target.matches('.ent-stage') && card.dataset.play === 'hand' && !e.target.matches(':hover')) hold(IDLE);
 });
 addEventListener('scroll', place, { passive: true });
 addEventListener('resize', place);
