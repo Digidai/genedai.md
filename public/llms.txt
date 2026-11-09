@@ -2,7 +2,7 @@
 
 > Gene Dai (戴金乘) — Product builder, Co-Founder & CPO of Metix AI, an AI-native hiring platform. Previously led products at BOSS Zhipin, Liepin, Zuoyebang, and Zhidemai Tech.
 
-Based in California. Studied Computer Software Engineering at Beihang University. Areas of expertise: AI hiring, product management, user growth, platform products, HRTech.
+Studied Computer Software Engineering at Beihang University. Areas of expertise: AI hiring, product management, user growth, platform products, HRTech.
 
 Product viewpoint, in his words: "Conversation is an interaction model with stronger feedback than anything before it. So when the work is getting a task done efficiently, two things become critical: the purpose, and the experience of the flow toward the goal."
 

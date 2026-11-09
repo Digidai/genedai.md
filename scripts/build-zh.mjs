@@ -23,7 +23,7 @@ const TEXT = [
   ['<meta property="og:description" content="Co-Founder &amp; CPO of Metix AI, an AI-native hiring platform. Previously led products at BOSS Zhipin, Liepin, and Zuoyebang." />', '<meta property="og:description" content="AI 原生招聘平台 Metix AI 联合创始人兼首席产品官，曾在 BOSS直聘、猎聘、作业帮负责产品。" />'],
   ['<meta property="og:url" content="https://genedai.md/" />', '<meta property="og:url" content="https://genedai.md/zh/" />'],
   ['<meta property="og:locale" content="en_US" />', '<meta property="og:locale" content="zh_CN" />\n  <meta property="og:locale:alternate" content="en_US" />'],
-  ['https://genedai.md/og-image.png?v=2', 'https://genedai.md/og-image-zh.png?v=1'],
+  ['https://genedai.md/og-image.png?v=3', 'https://genedai.md/og-image-zh.png?v=2'],
   ['<meta property="og:image:alt" content="Gene Dai — Co-Founder &amp; CPO, Metix AI. Previously BOSS Zhipin, Liepin, Zuoyebang." />', '<meta property="og:image:alt" content="戴金乘 Gene Dai，Metix AI 联合创始人兼首席产品官，曾任职 BOSS直聘、猎聘、作业帮。" />'],
   ['<meta name="twitter:image:alt" content="Gene Dai — Product Builder" />', '<meta name="twitter:image:alt" content="戴金乘 Gene Dai — 招聘产品人" />'],
   ['<meta name="twitter:title" content="Gene Dai — Product Builder" />', '<meta name="twitter:title" content="戴金乘 Gene Dai — 招聘产品人" />'],
@@ -52,11 +52,10 @@ const TEXT = [
 
   // ── Hero
   ['<section class="hero" aria-label="Introduction">', '<section class="hero" aria-label="介绍">'],
-  ['<span class="hm-label">Now</span> Building HR tools and AI agents for hiring, at Metix AI and in the open<br>California · Updated ', '<span class="hm-label">现在</span> 在 Metix AI 做招聘工具和 AI 智能体，也做开源<br>美国加州 · 更新于 '],
+  ['<span class="hm-label">Now</span> Building HR tools and AI agents for hiring, at Metix AI and in the open<br>Updated ', '<span class="hm-label">现在</span> 在 Metix AI 做招聘工具和 AI 智能体，也做开源<br>更新于 '],
   ['alt="Gene Dai" />', 'alt="戴金乘 Gene Dai" />'],
   ['<h1 class="md-h1">Gene Dai</h1>', '<h1 class="md-h1">戴金乘 <span class="h1-en">Gene Dai</span></h1>'],
-  ['linkedin.com/in/genedai · California</p>', 'linkedin.com/in/genedai · 美国加州</p>'],
-  ['<p class="lead">I build hiring products. I led products for candidates, employers, and headhunters at ', '<p class="lead">我做招聘产品。曾在 '],
+    ['<p class="lead">I build hiring products. I led products for candidates, employers, and headhunters at ', '<p class="lead">我做招聘产品。曾在 '],
   ['</span> and <span class="ent" data-ent="liepin"', '</span> 和 <span class="ent" data-ent="liepin"'],
   [', and now co-found <a href="https://metix.ai" target="_blank" rel="noopener" data-ent="metix">Metix AI</a>, an <em>AI-native hiring platform</em>.</p>', ' 负责求职者、企业和猎头三端产品，现在联合创办 AI 原生招聘平台 <a href="https://metix.ai" target="_blank" rel="noopener" data-ent="metix">Metix AI</a>。</p>'],
   ['<span class="badge">User Growth</span>', '<span class="badge">用户增长</span>'],
@@ -75,7 +74,7 @@ const TEXT = [
 
   // ── Journey
   ['<h2 class="md-h2">Journey</h2>', '<h2 class="md-h2">经历</h2>'],
-  ['<p>From Beijing to California: over a decade building hiring, education, and <span class="nowrap">e-commerce</span> products.</p>', '<p>从北京到加州，十多年做招聘、教育和电商产品。</p>'],
+  ['<p>Over a decade building hiring, education, and <span class="nowrap">e-commerce</span> products.</p>', '<p>十多年做招聘、教育和电商产品。</p>'],
   ['<span class="hint-hover">Hover a company to see what it does.</span><span class="hint-tap">Tap a company to see what it does.</span>', '<span class="hint-hover">鼠标悬停在公司名上，查看公司简介。</span><span class="hint-tap">点一下公司名，查看公司简介。</span>'],
   ['<span class="title">Co-Founder &amp; CPO</span><span class="current-tag">current</span>', '<span class="title">联合创始人 / 首席产品官（CPO）</span><span class="current-tag">在职</span>'],
   ['Metix AI</span> — AI hiring platform</span>', 'Metix AI</span> — AI 招聘平台</span>'],
@@ -142,7 +141,7 @@ const TEXT = [
   ['<div class="connect-links">\n        <a href="https://x.com/genedai"', '<div class="connect-links">\n        <a href="https://www.zhihu.com/people/digidai" target="_blank" rel="me noopener">知乎</a>\n        <span class="sep" aria-hidden="true">·</span>\n        <a href="https://web.okjike.com/u/633AAA79-CA7E-42E6-ACEA-6833F255F6E6" target="_blank" rel="me noopener">即刻</a>\n        <span class="sep" aria-hidden="true">·</span>\n        <a href="https://www.xiaohongshu.com/user/profile/53db4339b4c4d61da5f00b34" target="_blank" rel="me noopener">小红书</a>\n        <span class="sep" aria-hidden="true">·</span>\n        <a href="https://x.com/genedai"'],
 
   // ── Footer
-  ['<p>genedai.md &middot; California &middot; &copy; Gene Dai</p>', '<p>genedai.md &middot; 美国加州 &middot; &copy; 戴金乘</p>'],
+  ['<p>genedai.md &middot; &copy; Gene Dai</p>', '<p>genedai.md &middot; &copy; 戴金乘</p>'],
 ];
 
 // Chinese typography: CJK fallbacks after the Latin faces, and no faux italics.

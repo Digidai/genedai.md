@@ -2,7 +2,6 @@
 name: Gene Dai
 name_zh: 戴金乘
 role: Co-Founder & CPO @ Metix AI
-location: California
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
 zh: https://genedai.md/zh/
@@ -28,7 +27,7 @@ Gene Dai is a product builder and Co-Founder & CPO of Metix AI, an AI-native hir
 
 ## Journey
 
-From Beijing to California: over a decade building hiring, education, and e-commerce products.
+Over a decade building hiring, education, and e-commerce products.
 
 - **Co-Founder & CPO**, Metix AI: AI-native hiring platform (2025 – present)
 - **Head of Product Management**, Zuoyebang (2024 – 2025): China's largest K12 online education platform
