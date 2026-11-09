@@ -101,7 +101,7 @@ export default {
   website2markdown: {
     name: "Website2Markdown", meta: "Web to text", kind: "Project",
     desc: "Turns any web page into clean text that AI tools can read. Free, with an API for developers.",
-    links: [["md.genedai.me", "https://md.genedai.me"], ["GitHub", "https://github.com/Digidai/website2markdown"]],
+    links: [["mdget.dev", "https://mdget.dev"], ["GitHub", "https://github.com/Digidai/website2markdown"]],
     hint: "Page to Markdown",
     steps: ["Page", "Markdown"],
     zh: {"name": "Website2Markdown", "meta": "网页转文本", "desc": "把任何网页转成 AI 工具能读的干净文本。免费，并为开发者提供 API。", "hint": "网页转 Markdown", "steps": ["网页", "Markdown"]},
