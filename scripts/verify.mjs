@@ -4,6 +4,7 @@
 
 import { readFileSync, statSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { spawnSync } from 'node:child_process';
 import { resolve } from 'node:path';
 
 const ROOT = resolve(import.meta.dirname, '..');
@@ -189,6 +190,12 @@ for (const page of ['index.html', '404.html']) {
   let recorded = '';
   try { recorded = readFileSync(resolve(ROOT, 'scripts', 'cv-source.txt'), 'utf8'); } catch {}
   if (recorded !== fingerprints()) fail('CV PDFs are stale: page text changed since the last scripts/build-cv.sh run');
+}
+
+// 21. The page scripts parse (a syntax error would silently disable the menu or the hover cards)
+for (const f of ['app.js', 'cards.js']) {
+  const r = spawnSync(process.execPath, ['--input-type=module', '--check'], { input: readPub(f), encoding: 'utf8' });
+  if (r.status !== 0) fail(`public/${f} has a syntax error:\n${r.stderr.split('\n').slice(0, 5).join('\n')}`);
 }
 
 // Report

@@ -52,6 +52,8 @@ function pose(fig, root, u) {
 
 const d = document;
 const still = matchMedia('(prefers-reduced-motion: reduce)');
+const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+const touch = matchMedia('(hover: none)');
 
 // ── Card UI ───────────────────────────────────────────
 const style = d.createElement('style');
@@ -63,7 +65,24 @@ card.className = 'ent-card iso';
 card.id = 'ent-card';
 card.setAttribute('role', 'dialog');
 card.hidden = true;
-let openedAt = 0, quiet = null, current = null, openTimer = 0, closeTimer = 0, frame = 0, t0 = 0;
+card.dataset.state = 'closed';
+
+// ── Card state ────────────────────────────────────────
+// One card at a time, closed or open, mirrored on the element so CSS, tests and agents can read it:
+//   #ent-card[data-state]  closed | open
+//   #ent-card[data-for]    the open card's entity id
+//   #ent-card[data-fig]    loading | ready | missing  (its figure)
+// Hover delays each change: `pending` holds the one scheduled transition (open after 140 ms,
+// close after 220 ms), and scheduling another replaces it.
+let current = null;    // the [data-ent] element the open card belongs to
+let pending = 0;       // timer of the scheduled open or close
+let openedAt = 0;      // a tap within 400 ms of opening keeps the card open
+let refocused = null;  // the name Escape returned focus to; that focus doesn't reopen its card
+let fig = null, frame = 0, t0 = 0; // the open card's figure and its animation
+const schedule = (fn, ms) => { clearTimeout(pending); pending = setTimeout(fn, ms); };
+const cancel = () => clearTimeout(pending);
+// Names with role="button" report whether their card is open.
+const expand = (el, on) => { if (el.getAttribute('role') === 'button') el.setAttribute('aria-expanded', String(on)); };
 
 const darkNow = () => d.documentElement.dataset.theme
   ? d.documentElement.dataset.theme === 'dark'
@@ -99,7 +118,6 @@ function place() {
   card.style.top = Math.max(8, top) + 'px';
 }
 
-let fig = null;
 function loop(now) {
   if (!current || !fig) { frame = 0; return; }
   pose(fig, card, ((now - t0) / 1000) / fig.loop);
@@ -107,17 +125,18 @@ function loop(now) {
 }
 
 function open(el) {
-  clearTimeout(closeTimer);
+  cancel();
   if (current === el) return;
-  if (current) current.removeAttribute('aria-expanded');
+  if (current) expand(current, false);
   current = el;
   openedAt = performance.now();
   const id = el.dataset.ent;
   render(id);
   card.dataset.theme = darkNow() ? 'dark' : 'light';
+  Object.assign(card.dataset, { state: 'open', for: id, fig: 'loading' });
   el.after(card);
   card.hidden = false;
-  if (el.getAttribute('role') === 'button') el.setAttribute('aria-expanded', 'true');
+  expand(el, true);
   el.setAttribute('aria-controls', card.id);
   place();
   // On a phone the card may fit neither above nor below the name: scroll just enough to show all of it.
@@ -128,7 +147,9 @@ function open(el) {
   void card.offsetWidth; // commit the hidden state so the fade-in runs
   card.classList.add('on');
   fetchFig(id).then((f) => {
-    if (!f || current !== el) return;
+    if (current !== el) return;
+    card.dataset.fig = f ? 'ready' : 'missing';
+    if (!f) return;
     fig = f;
     card.querySelector('.ent-stage').innerHTML = f.svg;
     t0 = performance.now();
@@ -138,37 +159,38 @@ function open(el) {
 }
 
 function close() {
-  clearTimeout(openTimer);
+  cancel();
   if (!current) return;
-  if (current.getAttribute('role') === 'button') current.setAttribute('aria-expanded', 'false');
+  expand(current, false);
   current = null;
+  card.dataset.state = 'closed';
+  delete card.dataset.for;
+  delete card.dataset.fig;
   card.classList.remove('on');
   card.hidden = true;
   cancelAnimationFrame(frame);
   frame = 0;
 }
 
-const later = (fn, ms) => { clearTimeout(closeTimer); closeTimer = setTimeout(fn, ms); };
-const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
-const touch = matchMedia('(hover: none)');
+// Hover opens after a short delay (none when moving from one card's name to another's).
+const hoverOpen = (el) => { fetchFig(el.dataset.ent); schedule(() => el.matches(':hover') && open(el), current ? 0 : 140); };
 
 d.addEventListener('pointerover', (e) => {
   if (e.pointerType !== 'mouse' || !finePointer.matches) return;
   const el = e.target.closest('[data-ent]');
-  if (el) { clearTimeout(closeTimer); clearTimeout(openTimer); fetchFig(el.dataset.ent); openTimer = setTimeout(() => el.matches(':hover') && open(el), current ? 0 : 140); }
-  else if (e.target.closest('.ent-card')) clearTimeout(closeTimer);
+  if (el) hoverOpen(el);
+  else if (e.target.closest('.ent-card')) cancel();
 });
 d.addEventListener('pointerout', (e) => {
   if (e.pointerType !== 'mouse' || !current) return;
   const to = e.relatedTarget;
   if (to && (to.closest('.ent-card') || to.closest('[data-ent]') === current)) return;
-  clearTimeout(openTimer);
-  later(close, 220);
+  schedule(close, 220);
 });
 d.addEventListener('focusin', (e) => {
   const el = e.target.closest('[data-ent]');
-  if (el && el === quiet) { quiet = null; return; }
-  quiet = null;
+  if (el && el === refocused) { refocused = null; return; }
+  refocused = null;
   if (el && el.matches(':focus-visible')) open(el);
   else if (current && !e.target.closest('.ent-card') && e.target !== current) close();
 });
@@ -185,7 +207,11 @@ d.addEventListener('click', (e) => {
   if (current && !e.target.closest('.ent-card')) close();
 });
 d.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && current) { const el = current; close(); quiet = el; el.focus(); }
+  if (e.key === 'Escape' && current) {
+    const el = current;
+    close();
+    if (d.activeElement !== el) { refocused = el; el.focus(); }
+  }
   if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-ent][role="button"]')) { e.preventDefault(); current === e.target ? close() : open(e.target); }
 });
 addEventListener('scroll', place, { passive: true });
@@ -195,7 +221,7 @@ still.addEventListener('change', () => { if (current) { close(); } });
 function start(el, type) {
   if (type === 'click') { if (el.getAttribute('role') === 'button' || touch.matches) open(el); }
   else if (type === 'focusin') { if (el.matches(':focus-visible')) open(el); }
-  else { fetchFig(el.dataset.ent); openTimer = setTimeout(() => el.matches(':hover') && open(el), 140); }
+  else hoverOpen(el);
 }
 
 export { start, pose };

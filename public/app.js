@@ -14,7 +14,9 @@
   // The Chinese page (/zh/) has lang="zh-CN"; t() picks its wording.
   const zh = d.documentElement.lang.startsWith('zh');
   const t = (en, cn) => (zh ? cn : en);
-  const sourceButtons = d.querySelectorAll('[data-action="source"]');
+  // Each feature's state is mirrored on <html> so CSS, tests and agents can read it:
+  // data-theme (when chosen), data-view (page | loading | source), data-cards (idle | loading | ready | failed).
+  const root = d.documentElement;
 
   // ── Chinese-version hint ───────────────────────────
   // Readers whose browser prefers Chinese get a small note pointing to /zh/.
@@ -36,15 +38,21 @@
 
   // ── Theme ──────────────────────────────────────────
   // The inline <head> script applies a saved choice before first paint.
-  const darkNow = () => d.documentElement.dataset.theme
-    ? d.documentElement.dataset.theme === 'dark'
-    : matchMedia('(prefers-color-scheme: dark)').matches;
+  // States: system (no data-theme, follows the OS), light, dark. A toggle picks the opposite of
+  // what is showing and remembers it. The theme button reports dark mode as pressed.
+  const systemDark = matchMedia('(prefers-color-scheme: dark)');
+  const darkNow = () => root.dataset.theme ? root.dataset.theme === 'dark' : systemDark.matches;
+  const themeButtons = d.querySelectorAll('[data-action="theme"]');
+  const syncTheme = () => themeButtons.forEach((b) => b.setAttribute('aria-pressed', String(darkNow())));
   function toggleTheme() {
     const next = darkNow() ? 'light' : 'dark';
-    d.documentElement.dataset.theme = next;
+    root.dataset.theme = next;
     try { localStorage.setItem('theme', next); } catch {}
+    syncTheme();
   }
-  d.querySelectorAll('[data-action="theme"]').forEach((b) => b.addEventListener('click', toggleTheme));
+  themeButtons.forEach((b) => b.addEventListener('click', toggleTheme));
+  systemDark.addEventListener('change', syncTheme);
+  syncTheme();
 
   // ── Source view ────────────────────────────────────
   const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -73,9 +81,14 @@
     }).join('');
   }
 
-  let sourceEl = null;
+  // View: page ⇄ source. The first switch to source fetches /genedai.md (loading); a request made
+  // meanwhile is kept in `want` and applied when the fetch ends, so the source is built once.
+  let view = 'page', want = false, sourceEl = null;
   async function setSource(on) {
+    want = on;
+    if (!article || view === 'loading') return;
     if (on && !sourceEl) {
+      view = root.dataset.view = 'loading';
       try {
         const res = await fetch('/genedai.md');
         if (!res.ok) throw new Error(res.status);
@@ -89,19 +102,16 @@
         return;
       }
     }
-    if (sourceEl) sourceEl.hidden = !on;
-    article.hidden = on;
-    sourceButtons.forEach((b) => {
-      b.setAttribute('aria-pressed', String(on));
-      b.textContent = on ? 'preview' : 'source';
-    });
+    view = root.dataset.view = want ? 'source' : 'page';
+    if (sourceEl) sourceEl.hidden = !want;
+    article.hidden = want;
     const url = new URL(location.href);
-    on ? url.searchParams.set('view', 'source') : url.searchParams.delete('view');
+    want ? url.searchParams.set('view', 'source') : url.searchParams.delete('view');
     history.replaceState(null, '', url);
   }
-  const sourceOn = () => !!article?.hidden;
+  const sourceOn = () => view === 'source';
+  if (article) root.dataset.view = view;
 
-  sourceButtons.forEach((b) => b.addEventListener('click', () => setSource(!sourceOn())));
   if (article && new URLSearchParams(location.search).get('view') === 'source') setSource(true);
 
   // In-page anchors always lead back to the rendered page.
@@ -165,9 +175,12 @@
   const foot = dialog.querySelector('.foot');
   const footDefault = foot.textContent;
 
+  // The footer shows its hints, or a short message; a new message restarts the timer.
+  let flashTimer = 0;
   function flash(msg) {
+    clearTimeout(flashTimer);
     foot.textContent = msg;
-    setTimeout(() => { foot.textContent = footDefault; }, 1600);
+    flashTimer = setTimeout(() => { foot.textContent = footDefault; }, 1600);
   }
 
   // A command matches when the query characters appear in order in its name (loose
@@ -232,21 +245,26 @@
   // ── Hover cards ────────────────────────────────────
   // Names marked data-ent open a card with an animated isometric figure. The card
   // code (cards.js) loads when the page is idle; each figure (/figs/<id>.json) loads when first needed.
-  let cards = null;
-  const loadCards = () => (cards ||= import('/cards.js?v=af23b87ef5'));
+  // Card code: idle → loading → ready, or failed. While idle or loading, this hands each event to
+  // start() once the code arrives; when ready, cards.js listens itself. If it fails (offline, blocked),
+  // names stay plain text and links, so a tap on a project still opens it.
+  let cardsLoad = null;
+  const setCards = (s) => { root.dataset.cards = s; };
+  setCards('idle');
+  const loadCards = () => (cardsLoad ||= (setCards('loading'), import('/cards.js?v=9113cf88a8').then(
+    (m) => { setCards('ready'); return m; },
+    (err) => { setCards('failed'); console.warn('Hover cards unavailable:', err); return null; })));
   const wake = (e) => {
     const el = e.target.closest?.('[data-ent]');
     if (!el || (e.type === 'pointerover' && e.pointerType !== 'mouse')) return;
-    // Until cards.js has loaded, hand it each event; after that it listens itself.
-    if (cards === true) return;
+    if (root.dataset.cards === 'ready' || root.dataset.cards === 'failed') return;
     // On touch screens the first tap on a linked name opens its card instead of leaving the page.
     if (e.type === 'click' && !el.matches('[role="button"]') && matchMedia('(hover: none)').matches) e.preventDefault();
-    loadCards().then((m) => { m.start(el, e.type); cards = true; });
+    loadCards().then((m) => m?.start(el, e.type));
   };
   ['pointerover', 'focusin', 'click'].forEach((t) => d.addEventListener(t, wake, { passive: t !== 'click' }));
   // Load the card code once the page is idle, so the first card opens without waiting for it.
-  // Once loaded it listens itself; an event that arrives mid-load still goes through start() above.
-  (window.requestIdleCallback || setTimeout)(() => { if (cards !== true) loadCards().then(() => { cards = true; }); });
+  (window.requestIdleCallback || setTimeout)(loadCards);
 
   d.querySelectorAll('[data-action="palette"]').forEach((b) => b.addEventListener('click', openPalette));
   d.addEventListener('keydown', (e) => {
