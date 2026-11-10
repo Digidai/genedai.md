@@ -5,7 +5,7 @@ role: Co-Founder & CPO @ Metix AI
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
 zh: https://genedai.md/zh/
-updated: 2026-11-09
+updated: 2026-11-10
 ---
 
 # Gene Dai
@@ -61,11 +61,11 @@ Start here:
 Latest:
 
 <!-- writing:start -->
+- 2026-11-10 [AWS Can Bill for ChatGPT Enterprise Without Hosting All Customer Data](https://genedai.me/2026/11/10/chatgpt-enterprise-aws-billing-data-location/)
+- 2026-11-09 [Alex Stamos Has to Turn AI Bug Hunts Into Fixes](https://genedai.me/2026/11/09/alex-stamos-devin-security-repair-gap/)
 - 2026-11-09 [Britain Bets £810,591 That AI Training Can Change Work in Barnsley](https://genedai.me/2026/11/09/barnsley-ai-training-workplace-outcomes/)
 - 2026-11-08 [Proton Cancels AI Staff Interviews but Keeps Its Coding Overhaul](https://genedai.me/2026/11/08/proton-ai-interviews-coding-security-trust/)
 - 2026-11-07 [Upwork Connects AI Agents to Freelancers, Then Buys Global Employment](https://genedai.me/2026/11/07/upwork-agents-freelancers-workmotion-deal/)
-- 2026-11-06 [Canva Combines Product Teams as 1,271 Workers Face Change](https://genedai.me/2026/11/06/canva-product-teams-1271-workers/)
-- 2026-11-05 [Volkswagen's 330,000-Worker Copilot Rollout Meets a €31 Billion Cost Plan](https://genedai.me/2026/11/05/volkswagen-copilot-rollout-cost-plan/)
 <!-- writing:end -->
 
 Read on:
