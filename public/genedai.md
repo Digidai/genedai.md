@@ -5,7 +5,7 @@ role: Co-Founder & CPO @ Metix AI
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
 zh: https://genedai.md/zh/
-updated: 2026-11-10
+updated: 2026-11-11
 ---
 
 # Gene Dai
@@ -61,11 +61,11 @@ Start here:
 Latest:
 
 <!-- writing:start -->
+- 2026-11-11 [Five9 Signs a $325 Million AI Deal While Its Seat Revenue Faces Automation](https://genedai.me/2026/11/11/five9-level-ai-seat-revenue-risk/)
 - 2026-11-10 [AWS Can Bill for ChatGPT Enterprise Without Hosting All Customer Data](https://genedai.me/2026/11/10/chatgpt-enterprise-aws-billing-data-location/)
+- 2026-11-10 [Lee Ritholtz Moves Anura From Drone Demos Toward Armored Crews](https://genedai.me/2026/11/10/lee-ritholtz-anura-armored-crew-interface/)
 - 2026-11-09 [Alex Stamos Has to Turn AI Bug Hunts Into Fixes](https://genedai.me/2026/11/09/alex-stamos-devin-security-repair-gap/)
 - 2026-11-09 [Britain Bets £810,591 That AI Training Can Change Work in Barnsley](https://genedai.me/2026/11/09/barnsley-ai-training-workplace-outcomes/)
-- 2026-11-08 [Proton Cancels AI Staff Interviews but Keeps Its Coding Overhaul](https://genedai.me/2026/11/08/proton-ai-interviews-coding-security-trust/)
-- 2026-11-07 [Upwork Connects AI Agents to Freelancers, Then Buys Global Employment](https://genedai.me/2026/11/07/upwork-agents-freelancers-workmotion-deal/)
 <!-- writing:end -->
 
 Read on:
