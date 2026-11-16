@@ -37,11 +37,11 @@ Product viewpoint, in his words: "Conversation is an interaction model with stro
 ## Latest writing
 
 <!-- writing:start -->
+- [DeepMind Workers Take Their AI Dispute to a UK Labor Tribunal](https://genedai.me/2026/11/16/deepmind-workers-union-bid-ai-projects/): 2026-11-16
 - [Gainsight's AI Customer Owner Comes With a Smaller Workforce](https://genedai.me/2026/11/15/gainsight-outcome-executive-agent-customer-success/): 2026-11-15
 - [Amazon Sets Aside $1 Billion for Career Pivots Beyond Its Own Payroll](https://genedai.me/2026/11/13/amazon-career-choice-billion-career-pivots/): 2026-11-13
 - [OpenAI and Upwork Find Bigger AI Projects, but Little Hourly Rate Premium](https://genedai.me/2026/11/12/openai-upwork-ai-project-budget-hourly-pay-gap/): 2026-11-12
 - [Five9 Signs a $325 Million AI Deal While Its Seat Revenue Faces Automation](https://genedai.me/2026/11/11/five9-level-ai-seat-revenue-risk/): 2026-11-11
-- [AWS Can Bill for ChatGPT Enterprise Without Hosting All Customer Data](https://genedai.me/2026/11/10/chatgpt-enterprise-aws-billing-data-location/): 2026-11-10
 <!-- writing:end -->
 
 ## Career
