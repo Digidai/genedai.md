@@ -5,7 +5,7 @@ role: Co-Founder & CPO @ Metix AI
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
 zh: https://genedai.md/zh/
-updated: 2026-11-20
+updated: 2026-11-21
 ---
 
 # Gene Dai
@@ -61,11 +61,11 @@ Start here:
 Latest:
 
 <!-- writing:start -->
+- 2026-11-21 [Indeed's AI Job Ads Double While Worker Reviews Sour](https://genedai.me/2026/11/21/indeed-ai-job-ads-worker-trust-divide/)
 - 2026-11-20 [Adecco's AI Survey Puts Falling Training Against Rising Agent Use](https://genedai.me/2026/11/20/adecco-ai-training-worker-redesign-gap/)
+- 2026-11-20 [Julie Bornstein Makes the Shopping Agent Ask Before It Buys](https://genedai.me/2026/11/20/julie-bornstein-daydream-shopping-agent-checkout-limit/)
 - 2026-11-17 [House House's AI Code Disclosure Exposes Three Different Rules for Game Studios](https://genedai.me/2026/11/17/game-studios-ai-code-disclosure-gap/)
 - 2026-11-16 [DeepMind Workers Take Their AI Dispute to a UK Labor Tribunal](https://genedai.me/2026/11/16/deepmind-workers-union-bid-ai-projects/)
-- 2026-11-15 [Gainsight's AI Customer Owner Comes With a Smaller Workforce](https://genedai.me/2026/11/15/gainsight-outcome-executive-agent-customer-success/)
-- 2026-11-13 [Amazon Sets Aside $1 Billion for Career Pivots Beyond Its Own Payroll](https://genedai.me/2026/11/13/amazon-career-choice-billion-career-pivots/)
 <!-- writing:end -->
 
 Read on:

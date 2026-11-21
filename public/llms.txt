@@ -37,11 +37,11 @@ Product viewpoint, in his words: "Conversation is an interaction model with stro
 ## Latest writing
 
 <!-- writing:start -->
+- [Indeed's AI Job Ads Double While Worker Reviews Sour](https://genedai.me/2026/11/21/indeed-ai-job-ads-worker-trust-divide/): 2026-11-21
 - [Adecco's AI Survey Puts Falling Training Against Rising Agent Use](https://genedai.me/2026/11/20/adecco-ai-training-worker-redesign-gap/): 2026-11-20
+- [Julie Bornstein Makes the Shopping Agent Ask Before It Buys](https://genedai.me/2026/11/20/julie-bornstein-daydream-shopping-agent-checkout-limit/): 2026-11-20
 - [House House's AI Code Disclosure Exposes Three Different Rules for Game Studios](https://genedai.me/2026/11/17/game-studios-ai-code-disclosure-gap/): 2026-11-17
 - [DeepMind Workers Take Their AI Dispute to a UK Labor Tribunal](https://genedai.me/2026/11/16/deepmind-workers-union-bid-ai-projects/): 2026-11-16
-- [Gainsight's AI Customer Owner Comes With a Smaller Workforce](https://genedai.me/2026/11/15/gainsight-outcome-executive-agent-customer-success/): 2026-11-15
-- [Amazon Sets Aside $1 Billion for Career Pivots Beyond Its Own Payroll](https://genedai.me/2026/11/13/amazon-career-choice-billion-career-pivots/): 2026-11-13
 <!-- writing:end -->
 
 ## Career
