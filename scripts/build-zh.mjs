@@ -61,6 +61,7 @@ const TEXT = [
   ['<span class="badge">User Growth</span>', '<span class="badge">用户增长</span>'],
   ['<span class="badge">Platform Products</span>', '<span class="badge">平台产品</span>'],
   ['<span class="badge">AI Hiring</span>', '<span class="badge">AI 招聘</span>'],
+  ['<a class="act-primary" href="https://metix.ai" target="_blank" rel="noopener">Hiring? Try Metix AI <span aria-hidden="true">↗</span></a><a href="mailto:hi@genedai.me">Email me</a><a href="/gene-dai-cv.pdf" download="Gene-Dai-CV.pdf">CV (PDF)</a>', '<a class="act-primary" href="https://metix.ai" target="_blank" rel="noopener">在招人？试试 Metix AI <span aria-hidden="true">↗</span></a><a href="mailto:hi@genedai.me">发邮件</a><a href="/gene-dai-cv-zh.pdf" download="Gene-Dai-CV-zh.pdf">中文简历（PDF）</a>'],
 
   // ── About
   ['<h2 class="md-h2">About</h2>', '<h2 class="md-h2">简介</h2>'],
@@ -75,7 +76,7 @@ const TEXT = [
   // ── Journey
   ['<h2 class="md-h2">Journey</h2>', '<h2 class="md-h2">经历</h2>'],
   ['<p>Over a decade building hiring, education, and <span class="nowrap">e-commerce</span> products.</p>', '<p>十多年做招聘、教育和电商产品。</p>'],
-  ['<span class="hint-hover">Hover a company to see what it does.</span><span class="hint-tap">Tap a company to see what it does.</span>', '<span class="hint-hover">鼠标悬停在公司名上，查看公司简介。</span><span class="hint-tap">点一下公司名，查看公司简介。</span>'],
+  ['<span class="hint-hover">Hover a company to see what it does; move across its picture to step through it.</span><span class="hint-tap">Tap a company to see what it does; tap its picture to step through it.</span>', '<span class="hint-hover">鼠标悬停在公司名上，查看公司简介；在示意图上左右移动，逐步查看。</span><span class="hint-tap">点一下公司名，查看公司简介；点示意图，逐步查看。</span>'],
   ['<span class="title">Co-Founder &amp; CPO</span><span class="current-tag">current</span>', '<span class="title">联合创始人 / 首席产品官（CPO）</span><span class="current-tag">在职</span>'],
   ['Metix AI</span> — AI hiring platform</span>', 'Metix AI</span> — AI 招聘平台</span>'],
   ['<span class="meta">2025 – Present</span>', '<span class="meta">2025 – 至今</span>'],

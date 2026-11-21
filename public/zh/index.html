@@ -132,7 +132,7 @@
   <!-- GEO: LLM discoverability -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly content" />
   <link rel="alternate" type="text/markdown" href="/genedai.md" title="This page as Markdown" />
-  <script src="/app.js?v=ef8835a0ff" defer></script>
+  <script src="/app.js?v=1f801be208" defer></script>
 
   <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/source-serif-4.woff2" as="font" type="font/woff2" crossorigin />
@@ -247,6 +247,12 @@
     .hero-badges {
       display: flex; gap: 8px; flex-wrap: wrap;
     }
+    /* One primary action (Metix for people hiring), then the two quieter ones. */
+    .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 20px; margin: -8px 0 24px; font-family: var(--font-mono); font-size: 13px; }
+    .hero-actions a { color: var(--text-secondary); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .hero-actions a:hover { color: var(--accent); }
+    .hero-actions .act-primary { display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 8px; background: var(--accent); color: light-dark(#fff, #14120b); text-decoration: none; font-weight: 600; }
+    .hero-actions .act-primary:hover { color: light-dark(#fff, #14120b); filter: brightness(1.08); }
     .badge {
       display: inline-flex; align-items: center; gap: 6px;
       padding: 5px 12px; border-radius: 6px;
@@ -582,6 +588,7 @@
       #journey .md-list li br { display: none; }
       #journey .md-list .desc::before { content: ' — '; }
       .print-contact { display: block; font-size: 9pt; color: #333; margin: 0 0 4pt; }
+      .hero-actions { display: none; }
       .connect-links .sep { display: none; }
       .print-short { font-size: 0; }
       .print-short::after { content: attr(data-short); font-size: 8.5pt; }
@@ -642,6 +649,7 @@
       <h1 class="md-h1">戴金乘 <span class="h1-en">Gene Dai</span></h1>
       <!--email_off--><p class="print-contact">hi@genedai.me · genedai.md · linkedin.com/in/genedai</p><!--/email_off-->
       <p class="lead">我做招聘产品。曾在 <span class="ent" data-ent="bosszhipin" tabindex="0" role="button" aria-haspopup="dialog">BOSS直聘</span>和<span class="ent" data-ent="liepin" tabindex="0" role="button" aria-haspopup="dialog">猎聘</span>负责求职者、企业和猎头三端产品，现在联合创办 AI 原生招聘平台 <a href="https://metix.ai" target="_blank" rel="noopener" data-ent="metix">Metix AI</a>。</p>
+      <!--email_off--><p class="hero-actions"><a class="act-primary" href="https://metix.ai" target="_blank" rel="noopener">在招人？试试 Metix AI <span aria-hidden="true">↗</span></a><a href="mailto:hi@genedai.me">发邮件</a><a href="/gene-dai-cv-zh.pdf" download="Gene-Dai-CV-zh.pdf">中文简历（PDF）</a></p><!--/email_off-->
       <div class="hero-badges">
         <span class="badge-group"><span class="badge">用户增长</span>
         <span class="badge">平台产品</span>
@@ -669,7 +677,7 @@
     <section class="section" id="journey">
       <h2 class="md-h2">经历</h2>
       <p>十多年做招聘、教育和电商产品。</p>
-      <p class="ent-hint"><span class="hint-hover">鼠标悬停在公司名上，查看公司简介。</span><span class="hint-tap">点一下公司名，查看公司简介。</span></p>
+      <p class="ent-hint"><span class="hint-hover">鼠标悬停在公司名上，查看公司简介；在示意图上左右移动，逐步查看。</span><span class="hint-tap">点一下公司名，查看公司简介；点示意图，逐步查看。</span></p>
       <ul class="md-list git-log">
         <li>
           <span class="title">联合创始人 / 首席产品官（CPO）</span><span class="current-tag">在职</span><br>

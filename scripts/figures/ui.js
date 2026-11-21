@@ -39,6 +39,11 @@ let fig = null, frame = 0;  // the open card's figure and its frame loop
 const IDLE = 3600, LEAVE = 1200;
 let u = 0, target = 0, posed = NaN, last = 0, resumeAt = 0, stepIdx = -1, labels = [];
 let drag = null, clickX = null, noClick = false;
+// Until the reader first steps or scrubs a figure, a small label on it says how; then it is gone for the visit.
+let taught = false;
+const teachText = () => (touch.matches
+  ? (ZH ? '点击或左右拖动，逐步查看' : 'Tap or drag to step through')
+  : (ZH ? '← 左右移动或点击，逐步查看 →' : '← Move across or click to step →'));
 const frac = (x) => ((x % 1) + 1) % 1;
 const stage = () => card.querySelector('.ent-stage');
 const schedule = (fn, ms) => { clearTimeout(pending); pending = setTimeout(fn, ms); };
@@ -92,6 +97,7 @@ function show() {
 const play = (mode) => (card.dataset.play = mode);
 // The reader takes over; the tour resumes `ms` after this input (never while it is Infinity).
 function hold(ms) {
+  if (!taught) { taught = true; card.querySelector('.ent-teach')?.classList.add('gone'); }
   if (card.dataset.play === 'tour') play('hand');
   resumeAt = performance.now() + ms;
   if (!frame && fig) { last = performance.now(); frame = requestAnimationFrame(loop); }
@@ -173,6 +179,7 @@ function open(el) {
     u = target = still.matches ? f.still : 0;
     posed = NaN; stepIdx = -1; drag = null; clickX = null; resumeAt = 0;
     play(still.matches ? 'still' : 'tour');
+    if (!taught) st.insertAdjacentHTML('afterend', `<span class="ent-teach" aria-hidden="true">${esc(teachText())}</span>`);
     show();
     if (!still.matches && !frame) { last = performance.now(); frame = requestAnimationFrame(loop); }
   });

@@ -79,7 +79,7 @@ for (const id of Object.keys(ENTS)) {
 }
 
 const CARD_CSS = `
-.ent-card{position:fixed;z-index:200;width:min(336px,calc(100vw - 16px));background:var(--anatomy-card);color:var(--text-primary);border-radius:10px;box-shadow:var(--shadow-card);overflow:hidden;opacity:0;transform:translateY(4px);transition:opacity .16s ease,transform .16s ease}
+.ent-card{position:fixed;z-index:200;width:min(384px,calc(100vw - 16px));background:var(--anatomy-card);color:var(--text-primary);border-radius:10px;box-shadow:var(--shadow-card);overflow:hidden;opacity:0;transform:translateY(4px);transition:opacity .16s ease,transform .16s ease}
 .ent-card.on{opacity:1;transform:none}
 .ent-card[data-theme="light"]{--anatomy-card:#fbfaf7;--anatomy-paper:#fbfaf7}
 .ent-card[data-theme="dark"]{--anatomy-card:#201f1a;--anatomy-paper:#201f1a;--anatomy-face:#29281f;--anatomy-top:#2a2922;--anatomy-shade-0:#1a1914;--anatomy-shade-1:#1d1c17;--anatomy-shade-2:#21201a;--anatomy-shade-3:#25241d;--anatomy-lit-top:#34332b;--anatomy-lit-shade:#2b2a23;--anatomy-halo:#0a0a08}
@@ -91,6 +91,8 @@ const CARD_CSS = `
 .ent-corner[data-c="hint"]{bottom:8px;left:12px;text-transform:uppercase;letter-spacing:.1em}
 .ent-corner[data-c="step"]{bottom:8px;right:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-secondary)}
 .ent-stage{border-radius:6px;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.ent-teach{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);padding:4px 9px;border-radius:999px;font:10px/1.2 var(--font-mono);letter-spacing:.04em;white-space:nowrap;color:var(--text-secondary);background:var(--anatomy-card);box-shadow:0 0 0 1px var(--border-default);pointer-events:none;transition:opacity .3s ease}
+.ent-teach.gone{opacity:0}
 .ent-stage:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 @media (hover:hover) and (pointer:fine){.ent-card[data-fig="ready"] .ent-stage{cursor:ew-resize}}
 .ent-body{padding:12px 14px 14px}
