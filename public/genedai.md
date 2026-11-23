@@ -5,7 +5,7 @@ role: Co-Founder & CPO @ Metix AI
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
 zh: https://genedai.md/zh/
-updated: 2026-11-22
+updated: 2026-11-23
 ---
 
 # Gene Dai
@@ -61,11 +61,11 @@ Start here:
 Latest:
 
 <!-- writing:start -->
+- 2026-11-23 [Workday Plans to Buy Honeydew for the Headcount Problem](https://genedai.me/2026/11/23/workday-honeydew-headcount-definitions-ai-agents/)
+- 2026-11-22 [Levent Alpöge Has a Checked Proof and an Unwritten Explanation](https://genedai.me/2026/11/22/levent-alpoge-riemann-proof-human-explanation/)
 - 2026-11-22 [Zscaler's AI Security Partnerships Follow a 3% Workforce Cut Plan](https://genedai.me/2026/11/22/zscaler-ai-security-workforce-reallocation/)
 - 2026-11-21 [Colette Kress Faces Nvidia's $118 Billion Guarantee Test](https://genedai.me/2026/11/21/colette-kress-nvidia-ai-guarantee-exposure/)
 - 2026-11-21 [Indeed's AI Job Ads Double While Worker Reviews Sour](https://genedai.me/2026/11/21/indeed-ai-job-ads-worker-trust-divide/)
-- 2026-11-20 [Adecco's AI Survey Puts Falling Training Against Rising Agent Use](https://genedai.me/2026/11/20/adecco-ai-training-worker-redesign-gap/)
-- 2026-11-20 [Julie Bornstein Makes the Shopping Agent Ask Before It Buys](https://genedai.me/2026/11/20/julie-bornstein-daydream-shopping-agent-checkout-limit/)
 <!-- writing:end -->
 
 Read on:
