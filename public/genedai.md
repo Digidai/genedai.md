@@ -5,7 +5,7 @@ role: Co-Founder & CPO @ Metix AI
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
 zh: https://genedai.md/zh/
-updated: 2026-11-24
+updated: 2026-11-25
 ---
 
 # Gene Dai
@@ -61,11 +61,11 @@ Start here:
 Latest:
 
 <!-- writing:start -->
+- 2026-11-25 [GitHub Copilot's Hiring Effect Concentrated in Junior Coding Roles](https://genedai.me/2026/11/25/github-copilot-junior-coding-hiring-effect/)
 - 2026-11-24 [Amazon's Decart Deal Targets the Software Behind the AI Chip Bill](https://genedai.me/2026/11/24/amazon-decart-ai-chip-optimization-talent-deal/)
+- 2026-11-24 [Wes Moore and the State Line in AI Governance](https://genedai.me/2026/11/24/wes-moore-state-line-ai-governance/)
 - 2026-11-23 [Jaclyn Rice Nelson Puts Engineers Between Models and Revenue](https://genedai.me/2026/11/23/jaclyn-rice-nelson-tribe-ai-deployment-economics/)
 - 2026-11-23 [Workday Plans to Buy Honeydew for the Headcount Problem](https://genedai.me/2026/11/23/workday-honeydew-headcount-definitions-ai-agents/)
-- 2026-11-22 [Levent Alpöge Has a Checked Proof and an Unwritten Explanation](https://genedai.me/2026/11/22/levent-alpoge-riemann-proof-human-explanation/)
-- 2026-11-22 [Zscaler's AI Security Partnerships Follow a 3% Workforce Cut Plan](https://genedai.me/2026/11/22/zscaler-ai-security-workforce-reallocation/)
 <!-- writing:end -->
 
 Read on:
