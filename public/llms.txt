@@ -37,11 +37,11 @@ Product viewpoint, in his words: "Conversation is an interaction model with stro
 ## Latest writing
 
 <!-- writing:start -->
+- [ZipRecruiter's AI Hiring Plans Meet a Pay-Raise Retreat](https://genedai.me/2026/11/27/ziprecruiter-ai-hiring-plans-pay-raises-2027/): 2026-11-27
 - [bp's 3,000-Person Finance Transfer Puts AI Savings on a New Payroll](https://genedai.me/2026/11/26/bp-wipro-finance-worker-transfer/): 2026-11-26
+- [Jeff Clarke and the Long Road From AI Order to Working Rack](https://genedai.me/2026/11/26/jeff-clarke-dell-ai-backlog-delivery-test/): 2026-11-26
 - [GitHub Copilot's Hiring Effect Concentrated in Junior Coding Roles](https://genedai.me/2026/11/25/github-copilot-junior-coding-hiring-effect/): 2026-11-25
 - [Jeetu Patel Takes Cisco's Agent Bet Into the Patch Window](https://genedai.me/2026/11/25/jeetu-patel-shirudo-patch-window/): 2026-11-25
-- [Amazon's Decart Deal Targets the Software Behind the AI Chip Bill](https://genedai.me/2026/11/24/amazon-decart-ai-chip-optimization-talent-deal/): 2026-11-24
-- [Wes Moore and the State Line in AI Governance](https://genedai.me/2026/11/24/wes-moore-state-line-ai-governance/): 2026-11-24
 <!-- writing:end -->
 
 ## Career
