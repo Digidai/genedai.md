@@ -5,7 +5,7 @@ role: Co-Founder & CPO @ Metix AI
 now: Building HR tools and AI agents for hiring, at Metix AI and in the open
 email: hi@genedai.me
 zh: https://genedai.md/zh/
-updated: 2026-11-27
+updated: 2026-11-28
 ---
 
 # Gene Dai
@@ -61,11 +61,11 @@ Start here:
 Latest:
 
 <!-- writing:start -->
+- 2026-11-28 [Europe Puts AI Skills on a 2027 Reform Agenda While Training Lags](https://genedai.me/2026/11/28/eu-ai-skills-training-gap-2027-reform/)
+- 2026-11-27 [Dan Shipper's $17.5 Million Test of a Media-Software Subscription](https://genedai.me/2026/11/27/dan-shipper-every-media-software-subscription/)
 - 2026-11-27 [ZipRecruiter's AI Hiring Plans Meet a Pay-Raise Retreat](https://genedai.me/2026/11/27/ziprecruiter-ai-hiring-plans-pay-raises-2027/)
 - 2026-11-26 [bp's 3,000-Person Finance Transfer Puts AI Savings on a New Payroll](https://genedai.me/2026/11/26/bp-wipro-finance-worker-transfer/)
 - 2026-11-26 [Jeff Clarke and the Long Road From AI Order to Working Rack](https://genedai.me/2026/11/26/jeff-clarke-dell-ai-backlog-delivery-test/)
-- 2026-11-25 [GitHub Copilot's Hiring Effect Concentrated in Junior Coding Roles](https://genedai.me/2026/11/25/github-copilot-junior-coding-hiring-effect/)
-- 2026-11-25 [Jeetu Patel Takes Cisco's Agent Bet Into the Patch Window](https://genedai.me/2026/11/25/jeetu-patel-shirudo-patch-window/)
 <!-- writing:end -->
 
 Read on:
